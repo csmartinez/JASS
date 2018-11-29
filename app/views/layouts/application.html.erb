@@ -34,8 +34,8 @@
       </ul>
       <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
         <% if current_user %>
-        <li><a href="/home/show">Welcome, <%= current_user.email %>!</a></li>
-        <li><%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %></li>
+        <li style="margin-right: 40px; color: white;">Welcome, <%= current_user.email %>!</li>
+        <li><%= button_to('Sign Out', destroy_user_session_path, :method => :delete, :class => "btn btn-light btn-sm") %></li>
         <% else %>
         <li class="nav-item">
           <a class="nav-link" href="/users/sign_in"><button type="button" class="btn btn-light btn-sm">Sign In</button></a>
