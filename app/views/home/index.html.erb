@@ -1,9 +1,15 @@
 <div class="container">
 	<br><br>
 
-	<h1>Under Construction</h1>
-
 	<% if current_user %>
-	How goes it, <%= current_user.email %>?
+	<h1>Dashboard</h1>
+	<br>
+	<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
+	<% else %>
+
+	<h1>Welcome to the Jabulani School Simulation Portal</h1>
+	<h3>This website is under construction</h3>
+	<br>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
 	<% end %>
 </div>
