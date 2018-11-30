@@ -5,6 +5,5 @@ This software is a **capstone project** for Northern Arizona University. It is *
 ## Technologies
 * Ruby on Rails
 * PostgreSQL
-* Heroku
 * Bootstrap
 * Devise (Gem for user authentication)
