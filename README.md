@@ -1,24 +1,11 @@
-# README
+# Jabulani School Simulation Portal
+This software is a **capstone project** for Northern Arizona University. It is **not** open to contributions at this time. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Team Jasper
+Leading this team is Karsten Nguyen, and joining Karsten is Jasmine Mitchell, Carli Martinez, and Ruben Rincon.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Technologies
+* Ruby on Rails
+* PostgreSQL
+* Bootstrap
+* Devise (Gem for user authentication)
