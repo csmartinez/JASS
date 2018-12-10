@@ -35,7 +35,7 @@
 
 			<div class="field">
 				<%= f.label :admin_key %><br />
-				<%= f.text_field :admin_key, autocomplete: "admin_key"  %>
+				<%= f.text_field :admin_key, :value => current_user.admin_key %>
 			</div>
 
 			<div class="field">
