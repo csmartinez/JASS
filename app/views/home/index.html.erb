@@ -79,73 +79,78 @@
 			<br><br><br>
 		<% end %>
 
-	<% else if current_user.acc_type == 'admin' %>
-	<h4>Account Type: <b>Local administrator</b> </h4>
-	<p>Privileges: Manage faculty and students. Below is a list
-	of accounts managed by you: </p>
-	<p>
-			<% @users.each do |user| %>
-				<% if user.superior == current_user.id %>
+		<% elseif current_user.acc_type == 'admin' %>
+		<h4>Account Type: <b>Local administrator</b> </h4>
+		<p>Privileges: Manage faculty and students. Below is a list
+		of accounts managed by you: </p>
+		<p>
+				<% @users.each do |user| %>
+					<% if user.superior == current_user.id %>
 
-					<% if user.acc_type == 'admin' %>
-							<b><%= user.email %></b> (Administrator)
-					<% end %>
+						<% if user.acc_type == 'admin' %>
+								<b><%= user.email %></b> (Administrator)
+						<% end %>
 
-					<% if user.acc_type == 'faculty' %>
-							<b><%= user.email %></b> (Faculty)
-					<% end %>
+						<% if user.acc_type == 'faculty' %>
+								<b><%= user.email %></b> (Faculty)
+						<% end %>
 
-					<% if user.acc_type == 'student' %>
-							<b><%= user.email %></b> (Student)
-					<% end %>
-			 <% end %>
-		<% end %>
-	</p>
-
-	<h4> Update Account Information </h4>
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-		<%= devise_error_messages! %>
-
-		<div class="field">
-			<%= f.label :faculty_key %><br />
-			<%= f.text_field :faculty_key, :value => current_user.faculty_key  %>
-		</div>
-
-		<div class="field">
-			<%= f.label :student_key %><br />
-			<%= f.text_field :student_key, :value => current_user.student_key  %>
-		</div>
-
-		<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-			<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-		<% end %>
-
-		<div class="field">
-			<%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-			<%= f.password_field :password, autocomplete: "new-password" %>
-			<% if @minimum_password_length %>
-				<br />
-				<em><%= @minimum_password_length %> characters minimum</em>
+						<% if user.acc_type == 'student' %>
+								<b><%= user.email %></b> (Student)
+						<% end %>
+				 <% end %>
 			<% end %>
-		</div>
+		</p>
 
-		<div class="field">
-			<%= f.label :password_confirmation %><br />
-			<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-		</div>
+		<h4> Update Account Information </h4>
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+			<%= devise_error_messages! %>
 
-		<div class="field">
-			<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-			<%= f.password_field :current_password, autocomplete: "current-password" %>
-		</div>
+			<div class="field">
+				<%= f.label :faculty_key %><br />
+				<%= f.text_field :faculty_key, :value => current_user.faculty_key  %>
+			</div>
 
-		<div class="actions">
-			<%= f.submit "Update", :class => 'btn btn-light' %>
-		</div>
+			<div class="field">
+				<%= f.label :student_key %><br />
+				<%= f.text_field :student_key, :value => current_user.student_key  %>
+			</div>
 
-		<br><br><br>
+			<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+				<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+			<% end %>
+
+			<div class="field">
+				<%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+				<%= f.password_field :password, autocomplete: "new-password" %>
+				<% if @minimum_password_length %>
+					<br />
+					<em><%= @minimum_password_length %> characters minimum</em>
+				<% end %>
+			</div>
+
+			<div class="field">
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+				<%= f.password_field :current_password, autocomplete: "current-password" %>
+			</div>
+
+			<div class="actions">
+				<%= f.submit "Update", :class => 'btn btn-light' %>
+			</div>
+
+			<br><br><br>
+
+
+
 
 	<% end %>
+
+		<% end %>
 
 	<% else %>
 
