@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-		registrations_params = [:acc_type, :admin_key, :faculty_key, :student_key, :email, :password, :password_confirmation]
+		registrations_params = [:try_key, :acc_type, :admin_key, :faculty_key, :student_key, :email, :password, :password_confirmation]
 		update_params = [:acc_type, :admin_key, :faculty_key, :student_key, :password, :current_password]
 
 		devise_parameter_sanitizer.permit(:sign_up) do |u|

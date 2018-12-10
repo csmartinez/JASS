@@ -9,26 +9,7 @@
 		<% if current_user.acc_type == 'superadmin' %>
 
 		<h4>Account Type: <b>Super administrator</b> </h4>
-		<p>Privileges: Manage all administrators, faculty, and students. Below is a list
-		of accounts managed by you: </p>
-		<p>
-				<% @users.each do |user| %>
-					<% if user.superior == current_user.id %>
-
-						<% if user.acc_type == 'admin' %>
-								<b><%= user.email %></b> (Administrator)
-						<% end %>
-
-						<% if user.acc_type == 'faculty' %>
-								<b><%= user.email %></b> (Faculty)
-						<% end %>
-
-						<% if user.acc_type == 'student' %>
-								<b><%= user.email %></b> (Student)
-						<% end %>
-				 <% end %>
-			<% end %>
-		</p>
+		<p>Privileges: Manage all administrators, faculty, and students. </p>
 
 		<h4> Update Account Information </h4>
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -80,20 +61,14 @@
 		<% end %>
 
 		<% elsif current_user.acc_type == 'admin' %>
+		
 		<h4>Account Type: <b>Local administrator</b> </h4>
 		<p>Privileges: Manage faculty and students. Below is a list
-		of accounts managed by you: </p>
+		of faculty accounts managed by you: </p>
 		<p>
 				<% @users.each do |user| %>
 					<% if user.superior == current_user.id %>
-
-						<% if user.acc_type == 'faculty' %>
-								<b><%= user.email %></b> (Faculty)
-						<% end %>
-
-						<% if user.acc_type == 'student' %>
-								<b><%= user.email %></b> (Student)
-						<% end %>
+						<b><%= user.email %></b> (Faculty)
 				 <% end %>
 			<% end %>
 		</p>
