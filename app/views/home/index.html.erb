@@ -79,17 +79,13 @@
 			<br><br><br>
 		<% end %>
 
-		<% elseif current_user.acc_type == 'admin' %>
+		<% elsif current_user.acc_type == 'admin' %>
 		<h4>Account Type: <b>Local administrator</b> </h4>
 		<p>Privileges: Manage faculty and students. Below is a list
 		of accounts managed by you: </p>
 		<p>
 				<% @users.each do |user| %>
 					<% if user.superior == current_user.id %>
-
-						<% if user.acc_type == 'admin' %>
-								<b><%= user.email %></b> (Administrator)
-						<% end %>
 
 						<% if user.acc_type == 'faculty' %>
 								<b><%= user.email %></b> (Faculty)
@@ -145,10 +141,7 @@
 
 			<br><br><br>
 
-
-
-
-	<% end %>
+			<% end %>
 
 		<% end %>
 
