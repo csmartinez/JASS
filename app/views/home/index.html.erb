@@ -30,6 +30,7 @@
 			<% end %>
 		</p>
 
+		<h4> Update Account Information </h4>
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 			<%= devise_error_messages! %>
 
@@ -40,12 +41,12 @@
 
 			<div class="field">
 				<%= f.label :faculty_key %><br />
-				<%= f.text_field :faculty_key, autocomplete: "faculty_key"  %>
+				<%= f.text_field :faculty_key, :value => current_user.faculty_key  %>
 			</div>
 
 			<div class="field">
 				<%= f.label :student_key %><br />
-				<%= f.text_field :student_key, autocomplete: "student_key"  %>
+				<%= f.text_field :student_key, :value => current_user.student_key  %>
 			</div>
 
 			<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -83,6 +84,26 @@
 	<h1>Welcome to the Jabulani School Simulation Portal</h1>
 	<h3>This website is under construction</h3>
 	<br>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
+	<p>Please check back in May of 2019 for the official launch of this software.</p>
 	<p>Please check back in May of 2019 for the official launch of this software.</p>
 
 	<% end %>
