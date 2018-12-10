@@ -8,14 +8,34 @@
 
 		<% if current_user.acc_type == 'superadmin' %>
 		<br>
-		<p>You are a super admin!</p>
+		<h3>Account Type: <b>Super administrator</b> </h3>
+		<p>Privileges: Manage all administrators, faculty, and students.</p>
+		<br>
+		<p>
+				<% @users.each do |user| %>
+					<% if user.superior == current_user.id %>
+
+						<% if user.acc_type == 'admin' %>
+								<b><%= user.email %></b> (Administrator)
+						<% end %>
+
+						<% if user.acc_type == 'faculty' %>
+								<b><%= user.email %></b> (Faculty)
+						<% end %>
+
+						<% if user.acc_type == 'student' %>
+								<b><%= user.email %></b> (Student)
+						<% end %>
+				 <% end %>
+			<% end %>
 		<% end %>
-		
+
 	<% else %>
 
 	<h1>Welcome to the Jabulani School Simulation Portal</h1>
 	<h3>This website is under construction</h3>
 	<br>
 	<p>Please check back in May of 2019 for the official launch of this software.</p>
+
 	<% end %>
 </div>
