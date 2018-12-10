@@ -5,6 +5,12 @@
 	<h1>Dashboard</h1>
 	<br>
 	<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
+
+		<% if current_user.acc_type == 'superadmin' %>
+		<br>
+		<p>You are a super admin!</p>
+		<% end %>
+		
 	<% else %>
 
 	<h1>Welcome to the Jabulani School Simulation Portal</h1>
