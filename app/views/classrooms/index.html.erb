@@ -9,8 +9,8 @@
 			<p>Create and manage virtual classrooms</p>
 
 			<!-- Classrooms and users might need a join table in the future -->
-			<p>My Classrooms</p>
-			
+			<p><b>My Classrooms: </b></p>
+
 			<ul>
 				<% current_user.classrooms.each do |classroom| %>
 					<li><%= link_to classroom.name, classroom_path(classroom) %></li>
