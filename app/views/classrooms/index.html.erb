@@ -14,12 +14,18 @@
 
 		<% end %>
 
+		<ul>
+			<% @classrooms.each do |classroom| %>
+				<li><%= link_to classroom.name, classroom_path(classroom) %></li>
+			<% end %>
+		</ul>
+
 	<% else %>
 
 	<p>You are not signed in! Please click the sign in button on the top right corner.</p>
 
 	<% end %>
 
-	<br>
+	
 	<%= link_to "Back", :back %>
 </div>
