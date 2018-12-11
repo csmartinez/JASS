@@ -30,3 +30,28 @@ body {
 .container {
   height: 100%;
 }
+
+.menuLeft {
+  float: left;
+  width: 22%;
+}
+
+.contentRight {
+  float: right;
+  margin-left: 6%;
+  width: 72%;
+}
+
+.menu {
+  background-color: #FFD200;
+  padding: 15px;
+}
+
+.menu a {
+  color: black;
+}
+
+.menu a:hover {
+  background-color: white;
+  color: black;
+}
