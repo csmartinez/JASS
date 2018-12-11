@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_170547) do
+ActiveRecord::Schema.define(version: 2018_12_11_173452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(version: 2018_12_11_170547) do
     t.string "ela"
   end
 
-  create_table "profiles_students", id: false, force: :cascade do |t|
+  create_table "profiles_classrooms", id: false, force: :cascade do |t|
     t.bigint "profile_id"
-    t.bigint "student_id"
-    t.index ["profile_id"], name: "index_profiles_students_on_profile_id"
-    t.index ["student_id"], name: "index_profiles_students_on_student_id"
+    t.bigint "classroom_id"
+    t.index ["classroom_id"], name: "index_profiles_classrooms_on_classroom_id"
+    t.index ["profile_id"], name: "index_profiles_classrooms_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
