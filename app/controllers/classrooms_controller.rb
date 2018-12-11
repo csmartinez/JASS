@@ -7,5 +7,6 @@ class ClassroomsController < ApplicationController
   def show
     @classroom = Classroom.find(params[:id])
     render :show
+    @profiles = Profile.all
   end
 end

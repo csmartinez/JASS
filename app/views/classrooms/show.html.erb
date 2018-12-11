@@ -5,5 +5,12 @@
 	<b>Name: </b><%= @classroom.name %><br>
 	<b>Description: </b><%= @classroom.description %><br>
 	<br>
+	<ul>
+		<% @classroom.profiles.each do |sample| %>
+			<% if sample.id%>
+				<h1>match!</h1>
+			<% end %>
+		<% end %>
+	</ul>
 	<p><%= link_to "Return to classrooms", classrooms_path %></p>
 </div>
