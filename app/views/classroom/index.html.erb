@@ -2,6 +2,24 @@
 	<br><br>
 	<h1> Virtual Classrooms </h1>
 	<br>
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+			<p>Create and manage virtual classrooms</p>
+
+		<% else %>
+
+			<p>Interact with virtual classrooms</p>
+
+		<% end %>
+
+	<% else %>
+
+	<p>You are not signed in! Please click the sign in button on the top right corner.</p>
+
+	<% end %>
+
 	<br>
 	<%= link_to "Back", :back %>
 </div>
