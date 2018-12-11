@@ -4,144 +4,82 @@
 	<% if current_user %>
 
 		<% if current_user.acc_type == 'superadmin' %>
-		<h1>Dashboard</h1>
-		<br>
-		<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
 
-		<h4>Account Type: <b>Super administrator</b> </h4>
-		<p>Privileges: Manage all administrators, faculty, and students. </p>
+		<div class="menuLeft">
+			<h3><b>Menu</b></h3>
+			<br>
+			<ul class="nav flex-column menu">
+			  <li class="nav-item">
+			    <a class="nav-link" href="/">Home</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="home/edit">Update Profile</a>
+			  </li>
+				<li class="nav-item">
+			    <a class="nav-link" href="/classroom/index">Virtual Classrooms</a>
+			  </li>
+			</ul>
+		</div>
 
-		<h4> Update Account Information </h4>
-		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-			<%= devise_error_messages! %>
+		<div class="contentRight">
+			<h1>Dashboard</h1>
+			<br>
+			<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
 
-			<div class="field">
-				<%= f.label :admin_key %><br />
-				<%= f.text_field :admin_key, :value => current_user.admin_key %>
-			</div>
-
-			<div class="field">
-				<%= f.label :faculty_key %><br />
-				<%= f.text_field :faculty_key, :value => current_user.faculty_key  %>
-			</div>
-
-			<div class="field">
-				<%= f.label :student_key %><br />
-				<%= f.text_field :student_key, :value => current_user.student_key  %>
-			</div>
-
-			<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-				<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-			<% end %>
-
-			<div class="field">
-				<%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-				<%= f.password_field :password, autocomplete: "new-password" %>
-				<% if @minimum_password_length %>
-					<br />
-					<em><%= @minimum_password_length %> characters minimum</em>
-				<% end %>
-			</div>
-
-			<div class="field">
-				<%= f.label :password_confirmation %><br />
-				<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-			</div>
-
-			<div class="field">
-				<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-				<%= f.password_field :current_password, autocomplete: "current-password" %>
-			</div>
-
-			<div class="actions">
-				<%= f.submit "Update", :class => 'btn btn-light' %>
-			</div>
+			<h4>Account Type: <b>Super administrator</b> </h4>
+			<p>Privileges: Manage all administrators, faculty, and students. </p>
 
 			<br><br><br>
-		<% end %>
+		</div>
 
 		<% elsif current_user.acc_type == 'admin' %>
-<<<<<<< HEAD
-		<h1>Dashboard</h1>
-		<br>
-		<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
-=======
->>>>>>> 171edb32a7fc9f141e7a657ab97afae15fa793ea
 
-		<h4>Account Type: <b>Local administrator</b> </h4>
-		<p>Privileges: Manage faculty and students. Below is a list
-		of faculty accounts managed by you: </p>
-		<p>
-				<% @users.each do |user| %>
-					<% if user.superior == current_user.id %>
-						<b><%= user.email %></b> (Faculty)
-				 <% end %>
-			<% end %>
-		</p>
+		<div class="menuLeft">
+			<h3><b>Menu</b></h3>
+			<br>
+			<ul class="nav flex-column menu">
+			  <li class="nav-item">
+			    <a class="nav-link" href="/">Home</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="home/edit">Update Profile</a>
+			  </li>
+				<li class="nav-item">
+			    <a class="nav-link" href="/classroom/index">Virtual Classrooms</a>
+			  </li>
+			</ul>
+		</div>
 
-		<h4> Update Account Information </h4>
-		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-			<%= devise_error_messages! %>
+		<div class="contentRight">
+			<h1>Dashboard</h1>
+			<br>
+			<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
 
-			<div class="field">
-				<%= f.label :faculty_key %><br />
-				<%= f.text_field :faculty_key, :value => current_user.faculty_key  %>
-			</div>
 
-			<div class="field">
-				<%= f.label :student_key %><br />
-				<%= f.text_field :student_key, :value => current_user.student_key  %>
-			</div>
-
-			<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-				<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-			<% end %>
-
-			<div class="field">
-				<%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-				<%= f.password_field :password, autocomplete: "new-password" %>
-				<% if @minimum_password_length %>
-					<br />
-					<em><%= @minimum_password_length %> characters minimum</em>
+			<h4>Account Type: <b>Local administrator</b> </h4>
+			<p>Privileges: Manage faculty and students. Below is a list
+			of faculty accounts managed by you: </p>
+			<p>
+					<% @users.each do |user| %>
+						<% if user.superior == current_user.id %>
+							<b><%= user.email %></b> (Faculty)
+					 <% end %>
 				<% end %>
-			</div>
-
-			<div class="field">
-				<%= f.label :password_confirmation %><br />
-				<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-			</div>
-
-			<div class="field">
-				<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-				<%= f.password_field :current_password, autocomplete: "current-password" %>
-			</div>
-
-			<div class="actions">
-				<%= f.submit "Update", :class => 'btn btn-light' %>
-			</div>
-
-			<br><br><br>
-
-			<% end %>
 
 		<% elsif current_user.acc_type == 'faculty' %>
 
-		<h1>Dashboard</h1>
-		<br>
-		<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
-
-		<% else %>
-
 		<div class="menuLeft">
+			<h3><b>Menu</b></h3>
+			<br>
 			<ul class="nav flex-column menu">
 			  <li class="nav-item">
-			    <a class="nav-link" href="/">Dashboard</a>
+			    <a class="nav-link" href="/">Home</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="#">Update Profile</a>
+			    <a class="nav-link" href="home/edit">Update Profile</a>
 			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="#">Coming Soon</a>
+				<li class="nav-item">
+			    <a class="nav-link" href="/classroom/index">Virtual Classrooms</a>
 			  </li>
 			</ul>
 		</div>
@@ -153,6 +91,30 @@
 
 		</div>
 
+		<% else %>
+
+		<div class="menuLeft">
+			<h3><b>Menu</b></h3>
+			<br>
+			<ul class="nav flex-column menu">
+			  <li class="nav-item">
+			    <a class="nav-link" href="/">Home</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="home/edit">Update Profile</a>
+			  </li>
+				<li class="nav-item">
+			    <a class="nav-link" href="/classroom/index">Virtual Classrooms</a>
+			  </li>
+			</ul>
+		</div>
+
+		<div class="contentRight">
+			<h1>Dashboard</h1>
+			<br>
+			<p>How goes it, <%= current_user.email %>? This is your personal dashboard.</p>
+
+		</div>
 
 		<% end %>
 

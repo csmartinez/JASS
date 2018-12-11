@@ -42,16 +42,13 @@ body {
   width: 72%;
 }
 
-.menu {
-  background-color: #FFD200;
-  padding: 15px;
-}
-
 .menu a {
   color: black;
+  background-color: white;
+  border-left: 10px solid #FFD200;
 }
 
 .menu a:hover {
-  background-color: white;
-  color: black;
+  background-color: #003466;
+  color: white;
 }
