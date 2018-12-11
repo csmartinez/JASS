@@ -8,7 +8,7 @@
 	<ul>
 		<% @classroom.profiles.each do |profile| %>
 
-				<li>Name: <%= profile.fname %> <%= profile.lname %> Ethnicity: <%= profile.ethnicity %> IEP: <%= profile.iep %> Math: <%= profile.math %> ELA: <%= profile.ela %></li>
+				<li><b>Name:</b> <%= profile.fname %> <%= profile.lname %> <b>Ethnicity:</b> <%= profile.ethnicity %> <b>IEP</b>: <%= profile.iep %> <b>Math</b>: <%= profile.math %> <b>ELA:</b> <%= profile.ela %></li>
 
 		<% end %>
 	</ul>
