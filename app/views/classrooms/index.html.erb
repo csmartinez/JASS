@@ -8,17 +8,20 @@
 
 			<p>Create and manage virtual classrooms</p>
 
+			<!-- Classrooms and users might need a join table in the future -->
+			<p>My Classrooms</p>
+			
+			<ul>
+				<% current_user.classrooms.each do |classroom| %>
+					<li><%= link_to classroom.name, classroom_path(classroom) %></li>
+				<% end %>
+			</ul>
+
 		<% else %>
 
 			<p>Interact with virtual classrooms</p>
 
 		<% end %>
-
-		<ul>
-			<% @classrooms.each do |classroom| %>
-				<li><%= link_to classroom.name, classroom_path(classroom) %></li>
-			<% end %>
-		</ul>
 
 	<% else %>
 
