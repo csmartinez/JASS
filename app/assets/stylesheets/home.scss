@@ -1,6 +1,9 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch');
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+
 .footer {
     position: fixed;
     left: 0;
@@ -49,6 +52,16 @@ body {
 }
 
 .menu a:hover {
+  background-color: #003466;
+  color: white;
+}
+
+.sketch {
+  font-family: 'Cabin Sketch', cursive;
+  // font-family: 'Fredericka the Great', cursive;
+}
+
+.thead {
   background-color: #003466;
   color: white;
 }
