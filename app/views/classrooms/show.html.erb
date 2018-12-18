@@ -11,45 +11,21 @@
 	<table class="table">
 	  <thead class="thead">
 	    <tr>
-	      <th scope="col">Student ID</th>
 	      <th scope="col">Name</th>
-	      <th scope="col">Profile</th>
+	      <th scope="col">Ethnicity</th>
+				<th scope="col">IEP</th>
+				<th scope="col">Math</th>
+				<th scope="col">ELA</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 			<% @classroom.profiles.each do |profile| %>
 					<tr>
-						<td><%= profile.id %></td>
 						<td><%= profile.fname %> <%= profile.lname %></td>
-			      <td>
-							<button type="button" class="btn btn-light btn-sm">
-								<a data-toggle="modal" data-target="#profile">See Profile</a>
-							</button>
-						</td>
-			    </tr>
-
-					<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-top: 180px">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-									<h5 class="modal-title">Student Profile</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-
-									<%= profile.fname %> <%= profile.lname %>
-
-					      </div>
-								<div class="modal-footer">
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-
+			      <td><%= profile.ethnicity %></td>
+						<td><%= profile.iep %></td>
+						<td><%= profile.math %></td>
+						<td><%= profile.ela %></td>
 			<% end %>
 	  </tbody>
 	</table>
