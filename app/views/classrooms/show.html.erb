@@ -11,7 +11,8 @@
 	<table class="table">
 	  <thead class="thead">
 	    <tr>
-	      <th scope="col">Name</th>
+	      <th scope="col"><%= sort_link "fname" %></th>
+				 <th scope="col">Last Name</th>
 	      <th scope="col">Ethnicity</th>
 				<th scope="col">IEP</th>
 				<th scope="col">Math</th>
@@ -21,7 +22,8 @@
 	  <tbody>
 			<% @classroom.profiles.each do |profile| %>
 					<tr>
-						<td><%= profile.fname %> <%= profile.lname %></td>
+						<td><%= profile.fname %> </td>
+						<td><%= profile.lname %></td>
 			      <td><%= profile.ethnicity %></td>
 						<td><%= profile.iep %></td>
 						<td><%= profile.math %></td>
