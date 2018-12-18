@@ -16,12 +16,12 @@
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
-		      <th scope="col"><%= sort_link "fname" %></th>
-					<th scope="col"><%= sort_link "lname" %></th>
-		      <th scope="col"><%= sort_link "ethnicity" %></th>
-					<th scope="col"><%= sort_link "iep" %></th>
-					<th scope="col"><%= sort_link "math" %></th>
-					<th scope="col"><%= sort_link "ela" %></th>
+		      <th scope="col"><%= sort_link "fname", "First Name" %></th>
+					<th scope="col"><%= sort_link "lname", "Last Name" %></th>
+		      <th scope="col"><%= sort_link "ethnicity", "Ethnicity" %></th>
+					<th scope="col"><%= sort_link "iep", "IEP" %></th>
+					<th scope="col"><%= sort_link "math", "Math" %></th>
+					<th scope="col"><%= sort_link "ela", "ELA" %></th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -38,7 +38,7 @@
 				<% end %>
 		  </tbody>
 		</table>
-
+		<br>
 		<p><%= link_to "Return to classrooms", classrooms_path %></p>
 
 		<% else %>
@@ -46,6 +46,8 @@
 		<b>You do not have permission to access this page!</b>
 
 		<% end %>
+
+		<b>You do not have permission to access this page!</b>
 
 	<% end %>
 
