@@ -1,0 +1,46 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Edit Classroom <%= @classroom.name %></h1>
+		</div>
+
+		<br>
+
+		<% if @classroom.errors.any? %>
+		  <h3>Please fix these errors:</h3>
+		  <ul>
+		    <% @classroom.errors.full_messages.each do |message| %>
+		      <li><%= message %></li>
+		    <% end %>
+		  </ul>
+		<% end %>
+
+		<%= form_for @classroom do |f| %>
+		  <%= f.label :name %>
+		  <%= f.text_field :name %>
+			<%= f.label :description %>
+		  <%= f.text_field :description %>
+		  <%= f.submit %>
+		<% end %>
+
+		<br>
+		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

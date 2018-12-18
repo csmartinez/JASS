@@ -12,6 +12,26 @@ class ClassroomsController < ApplicationController
     render :show
   end
 
+  def new
+    @classroom = Classroom.new
+    render :new
+  end
+
+  def create
+    @classroom = Classroom.new(classroom_params)
+    if @classroom.save
+      Offering.create(user_id: current_user.id, classroom_id: @classroom.id)
+      render :action => :edit
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @classroom = Classroom.find(params[:id])
+    render :edit
+  end
+
 private
   def sortable_columns
     ["fname", "lname", "ethnicity", "iep", "math", "ela"]
@@ -23,5 +43,9 @@ private
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def classroom_params
+    params.require(:classroom).permit(:id, :name, :description)
   end
 end

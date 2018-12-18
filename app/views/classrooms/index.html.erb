@@ -3,19 +3,27 @@
 	<div class="sketch">
 		<h1>Virtual Classrooms</h1>
 	</div>
-	
+
 	<br>
 	<% if current_user %>
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
-			<p>Create and manage virtual classrooms</p>
+			<p>Create and manage virtual classrooms <br> <%= link_to "Create a classroom", :new_classroom %></p>
 
 			<!-- Classrooms and users might need a join table in the future -->
 			<p><b>My Classrooms: </b></p>
 
 			<ul>
 				<% current_user.classrooms.each do |classroom| %>
+					<li><%= link_to classroom.name, classroom_path(classroom) %></li>
+				<% end %>
+			</ul>
+
+			<p><b>All Classrooms: </b></p>
+
+			<ul>
+				<% @classrooms.each do |classroom| %>
 					<li><%= link_to classroom.name, classroom_path(classroom) %></li>
 				<% end %>
 			</ul>
