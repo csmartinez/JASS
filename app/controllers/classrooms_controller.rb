@@ -8,7 +8,7 @@ class ClassroomsController < ApplicationController
 
   def show
     @classroom = Classroom.find(params[:id])
-    @profiles = Profile.order("#{sort_column} #{sort_direction}")
+    @profiles = Profile.where(params[:id]).order("#{sort_column} #{sort_direction}")
     render :show
   end
 
