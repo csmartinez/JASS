@@ -1,38 +1,52 @@
 <div class="container">
 	<br><br>
-	<div class="sketch">
-		<h1>Classroom View</h1>
-	</div>
-	<br>
-	<b>Name: </b><%= @classroom.name %><br>
-	<b>Description: </b><%= @classroom.description %><br>
-	<br>
 
-	<table class="table">
-	  <thead class="thead">
-	    <tr style="colSort">
-	      <th scope="col"><%= sort_link "fname" %></th>
-				<th scope="col"><%= sort_link "lname" %></th>
-	      <th scope="col"><%= sort_link "ethnicity" %></th>
-				<th scope="col"><%= sort_link "iep" %></th>
-				<th scope="col"><%= sort_link "math" %></th>
-				<th scope="col"><%= sort_link "ela" %></th>
-	    </tr>
-	  </thead>
-	  <tbody>
+	<% if current_user %>
 
-			<% @profiles.each do |profile| %>
-					<tr>
-						<td><%= profile.fname %> </td>
-						<td><%= profile.lname %></td>
-			      <td><%= profile.ethnicity %></td>
-						<td><%= profile.iep %></td>
-						<td><%= profile.math %></td>
-						<td><%= profile.ela %></td>
-					</tr>
-			<% end %>
-	  </tbody>
-	</table>
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
-	<p><%= link_to "Return to classrooms", classrooms_path %></p>
+		<div class="sketch">
+			<h1>Classroom View</h1>
+		</div>
+		<br>
+		<b>Name: </b><%= @classroom.name %><br>
+		<b>Description: </b><%= @classroom.description %><br>
+		<br>
+
+		<table class="table">
+		  <thead class="thead">
+		    <tr style="colSort">
+		      <th scope="col"><%= sort_link "fname" %></th>
+					<th scope="col"><%= sort_link "lname" %></th>
+		      <th scope="col"><%= sort_link "ethnicity" %></th>
+					<th scope="col"><%= sort_link "iep" %></th>
+					<th scope="col"><%= sort_link "math" %></th>
+					<th scope="col"><%= sort_link "ela" %></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+
+				<% @profiles.each do |profile| %>
+						<tr>
+							<td><%= profile.fname %> </td>
+							<td><%= profile.lname %></td>
+				      <td><%= profile.ethnicity %></td>
+							<td><%= profile.iep %></td>
+							<td><%= profile.math %></td>
+							<td><%= profile.ela %></td>
+						</tr>
+				<% end %>
+		  </tbody>
+		</table>
+
+		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% end %>
+
 </div>
