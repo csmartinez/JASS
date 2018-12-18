@@ -1,4 +1,4 @@
-# Jabulani School Simulation Portal
+# Project JASS
 This software is a **capstone project** for Northern Arizona University. It is **not** open to contributions at this time. 
 
 ## Team Jasper
