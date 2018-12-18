@@ -1,4 +1,6 @@
 class ClassroomsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+  
   def index
     @classrooms = Classroom.order("#{sort_column} #{sort_direction}")
     @profiles = Profile.all
