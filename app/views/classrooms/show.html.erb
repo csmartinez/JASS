@@ -10,35 +10,16 @@
 
 	<table class="table">
 	  <thead class="thead">
-	    <tr>
+	    <tr style="colSort">
 	      <th scope="col"><%= sort_link "fname" %></th>
-				<th scope="col">Last Name</th>
-	      <th scope="col">Ethnicity</th>
-				<th scope="col">IEP</th>
-				<th scope="col">Math</th>
-				<th scope="col">ELA</th>
+				<th scope="col"><%= sort_link "lname" %></th>
+	      <th scope="col"><%= sort_link "ethnicity" %></th>
+				<th scope="col"><%= sort_link "iep" %></th>
+				<th scope="col"><%= sort_link "math" %></th>
+				<th scope="col"><%= sort_link "ela" %></th>
 	    </tr>
 	  </thead>
 	  <tbody>
-			<% @classroom.profiles.each do |profile| %>
-					<tr>
-						<td><%= profile.fname %> </td>
-						<td><%= profile.lname %></td>
-			      <td><%= profile.ethnicity %></td>
-						<td><%= profile.iep %></td>
-						<td><%= profile.math %></td>
-						<td><%= profile.ela %></td>
-					</tr>
-			<% end %>
-
-			<tr>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-			</tr>
 
 			<% @profiles.each do |profile| %>
 					<tr>
