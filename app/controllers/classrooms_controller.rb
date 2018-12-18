@@ -1,15 +1,15 @@
 class ClassroomsController < ApplicationController
   helper_method :sort_column, :sort_direction
-  
+
   def index
-    @classrooms = Classroom.order("#{sort_column} #{sort_direction}")
+    @classrooms = Classroom.all
     @profiles = Profile.all
   end
 
   def show
     @classroom = Classroom.find(params[:id])
+    @profiles = Profile.order("#{sort_column} #{sort_direction}")
     render :show
-    @profiles = Profile.all
   end
 
 private
