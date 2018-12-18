@@ -25,26 +25,27 @@
 							<a data-toggle="modal" data-target="#profile">Profile</a>
 						</td>
 			    </tr>
+
+					<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-top: 180px">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h2>Student Profile</h2>
+					      </div>
+					      <div class="modal-body">
+
+									<%= profile.fname %> <%= profile.lname %>
+
+					      </div>
+
+					    </div>
+					  </div>
+					</div>
+					
 			<% end %>
 	  </tbody>
 	</table>
-
-	<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-top: 180px">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h2>Student Profile</h2>
-	      </div>
-	      <div class="modal-body">
-
-					<%= profile.fname %> <%= profile.lname %>
-
-	      </div>
-
-	    </div>
-	  </div>
-	</div>
 
 	<p><%= link_to "Return to classrooms", classrooms_path %></p>
 </div>
