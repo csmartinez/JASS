@@ -4,29 +4,62 @@
 		<h1>Virtual Classrooms</h1>
 	</div>
 
-	<br>
 	<% if current_user %>
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
-			<p>Create and manage virtual classrooms <br> <%= link_to "Create a classroom", :new_classroom %></p>
+			Create and manage virtual classrooms and profiles.
+			<br><br>
+			<div class="btn-group" role="group" aria-label="Basic example">
+				<%= button_to "Create a Classroom", :new_classroom, :class => "btn btn-light vc", :method => "get" %>
+				<%= button_to "Create a Student Profile", :new_profile, :class => "btn btn-light vc", :method => "get" %>
+			</div>
+			<br><br>
 
-			<!-- Classrooms and users might need a join table in the future -->
-			<p><b>My Classrooms: </b></p>
+			<h3>My Classrooms</h3>
+			<br>
 
-			<ul>
-				<% current_user.classrooms.each do |classroom| %>
-					<li><%= link_to classroom.name, classroom_path(classroom) %></li>
-				<% end %>
-			</ul>
+			<table class="table">
+			  <thead class="thead">
+			    <tr style="colSort">
+						<th scope="col">View Profiles</th>
+						<!-- <th scope="col">Edit</th>
+						<th scope="col">Assign to Student</th>
+						<th scope="col">View Students</th> -->
+			    </tr>
+			  </thead>
+			  <tbody>
+					<% current_user.classrooms.each do |classroom| %>
+							<tr>
+					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
+								<!-- <td>Edit Profiles</td>
+								<td>Dropdown + Submit Button</td>
+								<td>Students</td> -->
+							</tr>
+					<% end %>
+			  </tbody>
+			</table>
 
-			<p><b>All Classrooms: </b></p>
+			<br>
+			<h3>All Classrooms </h3>
+			<br>
 
-			<ul>
-				<% @classrooms.each do |classroom| %>
-					<li><%= link_to classroom.name, classroom_path(classroom) %></li>
-				<% end %>
-			</ul>
+			<table class="table">
+			  <thead class="thead">
+			    <tr style="colSort">
+			      <th scope="col">View Profiles</th>
+						<!-- <th scope="col">Add to My Classrooms</th> -->
+			    </tr>
+			  </thead>
+			  <tbody>
+					<% @classrooms.each do |classroom| %>
+							<tr>
+					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
+								<!-- <td>Add Classroom Button</td> -->
+							</tr>
+					<% end %>
+			  </tbody>
+			</table>
 
 		<% else %>
 
@@ -40,6 +73,6 @@
 
 	<% end %>
 
-
+	<br>
 	<%= link_to "Back to dashboard", :home_index %>
 </div>
