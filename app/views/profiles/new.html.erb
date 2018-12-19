@@ -1,0 +1,45 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Create a New Student Profile</h1>
+		</div>
+
+		<br>
+
+		<%= form_for @profile do |f| %>
+		  <%= f.label :first_name %>
+		  <%= f.text_field :fname %> <br>
+			<%= f.label :last_name %>
+		  <%= f.text_field :lname %> <br>
+			<%= f.label :math %>
+		  <%= f.text_field :math %> <br>
+			<%= f.label :ela %>
+		  <%= f.text_field :ela %> <br>
+			<%= f.label :iep %>
+		  <%= f.text_field :iep %> <br>
+			<%= f.label :ethnicity %>
+		  <%= f.text_field :ethnicity %> <br>
+		  <%= f.submit "Create Profile", :class => 'btn btn-light'  %>
+		<% end %>
+
+		<br>
+		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>
