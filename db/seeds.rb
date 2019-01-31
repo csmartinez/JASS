@@ -88,3 +88,51 @@ profiles = Profile.create([{
 }
 
 ])
+
+users = User.create([
+  {
+  email: 'admin@test.com',
+  acc_type: 'admin',
+  superior: 8,
+  faculty_key: 'testing4',
+  student_key: 'testing4',
+  admin_key: 'testing4',
+  password: 'admin123',
+  password_confirmation: 'admin123'
+  },
+  {
+  email: 'superadmin@test.com',
+  acc_type: 'superadmin',
+  faculty_key: 'testing2',
+  student_key: 'testing3',
+  admin_key: 'testing',
+  password: 'superadmin123',
+  password_confirmation: 'superadmin123'
+  },
+  {
+  email: 'faculty@test.com',
+  acc_type: 'faculty',
+  student_key: 'testing5',
+  superior: 10,
+  password: 'faculty123',
+  password_confirmation: 'faculty123'
+  }
+])
+
+classrooms = Classroom.create([
+  {
+    name: 'Classroom 1',
+    description: 'Test classroom #1',
+    user_id: 2
+  },
+  {
+    name: 'Classroom 2',
+    description: 'Test classroom #2',
+    user_id: 3
+  },
+  {
+    name: 'Classroom 3',
+    description: 'Test classroom #3',
+    user_id: 4
+  }
+])
