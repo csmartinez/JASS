@@ -23,8 +23,8 @@
 			  <thead class="thead">
 			    <tr style="colSort">
 						<th scope="col">View Profiles</th>
-						<!-- <th scope="col">Edit</th>
-						<th scope="col">Assign to Student</th>
+						<th scope="col">Edit</th>
+						<!-- <th scope="col">Assign to Student</th>
 						<th scope="col">View Students</th> -->
 			    </tr>
 			  </thead>
@@ -32,8 +32,8 @@
 					<% current_user.classrooms.each do |classroom| %>
 							<tr>
 					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
-								<!-- <td>Edit Profiles</td>
-								<td>Dropdown + Submit Button</td>
+								<td><%= link_to 'Edit Classroom', edit_classroom_url(classroom) %></td>
+								<!-- <td>Dropdown + Submit Button</td>
 								<td>Students</td> -->
 							</tr>
 					<% end %>

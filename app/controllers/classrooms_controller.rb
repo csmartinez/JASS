@@ -32,6 +32,16 @@ class ClassroomsController < ApplicationController
     render :edit
   end
 
+  def update
+    @classroom = Classroom.find(params[:id])
+    if @classroom.update_attributes(classroom_params)
+      #successful
+    else
+      #unsuccessful
+    end
+    redirect_to classrooms_path
+  end
+
 private
   def sortable_columns
     ["fname", "lname", "ethnicity", "iep", "math", "ela"]
