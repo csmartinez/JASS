@@ -12,6 +12,7 @@
 			administrators, faculty and teachers in training using it.
 		</div>
 
+
 		<br>
 
 		<% if @classroom.errors.any? %>
@@ -23,6 +24,8 @@
 		  </ul>
 		<% end %>
 
+
+
 		<%= form_for @classroom do |f| %>
 		  <%= f.label :name %>
 		  <%= f.text_field :name %>
@@ -30,12 +33,28 @@
 		  <%= f.text_field :description %>
 			<br><br>
 
-			<% Profile.all.each do |profile| %>
-		    <div>
-					<%= check_box_tag "classroom[profile_ids][]", profile.id, f.object.profiles.include?(profile) %>
-					<%= profile.fname %>
-		    </div>
-		  <% end %>
+      <table class="table">
+
+      <thead class="thead">
+        <tr style="colSort">
+          <th scope="col"><%= sort_link "fname", "Student Name" %></th>
+          <th scope="col"><%= sort_link "status", "Add to Classroom" %></th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+
+       <% @profiles.each do |profile| %>
+           <tr>
+             <td><%= profile.fname %> </td>
+             <td><%= check_box_tag "classroom[profile_ids][]", profile.id,  f.object.profiles.include?(profile) %></td>
+
+           </tr>
+       <% end %>
+     </tbody>
+
+    </table>
 
 			<br>
 		  <%= f.submit %>
