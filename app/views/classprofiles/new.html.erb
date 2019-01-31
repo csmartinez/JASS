@@ -1,0 +1,54 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Add Profiles to Classrooms</h1>
+			<br>
+			<b>Warning: </b> Adding profiles to classrooms affects other administrators, faculty
+			and teachers in training using your classroom.
+			<br><br>
+
+			<%= form_for @classprofile do |f| %>
+				<h3> My Classrooms </h3>
+				<% @classrooms.each do |classroom| %>
+					<% if classroom.user_id == current_user.id %>
+						<%= check_box_tag 'to[]', classroom.id %>
+						<%= f.label :classroom_id, classroom.name %>
+						<br>
+					<% end %>
+				<% end %>
+
+				<br>
+
+				<h3> Profiles </h3>
+				<% @profiles.each do |profile| %>
+					<%= check_box_tag 'to[]', profile.id %>
+					<%= f.label :profile_id, profile.fname %> <%= profile.lname %>
+				<br>
+				<% end %>
+
+				<br>
+			  <%= f.submit "Add profiles to classrooms", :class => 'btn btn-light'  %>
+			<% end %>
+			<br>
+		</div>
+
+		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

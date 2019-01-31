@@ -29,6 +29,7 @@ class ClassroomsController < ApplicationController
 
   def edit
     @classroom = Classroom.find(params[:id])
+    @profiles = Profile.all
     render :edit
   end
 
@@ -39,7 +40,7 @@ class ClassroomsController < ApplicationController
     else
       #unsuccessful
     end
-    redirect_to classrooms_path
+    redirect_to @classroom
   end
 
 private
@@ -56,6 +57,6 @@ private
   end
 
   def classroom_params
-    params.require(:classroom).permit(:id, :name, :description)
+    params.require(:classroom).permit(:id, :name, :description, {  profile_ids: [] })
   end
 end

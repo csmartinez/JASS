@@ -1,3 +1,4 @@
 class Profile < ApplicationRecord
-	has_and_belongs_to_many :classrooms
+	has_many :classprofiles
+	has_many :classrooms, through: :classprofiles
 end

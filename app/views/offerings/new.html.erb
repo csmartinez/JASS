@@ -1,0 +1,52 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Add Users to Classrooms</h1>
+			<br>
+			<b>This page may be deleted</b>
+			<br><br>
+
+			<%= form_for @offering do |f| %>
+				<h3> My Classrooms </h3>
+				<% @classrooms.each do |classroom| %>
+					<% if classroom.user_id == current_user.id %>
+						<%= check_box_tag 'to[]', classroom.name %>
+						<%= f.label :to, classroom.name %>
+						<br>
+					<% end %>
+				<% end %>
+
+				<br>
+
+				<h3> Users </h3>
+				<% @profiles.each do |profile| %>
+					<%= check_box_tag 'to[]', profile.fname %>
+					<%= f.label :to, profile.fname %> <%= profile.lname %>
+				<br>
+				<% end %>
+				<br>
+			  <%= f.submit "Create Offering", :class => 'btn btn-light'  %>
+			<% end %>
+			<br>
+		</div>
+
+		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

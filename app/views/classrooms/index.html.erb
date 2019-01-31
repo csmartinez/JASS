@@ -13,17 +13,44 @@
 			<div class="btn-group" role="group" aria-label="Basic example">
 				<%= button_to "Create a Classroom", :new_classroom, :class => "btn btn-light vc", :method => "get" %>
 				<%= button_to "Create a Student Profile", :new_profile, :class => "btn btn-light vc", :method => "get" %>
+				<%#= button_to "Add Students to Classrooms I Manage", :new_classprofile, :class => "btn btn-light vc", :method => "get" %>
 			</div>
 			<br><br>
 
-			<h3>My Classrooms</h3>
+			<h3>Classrooms I Manage</h3>
 			<br>
 
 			<table class="table">
 			  <thead class="thead">
 			    <tr style="colSort">
 						<th scope="col">View Profiles</th>
-						<th scope="col">Edit</th>
+						<th scope="col">Edit/Add Profiles</th>
+						<!-- <th scope="col">Assign to Student</th>
+						<th scope="col">View Students</th> -->
+			    </tr>
+			  </thead>
+			  <tbody>
+					<% @classrooms.each do |classroom| %>
+							<% if classroom.user_id == current_user.id %>
+							<tr>
+					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
+								<td><%= link_to 'Edit Classroom', edit_classroom_url(classroom) %></td>
+								<!-- <td>Dropdown + Submit Button</td>
+								<td>Students</td> -->
+							</tr>
+							<% end %>
+					<% end %>
+			  </tbody>
+			</table>
+
+			<h3>Classrooms I'm Affiliated With</h3>
+			<br>
+
+			<table class="table">
+			  <thead class="thead">
+			    <tr style="colSort">
+						<th scope="col">View Profiles</th>
+						<!-- <th scope="col">Edit</th> -->
 						<!-- <th scope="col">Assign to Student</th>
 						<th scope="col">View Students</th> -->
 			    </tr>
@@ -32,7 +59,7 @@
 					<% current_user.classrooms.each do |classroom| %>
 							<tr>
 					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
-								<td><%= link_to 'Edit Classroom', edit_classroom_url(classroom) %></td>
+								<!-- <td>link to edit classroom</td> -->
 								<!-- <td>Dropdown + Submit Button</td>
 								<td>Students</td> -->
 							</tr>

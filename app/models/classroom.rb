@@ -1,5 +1,6 @@
 class Classroom < ApplicationRecord
 	has_many :offerings
 	has_many :users, through: :offerings
-	has_and_belongs_to_many :profiles
+	has_many :classprofiles
+	has_many :profiles, through: :classprofiles
 end
