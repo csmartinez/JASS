@@ -19,6 +19,7 @@ class ClassroomsController < ApplicationController
 
   def create
     @classroom = Classroom.new(classroom_params)
+    @profiles = Profile.all
     if @classroom.save
       Offering.create(user_id: current_user.id, classroom_id: @classroom.id)
       render :action => :edit
@@ -57,6 +58,6 @@ private
   end
 
   def classroom_params
-    params.require(:classroom).permit(:id, :name, :description, {  profile_ids: [] })
+    params.require(:classroom).permit(:id, :name, :description, :user_id, {  profile_ids: [] })
   end
 end
