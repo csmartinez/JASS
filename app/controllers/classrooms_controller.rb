@@ -31,6 +31,7 @@ class ClassroomsController < ApplicationController
   def edit
     @classroom = Classroom.find(params[:id])
     @profiles = Profile.all
+    @offerings = Offering.all
     render :edit
   end
 
@@ -42,6 +43,12 @@ class ClassroomsController < ApplicationController
       #unsuccessful
     end
     redirect_to @classroom
+  end
+
+  def destroy
+    @classroom = Classroom.find(params[:id])
+    @classroom.destroy
+    redirect_to classrooms_path
   end
 
 private
