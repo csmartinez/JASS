@@ -12,6 +12,14 @@ class ClassroomsController < ApplicationController
     render :show
   end
 
+  def manage
+    @classrooms = Classroom.all
+  end
+
+  def all
+    @classrooms = Classroom.all
+  end
+
   def new
     @classroom = Classroom.new
     render :new
@@ -20,6 +28,7 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = Classroom.new(classroom_params)
     @profiles = Profile.all
+    @offerings = Offering.all
     if @classroom.save
       Offering.create(user_id: current_user.id, classroom_id: @classroom.id)
       render :action => :edit

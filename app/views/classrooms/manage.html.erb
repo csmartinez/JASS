@@ -1,0 +1,53 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Manage Classrooms</h1>
+		</div>
+
+		Below are classrooms you have created. Coming soon is a link to assign these classrooms to TIPs.
+		<br><br>
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">View Profiles</th>
+					<th scope="col">Edit/Add Profiles</th>
+					<!-- <th scope="col">Assign to TIP</th>
+					<th scope="col">View TIPs</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				<% @classrooms.each do |classroom| %>
+						<% if classroom.user_id == current_user.id %>
+						<tr>
+							<td><%= link_to classroom.name, classroom_path(classroom) %></td>
+							<td><%= link_to 'Edit Classroom', edit_classroom_url(classroom) %></td>
+							<!-- <td>Dropdown + Submit Button</td>
+							<td>Students</td> -->
+						</tr>
+						<% end %>
+				<% end %>
+			</tbody>
+		</table>
+
+		<br>
+		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

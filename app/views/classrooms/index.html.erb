@@ -1,92 +1,88 @@
 <div class="container">
 	<br><br>
-	<div class="sketch">
-		<h1>Virtual Classrooms</h1>
-	</div>
+
 
 	<% if current_user %>
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
-			Create and manage virtual classrooms and profiles.
+		<div class="menuLeft">
+			<h3><b>Menu</b></h3>
+			<br>
+			<ul class="nav flex-column menu">
+			  <li class="nav-item">
+			    <a class="nav-link" href="/">Dashboard</a>
+			  </li>
+			</ul>
+
 			<br><br>
+
+			<h4><b>Admin</b></h4>
+			<br>
+			<ul class="nav flex-column menu">
+			  <li class="nav-item">
+			    <%= link_to "Build a Classroom", :new_classroom, :class => "nav-link", :method => "get" %>
+			  </li>
+				<li class="nav-item">
+			    <%= link_to "Manage Classrooms", :manage_classrooms, :class => "nav-link", :method => "get" %>
+			  </li>
+				<li class="nav-item">
+			    <%= link_to "View All Classrooms", :all_classrooms, :class => "nav-link", :method => "get" %>
+			  </li>
+				<li class="nav-item">
+					<%= link_to "View/Edit Students", :all_profiles, :class => "nav-link", :method => "get" %>
+			  </li>
+				<li class="nav-item">
+					<%= link_to "Add Students", :new_profile, :class => "nav-link", :method => "get" %>
+			  </li>
+			</ul>
+		</div>
+
+		<div class="contentRight">
+
+			<div class="sketch">
+				<h1>Virtual Classrooms</h1>
+			</div>
+
+			Welcome to the Virtual Classrooms landing page. This page will provide links for administrators to manage
+			virtual classrooms, links for faculty to manage TIP classes, and links for TIPs to view the
+			classrooms they are assigned to by faculty.
+			<br><br>
+			In addition, this page will include a welcome message, contact information for help, and
+			a link to a user manual.
+
+			<br>
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<%= button_to "Create a Classroom", :new_classroom, :class => "btn btn-light vc", :method => "get" %>
-				<%= button_to "Create a Student Profile", :new_profile, :class => "btn btn-light vc", :method => "get" %>
+
 				<%#= button_to "Add Students to Classrooms I Manage", :new_classprofile, :class => "btn btn-light vc", :method => "get" %>
 			</div>
 			<br><br>
 
-			<h3>Classrooms I Manage</h3>
-			<br>
 
+
+			<!--
+				<h3>Classrooms I'm Affiliated With</h3>
+				<br>
 			<table class="table">
 			  <thead class="thead">
 			    <tr style="colSort">
 						<th scope="col">View Profiles</th>
-						<th scope="col">Edit/Add Profiles</th>
-						<!-- <th scope="col">Assign to Student</th>
-						<th scope="col">View Students</th> -->
+						<th scope="col">Assign to Student</th>
+						<th scope="col">View Students</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-					<% @classrooms.each do |classroom| %>
-							<% if classroom.user_id == current_user.id %>
+					<%# current_user.classrooms.each do |classroom| %>
 							<tr>
-					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
-								<td><%= link_to 'Edit Classroom', edit_classroom_url(classroom) %></td>
-								<!-- <td>Dropdown + Submit Button</td>
-								<td>Students</td> -->
+					      <td><%# link_to classroom.name, classroom_path(classroom) %></td>
+								<td>Dropdown + Submit Button</td>
+								<td>Students</td>
 							</tr>
-							<% end %>
-					<% end %>
+					<%# end %>
 			  </tbody>
-			</table>
+			</table> -->
 
-			<h3>Classrooms I'm Affiliated With</h3>
-			<br>
-
-			<table class="table">
-			  <thead class="thead">
-			    <tr style="colSort">
-						<th scope="col">View Profiles</th>
-						<!-- <th scope="col">Edit</th> -->
-						<!-- <th scope="col">Assign to Student</th>
-						<th scope="col">View Students</th> -->
-			    </tr>
-			  </thead>
-			  <tbody>
-					<% current_user.classrooms.each do |classroom| %>
-							<tr>
-					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
-								<!-- <td>link to edit classroom</td> -->
-								<!-- <td>Dropdown + Submit Button</td>
-								<td>Students</td> -->
-							</tr>
-					<% end %>
-			  </tbody>
-			</table>
-
-			<br>
-			<h3>All Classrooms </h3>
-			<br>
-
-			<table class="table">
-			  <thead class="thead">
-			    <tr style="colSort">
-			      <th scope="col">View Profiles</th>
-						<!-- <th scope="col">Add to My Classrooms</th> -->
-			    </tr>
-			  </thead>
-			  <tbody>
-					<% @classrooms.each do |classroom| %>
-							<tr>
-					      <td><%= link_to classroom.name, classroom_path(classroom) %></td>
-								<!-- <td>Add Classroom Button</td> -->
-							</tr>
-					<% end %>
-			  </tbody>
-			</table>
+		</div>
 
 		<% else %>
 
@@ -101,5 +97,5 @@
 	<% end %>
 
 	<br>
-	<%= link_to "Back to dashboard", :home_index %>
+
 </div>

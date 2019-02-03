@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   get 'home/index'
   get 'home/edit'
-  resources :classrooms
-  resources :profiles
+  resources :classrooms do
+    collection do
+      get 'manage' => 'classrooms#manage', as: :manage
+      get 'all' => 'classrooms#all', as: :all
+    end
+  end
+  resources :profiles do
+    collection do
+      get 'all' => 'profiles#all', as: :all
+    end
+  end
   resources :classprofiles
   root 'home#index'
   devise_for :users

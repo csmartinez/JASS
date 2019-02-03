@@ -6,11 +6,11 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1><%= @classroom.name %></h1>
+			<h1>All Student Profiles</h1>
 		</div>
-		<br>
-		<b>Description: </b><%= @classroom.description %><br>
-		<br>
+
+		Below are all student profiles. Coming soon is a link to a page to edit profiles if you have the privilege.
+		<br><br>
 
 		<table class="table">
 		  <thead class="thead">
@@ -37,6 +37,7 @@
 				<% end %>
 		  </tbody>
 		</table>
+
 		<br>
 		<p><%= link_to "Return to classrooms", classrooms_path %></p>
 

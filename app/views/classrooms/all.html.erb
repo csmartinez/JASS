@@ -1,0 +1,47 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>View All Classrooms</h1>
+		</div>
+
+		Below are all classrooms in the system.
+		<br><br>
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">View Profiles</th>
+					<!-- <th scope="col">Add to My Classrooms</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				<% @classrooms.each do |classroom| %>
+						<tr>
+							<td><%= link_to classroom.name, classroom_path(classroom) %></td>
+							<!-- <td>Add Classroom Button</td> -->
+						</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<br>
+		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>
