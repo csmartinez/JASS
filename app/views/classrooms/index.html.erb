@@ -4,7 +4,7 @@
 
 	<% if current_user %>
 
-		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || current_user.acc_type == 'student'%>
 
 		<div class="menuLeft">
 			<h3><b>Menu</b></h3>
@@ -15,8 +15,39 @@
 			  </li>
 			</ul>
 
+			<!-- If TIP... -->
+			<% if current_user.acc_type == 'student' %>
 			<br><br>
+			<h4><b>My Classrooms</b></h4>
+			<br>
+			<ul class="nav flex-column menu">
+			  <li class="nav-item">
+					<!-- View my classrooms -->
+			    <%= link_to "View My Classrooms", :home_index, :class => "nav-link", :method => "get" %>
+			  </li>
+			</ul>
+			<% end %>
 
+			<br><br>
+			<!-- If faculty or admin... -->
+			<h4><b>TIP Classes</b></h4>
+			<i>Move TIP Class related links to a TIP Class dashboard?</i>
+			<br><br>
+			<ul class="nav flex-column menu">
+			  <li class="nav-item">
+					<!-- An 'offering' of a class can have many TIP classes -->
+					<!-- This would take you to the my school page, a table of classrooms with links to create a new TIP class -->
+			    <%= link_to "Create new TIP Class", :home_index, :class => "nav-link", :method => "get" %>
+					<!-- A page to create a new offering/link you as a teacher of a selected classroom or "add to my school" -->
+					<%= link_to "Add a Classroom to My School", :home_index, :class => "nav-link", :method => "get" %>
+					<!-- Edit TIP Classes -->
+					<%= link_to "Manage My TIP Classes", :home_index, :class => "nav-link", :method => "get" %>
+			  </li>
+			</ul>
+
+			<br>
+
+			<!-- If admin... -->
 			<h4><b>Admin</b></h4>
 			<br>
 			<ul class="nav flex-column menu">
@@ -57,30 +88,6 @@
 				<%#= button_to "Add Students to Classrooms I Manage", :new_classprofile, :class => "btn btn-light vc", :method => "get" %>
 			</div>
 			<br><br>
-
-
-
-			<!--
-				<h3>Classrooms I'm Affiliated With</h3>
-				<br>
-			<table class="table">
-			  <thead class="thead">
-			    <tr style="colSort">
-						<th scope="col">View Profiles</th>
-						<th scope="col">Assign to Student</th>
-						<th scope="col">View Students</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-					<%# current_user.classrooms.each do |classroom| %>
-							<tr>
-					      <td><%# link_to classroom.name, classroom_path(classroom) %></td>
-								<td>Dropdown + Submit Button</td>
-								<td>Students</td>
-							</tr>
-					<%# end %>
-			  </tbody>
-			</table> -->
 
 		</div>
 

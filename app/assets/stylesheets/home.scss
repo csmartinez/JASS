@@ -26,8 +26,10 @@
 // }
 
 body {
-  height: auto;
+  min-height: 100%;
   padding-bottom: 180px;
+  display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .container {
@@ -37,6 +39,7 @@ body {
 .menuLeft {
   float: left;
   width: 22%;
+  height: 100%;
 }
 
 .contentRight {
