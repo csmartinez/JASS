@@ -119,6 +119,21 @@ users = User.create([
   }
 ])
 
+scenarios = Scenario.create([
+
+  {
+    name: 'Bilingual Student',
+    description: 'Lorem ipsum dolor sit amet, c
+              onsectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation
+               ullamco laboris',
+    link: 'link',
+    profile_relationship: 'Johnson, Robert',
+    exercise_id: 10100101
+  }
+  ])
+
 classrooms = Classroom.create([
   {
     name: 'Classroom 1',

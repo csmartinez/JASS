@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_021745) do
     t.string "name"
     t.text "description"
     t.text "link"
+    t.text "profile_relationship"
     t.bigint "exercise_id"
     t.index ["exercise_id"], name: "index_scenarios_on_exercise_id"
   end
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_021745) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
+    t.string "name"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
