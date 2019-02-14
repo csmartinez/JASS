@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get 'manage' => 'classrooms#manage', as: :manage
       get 'all' => 'classrooms#all', as: :all
+      get 'virtual' => 'classrooms#virtual', as: :virtual
     end
   end
   resources :profiles do
