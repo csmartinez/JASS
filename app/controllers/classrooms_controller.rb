@@ -6,6 +6,9 @@ class ClassroomsController < ApplicationController
     @profiles = Profile.all
   end
 
+  def virtual
+  end
+
   def show
     @classroom = Classroom.find(params[:id])
     @profiles = @classroom.profiles.order("#{sort_column} #{sort_direction}")
