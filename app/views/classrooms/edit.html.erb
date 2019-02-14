@@ -12,14 +12,11 @@
 		<div class="alert alert-warning" role="alert">
 			<b>Warning!</b> Adding or removing profiles from this classroom will affect all
 			administrators, faculty and teachers in training using it.
-			<% affiliations = 0 %>
-			<% @offerings.each do |offering| %>
-				<% if offering.classroom_id == @classroom.id %>
-					<% affiliations = affiliations + 1 %>
-				<% end %>
-			<% end %>
 
-			This classroom is currently in use by <%= affiliations %> person(s).
+			<%# Code to calculate how many classroom_offerings are associated with this classroom %>
+			<%# affiliations = 0 %>
+
+			<%# This classroom is currently in use by <%#= affiliations %>
 		</div>
 
 		<br>
