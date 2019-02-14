@@ -1,0 +1,61 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Add an Exercise</h1>
+		</div>
+
+		<br>
+
+		<%= form_for @exercise do |f| %>
+		  <%= f.label :name %>
+		  <%= f.text_field :name %>
+			<%= f.label :description %>
+		  <%= f.text_field :description %>
+			<%= f.hidden_field :offering_id, :value => 0 %>
+
+		<br><br>
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">Scenario Name</th>
+					<th scope="col">Add to Exercise</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+			 <% @scenarios.each do |scenario| %>
+					 <tr>
+						 <td><%= scenario.name %> </td>
+						 <td><%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %></td>
+					 </tr>
+			 <% end %>
+		 </tbody>
+
+		</table>
+
+			<%= f.submit "Create Exercise", :class => 'btn btn-light'  %>
+		<% end %>
+
+		<br>
+		<p><%= link_to "Return to exercises", exercises_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

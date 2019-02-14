@@ -13,6 +13,17 @@
 				<li class="nav-item">
 					<a style="margin-bottom: 30px;" class="nav-link" href="/">Back to Dashboard</a>
 				</li>
+				<% if current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+					<li class="nav-item">
+				    <%= link_to "Add an Exercise", :new_exercise, :class => "nav-link", :method => "get" %>
+				  </li>
+					<li class="nav-item">
+				    <%= link_to "Add a Scenario", :new_scenario, :class => "nav-link", :method => "get" %>
+				  </li>
+					<li class="nav-item">
+				    <%= link_to "Manage Exercises", :manage_exercises, :class => "nav-link", :method => "get" %>
+				  </li>
+				<% end %>
 			</ul>
 
 		</div>
