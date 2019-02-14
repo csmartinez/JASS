@@ -13,20 +13,6 @@
 				<li class="nav-item">
 					<a style="margin-bottom: 30px;" class="nav-link" href="/">Back to Dashboard</a>
 				</li>
-				<% if current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
-					<li class="nav-item">
-				    <%= link_to "Add an Exercise", :new_exercise, :class => "nav-link", :method => "get" %>
-				  </li>
-					<li class="nav-item">
-				    <%= link_to "Add a Scenario", :new_scenario, :class => "nav-link", :method => "get" %>
-				  </li>
-					<li class="nav-item">
-				    <%= link_to "Manage Exercises", :manage_exercises, :class => "nav-link", :method => "get" %>
-				  </li>
-					<!-- <li class="nav-item">
-						Manage Scenarios?
-				  </li> -->
-				<% end %>
 			</ul>
 
 		</div>
@@ -34,11 +20,13 @@
 		<div class="contentRight">
 
 			<div class="sketch">
-				<h1>Manage Exercises</h1>
+				<h1>TIP Classes</h1>
 			</div>
 
-			Welcome to the Exercises landing page. This page will provide links for administrators
-			and faculty to manage exercises, create exercises, and delete exercises.
+			Welcome to the TIP Classes landing page. This page will provide links for administrators
+			and faculty to manage TIP Classes, including their name and description, the TIPs enrolled in them,
+			the exercises they have, and the virtual classrooms associated with them.
+			For TIPs, this page will have links for them to access the TIP classes they are enrolled in.
 			<br><br>
 			In addition, this page will include a welcome message, contact information for help, and
 			a link to a user manual.

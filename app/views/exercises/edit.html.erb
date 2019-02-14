@@ -1,0 +1,75 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Edit Classroom <%= @exercise.name %></h1>
+		</div>
+		<br>
+
+		<% if @exercise.errors.any? %>
+		  <h3>Please fix these errors:</h3>
+		  <ul>
+		    <% @exercise.errors.full_messages.each do |message| %>
+		      <li><%= message %></li>
+		    <% end %>
+		  </ul>
+		<% end %>
+
+
+
+		<%= form_for @exercise do |f| %>
+		  <%= f.label :name %>
+		  <%= f.text_field :name %>
+			<%= f.label :description %>
+		  <%= f.text_field :description %>
+			<br><br>
+
+      <table class="table">
+
+      <thead class="thead">
+        <tr style="colSort">
+          <th scope="col">Scenario Name</th>
+          <th scope="col">Add to Exercise</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+       <% @scenarios.each do |scenario| %>
+           <tr>
+             <td><%= scenario.name %> </td>
+             <td><%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %></td>
+           </tr>
+       <% end %>
+     </tbody>
+
+    </table>
+
+			<br>
+		  <%= f.submit "Update Exercise", :class => 'btn btn-light' %>
+		<% end %>
+
+		<br><br>
+		<p><%= link_to "Delete Exercise", exercise_path(@exercise),
+                         :data => {:confirm => "Are you sure you want to delete this exercise?",
+                                   :method => "delete"} %></p>
+		<br>
+		<p><%= link_to "Return to exercises", exercises_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

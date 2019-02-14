@@ -1,0 +1,39 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Create a New Scenario</h1>
+		</div>
+
+		<br>
+
+		<%= form_for @scenario do |f| %>
+		  <%= f.label :name %>
+		  <%= f.text_field :name %> <br>
+			<%= f.label :description %>
+		  <%= f.text_field :description %> <br>
+			<%= f.label :link %>
+		  <%= f.text_field :link %> <br>
+		  <%= f.submit "Create Scenario", :class => 'btn btn-light'  %>
+		<% end %>
+
+		<br>
+		<p><%= link_to "Return to exercises", exercises_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>
