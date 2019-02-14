@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/edit'
   resources :scenarios
-
+  resources :offerings
   resources :exercises do
     collection do
       get 'manage' => 'exercises#manage', as: :manage

@@ -1,0 +1,52 @@
+<div class="container">
+	<br><br>
+
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || current_user.acc_type == 'student'%>
+
+		<div class="menuLeft">
+			<h3><b>Menu</b></h3>
+			<br>
+			<ul class="nav flex-column menu">
+				<li class="nav-item">
+					<a style="margin-bottom: 30px;" class="nav-link" href="/">Back to Dashboard</a>
+				</li>
+			</ul>
+
+		</div>
+
+		<div class="contentRight">
+
+			<div class="sketch">
+				<h1>TIP Classes</h1>
+			</div>
+
+			Welcome to the TIP Classes landing page. This page will provide links for administrators
+			and faculty to manage TIP Classes, including their name and description, the TIPs enrolled in them,
+			the exercises they have, and the virtual classrooms associated with them.
+			For TIPs, this page will have links for them to access the TIP classes they are enrolled in.
+			<br><br>
+			In addition, this page will include a welcome message, contact information for help, and
+			a link to a user manual.
+
+			<br><br>
+
+		</div>
+
+		<% else %>
+
+			<p>Interact with virtual classrooms</p>
+
+		<% end %>
+
+	<% else %>
+
+	<p>You are not signed in! Please click the sign in button on the top right corner.</p>
+
+	<% end %>
+
+	<br>
+
+</div>
