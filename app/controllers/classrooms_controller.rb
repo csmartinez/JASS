@@ -28,9 +28,9 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = Classroom.new(classroom_params)
     @profiles = Profile.all
-    @offerings = Offering.all
+    @classroomofferings = Classroomoffering.all
     if @classroom.save
-      Offering.create(user_id: current_user.id, classroom_id: @classroom.id)
+      Classroomoffering.create(user_id: current_user.id, classroom_id: @classroom.id)
       render :action => :edit
     else
       render :new
@@ -40,7 +40,7 @@ class ClassroomsController < ApplicationController
   def edit
     @classroom = Classroom.find(params[:id])
     @profiles = Profile.all
-    @offerings = Offering.all
+    @classroomofferings = Classroomoffering.all
     render :edit
   end
 
