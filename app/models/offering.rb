@@ -1,4 +1,6 @@
 class Offering < ApplicationRecord
-	belongs_to :user
-	belongs_to :classroom
+	has_many :enrollments
+	has_many :exercises
+	has_many :classroomofferings
+	has_many :classrooms, through: :classroomofferings
 end

@@ -10,9 +10,26 @@
 			<h3><b>Menu</b></h3>
 			<br>
 			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-			    <a class="nav-link" href="/">Dashboard</a>
-			  </li>
+				<li class="nav-item">
+					<a style="margin-bottom: 30px;" class="nav-link" href="/">Back to Dashboard</a>
+				</li>
+				<% if current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+					<li class="nav-item">
+				    <%= link_to "Build a Classroom", :new_classroom, :class => "nav-link", :method => "get" %>
+				  </li>
+					<li class="nav-item">
+				    <%= link_to "Manage Classrooms", :manage_classrooms, :class => "nav-link", :method => "get" %>
+				  </li>
+					<li class="nav-item">
+				    <%= link_to "View All Classrooms", :all_classrooms, :class => "nav-link", :method => "get" %>
+				  </li>
+					<li class="nav-item">
+						<%= link_to "View/Edit Students", :all_profiles, :class => "nav-link", :method => "get" %>
+				  </li>
+					<li class="nav-item">
+						<%= link_to "Add Students", :new_profile, :class => "nav-link", :method => "get" %>
+				  </li>
+				<% end %>
 			</ul>
 
 			<!-- If TIP... -->
@@ -28,46 +45,11 @@
 			</ul>
 			<% end %>
 
-			<br><br>
-			<!-- If faculty or admin... -->
-			<h4><b>TIP Classes</b></h4>
-			<i>Move TIP Class related links to a TIP Class dashboard?</i>
-			<br><br>
-			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-					<!-- An 'offering' of a class can have many TIP classes -->
-					<!-- This would take you to the my school page, a table of classrooms with links to create a new TIP class -->
-			    <%= link_to "Create new TIP Class", :home_index, :class => "nav-link", :method => "get" %>
-					<!-- A page to create a new offering/link you as a teacher of a selected classroom or "add to my school" -->
-					<%= link_to "Add a Classroom to My School", :home_index, :class => "nav-link", :method => "get" %>
-					<!-- Edit TIP Classes -->
-					<%= link_to "Manage My TIP Classes", :home_index, :class => "nav-link", :method => "get" %>
-			  </li>
-			</ul>
-
-			<br>
-
-			<!-- If admin... -->
-			<h4><b>Admin</b></h4>
-			<br>
-			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-			    <%= link_to "Build a Classroom", :new_classroom, :class => "nav-link", :method => "get" %>
-			  </li>
-				<li class="nav-item">
-			    <%= link_to "Manage Classrooms", :manage_classrooms, :class => "nav-link", :method => "get" %>
-			  </li>
-				<li class="nav-item">
-			    <%= link_to "View All Classrooms", :all_classrooms, :class => "nav-link", :method => "get" %>
-			  </li>
-				<li class="nav-item">
-					<%= link_to "View/Edit Students", :all_profiles, :class => "nav-link", :method => "get" %>
-			  </li>
-				<li class="nav-item">
-					<%= link_to "Add Students", :new_profile, :class => "nav-link", :method => "get" %>
-			  </li>
-			</ul>
 		</div>
+		<!-- An 'offering' of a class can have many TIP classes -->
+		<!-- This would take you to the my school page, a table of classrooms with links to create a new TIP class -->
+		<!-- A page to create a new offering/link you as a teacher of a selected classroom or "add to my school" -->
+		<!-- Edit TIP Classes -->
 
 		<div class="contentRight">
 
