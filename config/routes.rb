@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
   get 'home/edit'
+  resources :exercises
   resources :classrooms do
     collection do
       get 'manage' => 'classrooms#manage', as: :manage
