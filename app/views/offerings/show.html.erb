@@ -10,7 +10,11 @@
 		</div>
 		<br>
 		<b>Description: </b><%= @offering.description %><br>
-		<br>
+		<br><br>
+
+		<div class="sketch">
+			<h2>Exercises</h2>
+		</div>
 
 		<table class="table">
 			<thead class="thead">
@@ -21,7 +25,6 @@
 			</thead>
 
 			<tbody>
-
 			 <% @offering.exercises.each do |exercise| %>
 					 <tr>
 						 <td><%= exercise.name %> </td>
@@ -31,7 +34,10 @@
 		 </tbody>
 		</table>
 
-		<br><br>
+		<br>
+		<div class="sketch">
+			<h2>Enrollment</h2>
+		</div>
 
 		<table class="table">
 			<thead class="thead">
@@ -56,7 +62,10 @@
 		 </tbody>
 		</table>
 
-		<br><br>
+		<br>
+		<div class="sketch">
+			<h2>Virtual Classrooms</h2>
+		</div>
 
 		<table class="table">
 			<thead class="thead">
