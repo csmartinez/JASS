@@ -1,0 +1,90 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>TIP Class</h1>
+		</div>
+		<br>
+		<b>Description: </b><%= @offering.description %><br>
+		<br>
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">Exercise Name</th>
+					<th scope="col">Exercise Description</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+			 <% @offering.exercises.each do |exercise| %>
+					 <tr>
+						 <td><%= exercise.name %> </td>
+						 <td><%= exercise.description %> </td>
+					 </tr>
+			 <% end %>
+		 </tbody>
+		</table>
+
+		<br><br>
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">User E-mail</th>
+					<th scope="col">Role</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+			 <% @offering.enrollments.each do |enrollment| %>
+					 <tr>
+						 <td><%= enrollment.user.email %> </td>
+						 <td><%= enrollment.role %> </td>
+					 </tr>
+			 <% end %>
+		 </tbody>
+		</table>
+
+		<br><br>
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">Classroom Name</th>
+					<th scope="col">Classroom Description</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+			 <% @offering.classrooms.each do |classroom| %>
+					 <tr>
+						 <td><%= classroom.name %> </td>
+						 <td><%= classroom.description %> </td>
+					 </tr>
+			 <% end %>
+		 </tbody>
+		</table>
+		<br>
+		<p><%= link_to "Return to managing TIP classes", manage_offerings_url %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

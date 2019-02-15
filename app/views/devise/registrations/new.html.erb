@@ -13,6 +13,7 @@
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+			<%= f.hidden_field :acc_type, :value => 'student' %>
     </div>
 
     <div class="field">

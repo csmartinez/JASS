@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_172928) do
+ActiveRecord::Schema.define(version: 2019_02_15_045331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_172928) do
     t.index ["offering_id"], name: "index_exercises_on_offering_id"
   end
 
-  create_table "offerings", id: false, force: :cascade do |t|
+  create_table "offerings", force: :cascade do |t|
     t.text "description"
   end
 
