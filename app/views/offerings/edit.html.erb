@@ -65,12 +65,10 @@
 				<tbody>
 
 				 <% @users.each do |user| %>
-				 	<% if user.acc_type == 'student'%>
-						 <tr>
-							 <td><%= user.email %> </td>
-							 <td><%= check_box_tag "offering[user_ids][]", user.id,  f.object.users.include?(user) %></td>
-						 </tr>
-						<% end %>
+					 <tr>
+						 <td><%= user.email %> </td>
+						 <td><%= check_box_tag "offering[user_ids][]", user.id,  f.object.users.include?(user) %></td>
+					 </tr>
 				 <% end %>
 			 </tbody>
 			</table>

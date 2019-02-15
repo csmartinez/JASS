@@ -46,7 +46,11 @@
 			 <% @offering.enrollments.each do |enrollment| %>
 					 <tr>
 						 <td><%= enrollment.user.email %> </td>
-						 <td><%= enrollment.role %> </td>
+						 <% if enrollment.role != 'instructor' %>
+						 	<td>TIP</td>
+						 <% else %>
+						 	<td>Instructor</td>
+						 <% end %>
 					 </tr>
 			 <% end %>
 		 </tbody>

@@ -22,6 +22,7 @@ class OfferingsController < ApplicationController
   end
 
 	def manage
+		@enrollments = Enrollment.all
     @offerings = Offering.all
   end
 
