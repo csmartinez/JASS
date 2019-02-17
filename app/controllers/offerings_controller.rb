@@ -59,6 +59,6 @@ class OfferingsController < ApplicationController
 	private
 
 	  def offering_params
-	    params.require(:offering).permit(:id, :description, {  user_ids: [] }, {  exercise_ids: [] }, {  classroom_ids: [] })
+	    params.require(:offering).permit(:id, :name, :description, {  user_ids: [] }, {  exercise_ids: [] }, {  classroom_ids: [] })
 	  end
 	end

@@ -3,6 +3,7 @@
 
 	<% if current_user %>
 
+	<%# Code to check if this classroom is related to a TIP through an offering %>
 	<% display = false %>
 
 		<% current_user.offerings.each do |offering| %>

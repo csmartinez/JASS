@@ -13,7 +13,7 @@
 				<li class="nav-item">
 					<a style="margin-bottom: 30px;" class="nav-link" href="/">Back to Dashboard</a>
 				</li>
-				<% if current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+				<% if current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || current_user.acc_type == 'superadmin' %>
 					<li class="nav-item">
 				    <%= link_to "Add an Exercise", :new_exercise, :class => "nav-link", :method => "get" %>
 				  </li>
@@ -26,6 +26,24 @@
 					<!-- <li class="nav-item">
 						Manage Scenarios?
 				  </li> -->
+				<% else %>
+
+				<h4><b>Assigned Exercises</b></h4>
+				<br>
+
+				<% exercises = Array.new %>
+
+				<% current_user.offerings.each do |offering| %>
+					<% offering.exercises.each do |exercise| %>
+						<% if exercises.exclude?(exercise.id) %>
+							<li class="nav-item">
+								<%= link_to exercise.name, exercise_path(exercise), :class => "nav-link" %>
+							</li>
+							<% exercises.push(exercise.id) %>
+						<% end %>
+					<% end %>
+				<% end %>
+
 				<% end %>
 			</ul>
 
@@ -34,7 +52,7 @@
 		<div class="contentRight">
 
 			<div class="sketch">
-				<h1>Manage Exercises</h1>
+				<h1>Exercises</h1>
 			</div>
 
 			Welcome to the Exercises landing page. This page will provide links for administrators

@@ -20,6 +20,16 @@
 					<li class="nav-item">
 				    <%= link_to "Manage TIP Classes", :manage_offerings, :class => "nav-link", :method => "get" %>
 					</li>
+				<% else %>
+					<h4><b>TIP Classes</b></h4>
+					<br>
+
+					<% current_user.offerings.each do |offering| %>
+						<li class="nav-item">
+							<%= link_to offering.name, offering_path(offering), :class => "nav-link" %>
+						</li>
+					<% end %>
+
 				<% end %>
 			</ul>
 

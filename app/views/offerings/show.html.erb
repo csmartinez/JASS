@@ -3,10 +3,19 @@
 
 	<% if current_user %>
 
-		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+		<%# Code to check if the TIP is enrolled in this offering %>
+		<% display = false %>
+
+		<% current_user.offerings.each do |offering| %>
+			<% if offering.id == @offering.id %>
+				<% display = true %>
+			<% end %>
+		<% end %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || display == true %>
 
 		<div class="sketch">
-			<h1>TIP Class</h1>
+			<h1><%= @offering.name %></h1>
 		</div>
 		<br>
 		<b>Description: </b><%= @offering.description %><br>
@@ -86,7 +95,11 @@
 		 </tbody>
 		</table>
 		<br>
-		<p><%= link_to "Return to managing TIP classes", manage_offerings_url %></p>
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+			<p><%= link_to "Return to managing  TIP classes", manage_offerings_url %></p>
+		<% else %>
+			<p><%= link_to "Return to TIP classes", offerings_path %></p>
+		<% end %>
 
 		<% else %>
 

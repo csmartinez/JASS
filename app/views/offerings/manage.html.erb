@@ -15,7 +15,8 @@
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">View TIP Class</th>
+					<th scope="col">Title</th>
+					<th scope="col">Description</th>
 					<th scope="col">Edit TIP Class</th>
 				</tr>
 			</thead>
@@ -24,7 +25,8 @@
 					<% @offerings.each do |offering| %>
 						<% if offering.id == enrollment.offering_id %>
 							<tr>
-								<td><%= link_to offering.description, offering_path(offering) %></td>
+								<td><%= link_to offering.name, offering_path(offering) %></td>
+								<td><%= offering.description %></td>
 								<td><%= link_to 'Edit TIP Class', edit_offering_url(offering) %></td>
 							</tr>
 						<% end %>

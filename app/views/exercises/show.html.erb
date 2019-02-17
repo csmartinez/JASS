@@ -3,15 +3,30 @@
 
 	<% if current_user %>
 
-		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+		<%# Code to check if this exercise is related to a TIP through an offering %>
+		<% display = false %>
+
+		<% current_user.offerings.each do |offering| %>
+			<% offering.exercises.each do |exercise| %>
+				<%# Maybe in the future we add an array to collect these offerings and diplay them below %>
+				<% if exercise.id == @exercise.id %>
+					<% display = true %>
+				<% end %>
+			<% end %>
+		<% end %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || display == true %>
 
 		<div class="sketch">
 			<h1><%= @exercise.name %></h1>
 		</div>
 		<br>
 		<b>Description: </b><%= @exercise.description %><br>
-		<br>
+		<br><br>
 
+		<div class="sketch">
+			<h3>Scenarios</h3>
+		</div>
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
@@ -32,7 +47,11 @@
 		  </tbody>
 		</table>
 		<br>
-		<p><%= link_to "Return to managing exercises", manage_exercises_url %></p>
+			<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+				<p><%= link_to "Return to managing exercises", manage_exercises_url %></p>
+			<% else %>
+				<p><%= link_to "Return to exercises", exercises_path %></p>
+			<% end %>
 
 		<% else %>
 
