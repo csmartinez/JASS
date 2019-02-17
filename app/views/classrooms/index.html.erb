@@ -34,22 +34,27 @@
 
 			<!-- If TIP... -->
 			<% if current_user.acc_type == 'student' %>
-			<br><br>
+			<br>
 			<h4><b>My Classrooms</b></h4>
 			<br>
 			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-					<!-- View my classrooms -->
-			    <%= link_to "View My Classrooms", :home_index, :class => "nav-link", :method => "get" %>
-			  </li>
+
+				<% classes = Array.new %>
+
+				<% current_user.offerings.each do |offering| %>
+					<% offering.classrooms.each do |classroom| %>
+						<% if classes.exclude?(classroom.id) %>
+							<li class="nav-item">
+								<%= link_to classroom.name, classroom_path(classroom), :class => "nav-link" %>
+							</li>
+							<% classes.push(classroom.id) %>
+						<% end %>
+					<% end %>
+				<% end %>
+
 			</ul>
 			<% end %>
-
 		</div>
-		<!-- An 'offering' of a class can have many TIP classes -->
-		<!-- This would take you to the my school page, a table of classrooms with links to create a new TIP class -->
-		<!-- A page to create a new offering/link you as a teacher of a selected classroom or "add to my school" -->
-		<!-- Edit TIP Classes -->
 
 		<div class="contentRight">
 

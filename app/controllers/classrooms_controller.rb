@@ -4,6 +4,9 @@ class ClassroomsController < ApplicationController
   def index
     @classrooms = Classroom.all
     @profiles = Profile.all
+    @enrollments = Enrollment.all
+    @offerings = Offering.all
+    @users = User.all
   end
 
   def virtual

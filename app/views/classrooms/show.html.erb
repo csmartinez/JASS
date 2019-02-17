@@ -3,7 +3,17 @@
 
 	<% if current_user %>
 
-		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+	<% display = false %>
+
+		<% current_user.offerings.each do |offering| %>
+			<% offering.classrooms.each do |classroom| %>
+				<% if classroom.id == @classroom.id %>
+					<% display = true %>
+				<% end %>
+			<% end %>
+		<% end %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || display == true %>
 
 		<div class="sketch">
 			<h1><%= @classroom.name %></h1>
