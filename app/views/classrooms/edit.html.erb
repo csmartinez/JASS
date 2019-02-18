@@ -5,18 +5,30 @@
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
+    <% counter = 0 %>
+
+    <% @classroomofferings.all.each do |classroomoffering| %>
+
+      <% if classroomoffering.classroom_id == @classroom.id %>
+
+        <% counter = counter + 1 %>
+
+      <% end %>
+
+    <% end %>
+
 		<div class="sketch">
 			<h1>Edit Classroom <%= @classroom.name %></h1>
 		</div>
 		<br>
 		<div class="alert alert-warning" role="alert">
 			<b>Warning!</b> Adding or removing profiles from this classroom will affect all
-			administrators, faculty and teachers in training using it.
+			administrators, faculty and teachers in training using it. This classroom is in
+      use by: <%=counter%> TIP class(es).
 
-			<%# Code to calculate how many classroom_offerings are associated with this classroom %>
-			<%# affiliations = 0 %>
 
-			<%# This classroom is currently in use by <%#= affiliations %>
+
+
 		</div>
 
 		<br>
