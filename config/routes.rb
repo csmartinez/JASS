@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :exercises do
     collection do
       get 'manage' => 'exercises#manage', as: :manage
+  
     end
   end
   resources :classrooms do
