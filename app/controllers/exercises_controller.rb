@@ -4,6 +4,11 @@ class ExercisesController < ApplicationController
 
   end
 
+	include Placeholder
+	validate_presence_of :title, :body, :main_image, :thumb_image
+
+	mount_uploader :thumb_image, ExcerciesUploader
+
   def manage
     @exercises = Exercise.all
   end
