@@ -4,10 +4,11 @@ class ExercisesController < ApplicationController
 
   end
 
-	include Placeholder
-	validate_presence_of :title, :body, :main_image, :thumb_image
+	#include Placeholder
+	#validate_presence_of :title, :body, :main_image, :thumb_image
 
-	mount_uploader :thumb_image, ExcerciesUploader
+	#	mount_uploader :thumb_image, ExcerciesUploader
+	#	mount_uploader :main_image, ExcerciesUploader
 
   def manage
     @exercises = Exercise.all
@@ -60,6 +61,6 @@ class ExercisesController < ApplicationController
 	private
 
 	  def exercise_params
-	    params.require(:exercise).permit(:id, :name, :description, {  scenario_ids: [] })
+	    params.require(:exercise).permit(:id, :name, :description, :main_image, {  scenario_ids: [] })
 	  end
 	end
