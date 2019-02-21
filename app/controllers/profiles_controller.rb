@@ -14,6 +14,16 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+	def update
+    @profile = Profile.find(params[:id])
+    if @profile.update_attributes(profile_params)
+      #successful
+    else
+      #unsuccessful
+    end
+    render 'classrooms/index'
+  end
+
 	def create
 		@profile = Profile.new(profile_params)
 		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
