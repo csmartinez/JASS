@@ -6,8 +6,18 @@
     <%= devise_error_messages! %>
 
 		<div class="field">
-			<%= f.label :sign_up_key %><br />
-			<%= f.text_field :try_key%>
+			<%= f.label :"First Name" %><br />
+      <%= f.text_field :fname, autocomplete: "fname"%>
+		</div>
+
+		<div class="field">
+			<%= f.label :"Last Name" %><br />
+      <%= f.text_field :lname, autocomplete: "lname"%>
+		</div>
+
+		<div class="field">
+			<%= f.label :"Biography" %><br />
+      <%= f.text_area :bio, cols: "60", rows: "4", autocomplete: "bio" %>
 		</div>
 
     <div class="field">

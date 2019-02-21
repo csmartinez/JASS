@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'home/index'
   get 'home/edit'
+  get 'home/index'
+  get 'home/show'
   resources :scenarios
   resources :offerings do
     collection do
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   resources :exercises do
     collection do
       get 'manage' => 'exercises#manage', as: :manage
-  
+
     end
   end
   resources :classrooms do

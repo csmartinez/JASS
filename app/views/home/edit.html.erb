@@ -7,6 +7,21 @@
 		<%= devise_error_messages! %>
 
 		<div class="field">
+			<%= f.label :"First Name" %><br />
+      <%= f.text_field :fname, value: current_user.fname %>
+		</div>
+
+		<div class="field">
+			<%= f.label :"Last Name" %><br />
+      <%= f.text_field :lname, value: current_user.lname %>
+		</div>
+
+		<div class="field">
+			<%= f.label :"Biography" %><br />
+      <%= f.text_area :bio, cols: "60", rows: "4", value: current_user.bio %>
+		</div>
+
+		<div class="field">
 			<%= f.label :email %><br />
 			<%= f.text_field :email, :value => current_user.email %>
 		</div>
@@ -25,15 +40,16 @@
 		</div>
 
 		<div class="field">
-			<%= f.label :password_confirmation %><br />
+			* <%= f.label :password_confirmation %><br />
 			<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 		</div>
 
 		<div class="field">
-			<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+			* <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
 			<%= f.password_field :current_password, autocomplete: "current-password" %>
 		</div>
 		<br>
+
 		<div class="actions">
 			<%= f.submit "Update", :class => 'btn btn-light' %>
 		</div>

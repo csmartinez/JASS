@@ -5,5 +5,7 @@ class HomeController < ApplicationController
 
   def edit
     @users = User.all
+    render :edit
   end
+
 end
