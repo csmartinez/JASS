@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'home/edit'
   get 'home/index'
-  resources :users
+
   resources :scenarios
   resources :offerings do
     collection do
@@ -29,5 +29,7 @@ Rails.application.routes.draw do
   resources :classprofiles
   root 'home#index'
   devise_for :users
+  get 'users/:id' => 'users#show', as: :user
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

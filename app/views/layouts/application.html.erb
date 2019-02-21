@@ -36,7 +36,7 @@
         </ul>
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <% if current_user %>
-          <li style="margin-right: 40px; color: white;">Welcome, <%= current_user.email %>!</li>
+          <li style="margin-right: 40px; color: white;">Welcome, <%= current_user.fname %> <%= current_user.lname %>!</li>
           <li><%= button_to('Sign Out', destroy_user_session_path, :method => :delete, :class => "btn btn-light btn-sm") %></li>
           <% else %>
           <li class="nav-item">
