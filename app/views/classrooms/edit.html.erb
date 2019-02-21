@@ -42,9 +42,9 @@
 
 		<%= form_for @classroom do |f| %>
 		  <%= f.label :name %>
-		  <%= f.text_field :name, :value => @classroom.name %>
-			<%= f.label :description %>
-		  <%= f.text_field :description,:value => @classroom.description %>
+		  <%= f.text_field :name, :value => @classroom.name %> <br>
+			<%= f.label :description %> <br>
+		  <%= f.text_area :description, cols: "60", rows: "4",:value => @classroom.description %> <br>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
 			<br><br>
 
