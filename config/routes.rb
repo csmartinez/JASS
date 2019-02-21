@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'home/edit'
   get 'home/index'
-  get 'home/show'
+  resources :users
   resources :scenarios
   resources :offerings do
     collection do

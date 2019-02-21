@@ -7,5 +7,4 @@ class HomeController < ApplicationController
     @users = User.all
     render :edit
   end
-
 end
