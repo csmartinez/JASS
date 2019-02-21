@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_035705) do
+ActiveRecord::Schema.define(version: 2019_02_21_042449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_02_21_035705) do
     t.string "iep"
     t.string "math"
     t.string "ela"
+    t.text "background"
   end
 
   create_table "scenarios", force: :cascade do |t|

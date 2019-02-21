@@ -47,6 +47,6 @@ private
 	end
 
 	def profile_params
-    params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep)
+    params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background)
   end
 end
