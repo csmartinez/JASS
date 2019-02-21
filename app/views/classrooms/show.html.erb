@@ -32,6 +32,7 @@
 					<th scope="col"><%= sort_link "iep", "IEP" %></th>
 					<th scope="col"><%= sort_link "math", "Math" %></th>
 					<th scope="col"><%= sort_link "ela", "ELA" %></th>
+					<th scope="col">Background</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -44,6 +45,7 @@
 							<td><%= profile.iep %></td>
 							<td><%= profile.math %></td>
 							<td><%= profile.ela %></td>
+								<td><%= link_to truncate(profile.background, :length => 20), profile_path(profile), target: "_blank" %></td>
 						</tr>
 				<% end %>
 		  </tbody>
