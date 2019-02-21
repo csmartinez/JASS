@@ -32,7 +32,7 @@
 
 			 <% @exercises.each do |exercise| %>
 					 <tr>
-						 <td><%= exercise.name %> </td>
+						 <td><%= link_to exercise.name, exercise_path(exercise), target: "_blank" %></td>
 						 <td><%= exercise.description %> </td>
 						 <td><%= check_box_tag "offering[exercise_ids][]", exercise.id,  f.object.exercises.include?(exercise) %></td>
 					 </tr>
@@ -45,6 +45,7 @@
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
+					<th scope="col">Name</th>
 					<th scope="col">User E-mail</th>
 					<th scope="col">Add to TIP Class</th>
 				</tr>
@@ -54,7 +55,9 @@
 
 			 <% @users.each do |user| %>
 			 	<% if user.acc_type == 'student'%>
+					<% name = user.fname + " " + user.lname %>
 					 <tr>
+						 <td><%= link_to name, user_path(user), target: "_blank" %></td>
 						 <td><%= user.email %> </td>
 						 <td><%= check_box_tag "offering[user_ids][]", user.id,  f.object.users.include?(user) %></td>
 					 </tr>
@@ -78,7 +81,7 @@
 
 			 <% @classrooms.each do |classroom| %>
 					 <tr>
-						 <td><%= classroom.name %> </td>
+						 <td><%= link_to classroom.name, classroom_path(classroom), target: "_blank" %></td>
 						 <td><%= classroom.description %> </td>
 						 <td><%= check_box_tag "offering[classroom_ids][]", classroom.id,  f.object.classrooms.include?(classroom) %></td>
 					 </tr>
