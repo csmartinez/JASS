@@ -25,10 +25,6 @@
 			<b>Warning!</b> Adding or removing profiles from this classroom will affect all
 			administrators, faculty and teachers in training using it. This classroom is in
       use by: <%=counter%> TIP class(es).
-
-
-
-
 		</div>
 
 		<br>
@@ -46,9 +42,9 @@
 
 		<%= form_for @classroom do |f| %>
 		  <%= f.label :name %>
-		  <%= f.text_field :name %>
+		  <%= f.text_field :name, :value => @classroom.name %>
 			<%= f.label :description %>
-		  <%= f.text_field :description %>
+		  <%= f.text_field :description,:value => @classroom.description %>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
 			<br><br>
 
@@ -58,7 +54,6 @@
         <tr style="colSort">
           <th scope="col"><%= sort_link "fname", "Student Name" %></th>
           <th scope="col"><%= sort_link "status", "Add to Classroom" %></th>
-
         </tr>
       </thead>
 
@@ -66,8 +61,33 @@
 
        <% @profiles.each do |profile| %>
            <tr>
-             <td><%= profile.fname %> </td>
+             <td><a href="" data-toggle="modal" data-target="#Modal<%= profile.id %>"><%= profile.fname %> <%= profile.lname %></a> </td>
              <td><%= check_box_tag "classroom[profile_ids][]", profile.id,  f.object.profiles.include?(profile) %></td>
+
+				 		<!-- Modal -->
+				 		<div class="modal fade" id="Modal<%= profile.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				 		  <div class="modal-dialog" role="document">
+				 		    <div class="modal-content">
+				 		      <div class="modal-header">
+				 		        <h5 class="modal-title" id="exampleModalLabel"><%= profile.fname %> <%= profile.lname %></h5>
+				 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				 		          <span aria-hidden="true">&times;</span>
+				 		        </button>
+				 		      </div>
+				 		      <div class="modal-body">
+										<b>Name:</b> <%= profile.fname %> <%= profile.lname %> <br>
+	 		 				      <b>Ethnicity:</b> <%= profile.ethnicity %>  <br>
+	 		 							<b>IEP:</b> <%= profile.iep %> <br>
+	 		 							<b>Math:</b> <%= profile.math %> <br>
+	 		 							<b>ELA:</b> <%= profile.ela %> <br>
+										<b>Background:</b> <br> <%= profile.background %>
+				 		      </div>
+				 		      <div class="modal-footer">
+				 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				 		      </div>
+				 		    </div>
+				 		  </div>
+				 		</div>
 
            </tr>
        <% end %>

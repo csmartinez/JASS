@@ -34,6 +34,7 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = Classroom.new(classroom_params)
     @profiles = Profile.all
+    @classroomofferings = Classroomoffering.all
     # @classroomofferings = Classroomoffering.all
     if @classroom.save
       # Classroomoffering.create(user_id: current_user.id, classroom_id: @classroom.id)
