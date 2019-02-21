@@ -1,0 +1,23 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<div class="sketch">
+			<h1><%= @user.name %></h1>
+		</div>
+		<br>
+		<b>Description: </b><%= @user.description %><br>
+		<br>
+
+		<br>
+		<p><%= link_to 'Back', :back %></p>
+
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>
