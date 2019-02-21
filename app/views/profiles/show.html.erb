@@ -1,0 +1,25 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<div class="sketch">
+			<h1><%= @profile.fname %> <%= @profile.lname %></h1>
+		</div>
+		<br>
+		<b>Ethnicity: </b><%= @profile.ethnicity %><br>
+		<b>IEP: </b><%= @profile.iep %><br>
+		<b>Math: </b><%= @profile.math %><br>
+		<b>ELA: </b><%= @profile.ela %><br>
+		<b>Background: </b> <br> <%= @profile.background %><br>
+		<br>
+
+		<br>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

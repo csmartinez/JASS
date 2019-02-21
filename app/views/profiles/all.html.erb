@@ -31,13 +31,13 @@
 
 				<% @profiles.each do |profile| %>
 						<tr>
-							<td><%= profile.fname %> </td>
+							<td><%= profile.fname %></td>
 							<td><%= profile.lname %></td>
 				      <td><%= profile.ethnicity %></td>
 							<td><%= profile.iep %></td>
 							<td><%= profile.math %></td>
 							<td><%= profile.ela %></td>
-							<td><%= truncate(profile.background, :length => 20) %></td>
+							<td><%= link_to truncate(profile.background, :length => 20), profile_path(profile), target: "_blank" %></td>
 							<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' %>
 								<td><%= link_to 'Edit', edit_profile_url(profile) %></td>
 							<% end %>

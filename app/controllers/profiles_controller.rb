@@ -14,6 +14,11 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+	def show
+		@profile = Profile.find(params[:id])
+		render :show
+	end
+
 	def update
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(profile_params)
