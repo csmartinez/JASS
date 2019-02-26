@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	has_many :enrollments
 	has_many :offerings, through: :enrollments
+	#mount_uploader :main_image, ExerciseUploader
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
