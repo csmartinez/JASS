@@ -20,9 +20,9 @@
 		<% end %>
 
 		<%= form_for @offering do |f| %>
-			<%= f.label :text %>
+			<b><%= f.label :name %>: </b>
 			<%= f.text_field :name %> <br>
-			<%= f.label :description %> <br>
+			<b><%= f.label :description %>: </b><br>
 			<%= f.text_area :description, cols: "60", rows: "4" %>
 			<br><br>
 

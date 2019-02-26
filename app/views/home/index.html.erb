@@ -120,19 +120,69 @@
 			  <li class="nav-item">
 			    <a class="nav-link" href="/users/edit">Update Profile</a>
 			  </li>
-				<li class="nav-item">
-			    <a class="nav-link" href="/classrooms">Virtual Classrooms</a>
-			  </li>
-				<li class="nav-item">
-			    <a class="nav-link" href="/exercises">Exercises</a>
-			  </li>
-				<li class="nav-item">
-			    <a class="nav-link" href="/offerings">TIP Classes</a>
-			  </li>
-				<li class="nav-item">
-						<a class="nav-link" href="/classrooms/virtual">Scenarios</a>
-				</li>
-					<br>
+				<%# Check if user has virtual classrooms to see %>
+
+				<% virtual_classrooms = false %>
+
+				<% current_user.enrollments.each do |enrollment| %>
+					<% @offerings.each do |offering| %>
+						<% if enrollment.offering_id == offering.id %>
+							<% if offering.classroomofferings.any? %>
+								<% virtual_classrooms = true %>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
+
+				<% if virtual_classrooms == true %>
+					<li class="nav-item">
+						<a class="nav-link" href="/classrooms">Virtual Classrooms</a>
+					</li>
+				<% end %>
+
+
+				<%# Check if user has exercises to see %>
+
+				<% exercises = false %>
+
+				<% current_user.enrollments.each do |enrollment| %>
+					<% @offerings.each do |offering| %>
+						<% if enrollment.offering_id == offering.id %>
+							<% if offering.exercises.any? %>
+								<% exercises = true %>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
+
+				<% if exercises == true %>
+					<li class="nav-item">
+				    <a class="nav-link" href="/exercises">Exercises</a>
+				  </li>
+					<li class="nav-item">
+							<a class="nav-link" href="/classrooms/virtual">Scenarios</a>
+					</li>
+				<% end %>
+
+
+				<%# Check if user has exercises to see %>
+
+				<% tip_classes = false %>
+
+				<% current_user.enrollments.each do |enrollment| %>
+					<% @offerings.each do |offering| %>
+						<% if enrollment.offering_id == offering.id %>
+							<% tip_classes = true %>
+						<% end %>
+					<% end %>
+				<% end %>
+
+				<% if tip_classes == true %>
+					<li class="nav-item">
+				    <a class="nav-link" href="/offerings">TIP Classes</a>
+				  </li>
+				<% end %>
+				<br>
 			</ul>
 		</div>
 
