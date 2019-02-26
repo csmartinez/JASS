@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 2019_02_21_042449) do
     t.text "background"
   end
 
+  create_table "resumes", force: :cascade do |t|
+    t.string "name"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "scenarios", force: :cascade do |t|
     t.string "name"
     t.text "description"
