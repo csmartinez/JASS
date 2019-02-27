@@ -32,7 +32,6 @@
 		    <tr style="colSort">
 		      <th scope="col">Name</th>
 					<th scope="col">Description</th>
-		      <th scope="col">Link</th>
 					<th scope="col">File (Opens in a new tab)</th>
 		    </tr>
 		  </thead>
@@ -42,7 +41,6 @@
 						<tr>
 							<td><%= scenario.name %> </td>
 							<td><%= scenario.description %></td>
-							<td><%= scenario.link %></td>
 							<td>
 								<% if scenario.pdf_file.length > 0 %>
 							  	<%= link_to "View File", scenario.pdf_file_url.to_s, target:"_blank" %>
