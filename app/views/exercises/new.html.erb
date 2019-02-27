@@ -14,9 +14,6 @@
 
 
 		<%= form_for @exercise do |f| %>
-		<label class="btn btn-primary">
-			Upload a PDF<%= f.file_field :main_image, style: 'display:none;' %>
-		</label><br>
 		  <%= f.label :name %>
 		  <%= f.text_field :name %> <br>
 			<%= f.label :description %> <br>

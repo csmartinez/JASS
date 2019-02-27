@@ -4,9 +4,4 @@ class Exercise < ApplicationRecord
 
 	#validates_presence_of :title, :body
 
-	mount_uploader :main_image, ExerciseUploader
-
-
-
-
 end
