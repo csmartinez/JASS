@@ -9,8 +9,14 @@
 			<h1>All Student Profiles</h1>
 		</div>
 
+
+
 		Below are all student profiles. Coming soon is a link to a page to edit profiles if you have the privilege.
 		<br><br>
+
+		<% form_for "", url: classrooms_path, role: "search", method: :get do %>
+			<%= text_field_tag :search, @search_term, placeholder: "Search..." %>
+		<% end %>
 
 		<table class="table">
 		  <thead class="thead">
