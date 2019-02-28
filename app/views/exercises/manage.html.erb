@@ -9,6 +9,12 @@
 			<h1>Manage Exercises</h1>
 		</div>
 
+		<%= form_tag exercises_path, :method => 'get' do %>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Search" %>
+		<% end %>
+		<br>
+
 		Below are all exercises.
 		<br><br>
 

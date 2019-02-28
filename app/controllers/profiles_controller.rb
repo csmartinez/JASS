@@ -7,6 +7,10 @@ class ProfilesController < ApplicationController
 		render :new
 	end
 
+	def index
+		@profiles = Profile.where(["fname LIKE ?", "%#{params[:search]}% "])
+	end
+
 	def all
 		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
   end
@@ -55,5 +59,7 @@ private
 	def profile_params
     params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background)
   end
+
+
 
 end
