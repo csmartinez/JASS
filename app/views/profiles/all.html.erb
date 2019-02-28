@@ -14,10 +14,11 @@
 		Below are all student profiles. Coming soon is a link to a page to edit profiles if you have the privilege.
 		<br><br>
 
-		<% form_for "", url: classrooms_path, role: "search", method: :get do %>
-			<%= text_field_tag :search, @search_term, placeholder: "Search..." %>
+		<%= form_tag profiles_path, :method => 'get' do %>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Search" %>
 		<% end %>
-
+		<br>
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
@@ -52,8 +53,14 @@
 		  </tbody>
 		</table>
 
+
+
+
 		<br>
 		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+
+
+
 
 		<% else %>
 
