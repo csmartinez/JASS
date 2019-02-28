@@ -24,6 +24,9 @@
 				<li class="nav-item">
 			    <a class="nav-link" href="/offerings">TIP Classes</a>
 			  </li>
+				<% form_for "", url: classrooms_path, role: "search", method: :get do %>
+					<%= text_field_tag :search, @search_term, placeholder: "Search..." %>
+				<% end %>
 			</ul>
 		</div>
 
@@ -34,6 +37,11 @@
 			<br>
 			<h4>Account Type: <b>Super administrator</b> </h4>
 			<p>Privileges: Manage all administrators, faculty, and students. </p>
+
+
+
+
+
 
 			<br><br><br>
 		</div>
