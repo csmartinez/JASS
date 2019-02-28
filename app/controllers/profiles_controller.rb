@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 	helper_method :sort_column, :sort_direction
 
+
 	def new
 		@profile = Profile.new
 		render :new
@@ -54,4 +55,5 @@ private
 	def profile_params
     params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background)
   end
+
 end
