@@ -22,8 +22,8 @@
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Exercise Name</th>
-					<th scope="col">Exercise Description</th>
+					<th scope="col">Learning Activity Name</th>
+					<th scope="col">Learning Activity Description</th>
 					<th scope="col">Add to TIP Class</th>
 				</tr>
 			</thead>
@@ -34,7 +34,12 @@
 					 <tr>
 						 <td><%= link_to exercise.name, exercise_path(exercise), target: "_blank" %></td>
 						 <td><%= exercise.description %> </td>
-						 <td><%= check_box_tag "offering[exercise_ids][]", exercise.id,  f.object.exercises.include?(exercise) %></td>
+						 <td>
+							 <label class="checkbox_container">
+								<%= check_box_tag "offering[exercise_ids][]", exercise.id,  f.object.exercises.include?(exercise) %>
+								<span class="checkmark"></span>
+							 </label>
+						 </td>
 					 </tr>
 			 <% end %>
 		 </tbody>
@@ -59,7 +64,12 @@
 					 <tr>
 						 <td><%= link_to name, user_path(user), target: "_blank" %></td>
 						 <td><%= user.email %> </td>
-						 <td><%= check_box_tag "offering[user_ids][]", user.id,  f.object.users.include?(user) %></td>
+						 <td>
+							 <label class="checkbox_container">
+								<%= check_box_tag "offering[user_ids][]", user.id,  f.object.users.include?(user) %>
+								<span class="checkmark"></span>
+							 </label>
+						 </td>
 					 </tr>
 					<% end %>
 			 <% end %>
@@ -83,7 +93,12 @@
 					 <tr>
 						 <td><%= link_to classroom.name, classroom_path(classroom), target: "_blank" %></td>
 						 <td><%= classroom.description %> </td>
-						 <td><%= check_box_tag "offering[classroom_ids][]", classroom.id,  f.object.classrooms.include?(classroom) %></td>
+						 <td>
+							 <label class="checkbox_container">
+								<%= check_box_tag "offering[classroom_ids][]", classroom.id,  f.object.classrooms.include?(classroom) %>
+								<span class="checkmark"></span>
+							 </label>
+						 </td>
 					 </tr>
 			 <% end %>
 		 </tbody>

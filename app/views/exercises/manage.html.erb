@@ -6,10 +6,10 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Manage Exercises</h1>
+			<h1>Manage Learning Activities</h1>
 		</div>
 
-		Below are all exercises.
+		Below are all Learning Activities.
 		<br><br>
 
 		<table class="table">
@@ -23,14 +23,14 @@
 				<% @exercises.each do |exercise| %>
 						<tr>
 							<td><%= link_to exercise.name, exercise_path(exercise) %></td>
-							<td><%= link_to 'Edit Exercise', edit_exercise_url(exercise) %></td>
+							<td><%= link_to 'Edit Learning Activity', edit_exercise_url(exercise) %></td>
 						</tr>
 				<% end %>
 			</tbody>
 		</table>
 
 		<br>
-		<p><%= link_to "Return to exercises", exercises_path %></p>
+		<p><%= link_to "Return to Learning Activities", exercises_path %></p>
 
 		<% else %>
 
