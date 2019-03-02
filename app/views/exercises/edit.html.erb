@@ -42,7 +42,12 @@
        <% @scenarios.each do |scenario| %>
            <tr>
              <td><%= scenario.name %> </td>
-             <td><%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %></td>
+             <td>
+							 <label class="checkbox_container">
+							 		<%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %>
+									<span class="checkmark"></span>
+							</label>
+						 </td>
            </tr>
        <% end %>
      </tbody>
