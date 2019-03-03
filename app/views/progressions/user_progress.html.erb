@@ -1,0 +1,59 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>TIP Progress</h1>
+		</div>
+		<br>
+		<!-- LOOP THROUGH ALL USERS OR JUST ALL USERS THE INSTRUCTOR IS CONNECTED TO -->
+		<h4><b><%= @user.fname %> <%= @user.lname %></b></h4>
+		<b>Biography: </b><%= @user.bio %><br>
+		<b>E-mail Address: </b><%= @user.email %><br>
+		<br><br>
+
+		<h4><b>Assigned Learning Activities:</b></h4> <br>
+
+		<% exercises = Array.new %>
+
+				<% @user.offerings.each do |offering| %>
+					<% offering.exercises.each do |exercise| %>
+						<% if exercises.exclude?(exercise.id) %>
+							<table class="table">
+								<thead class="thead">
+									<tr style="colSort">
+										<th scope="col"><%= link_to exercise.name, exercise_path(exercise), :class => "nav-link" %></th>
+										<th>Completion Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% exercise.scenarios.each do |scenario| %>
+										<tr class="nav-item">
+											<td><%= link_to scenario.name, scenario_path(scenario), :class => "nav-link" %></td>
+											<td>
+												<% @user.progressions.each do |progress| %>
+													<% if scenario.id == progress.scenario_id %>
+														<% if progress.complete == true %>
+															<b>Complete</b>
+														<% end %>
+													<% end %>
+												<% end %>
+											</td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+							<% exercises.push(exercise.id) %>
+						<% end %>
+					<% end %>
+				<% end %>
+		<br>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

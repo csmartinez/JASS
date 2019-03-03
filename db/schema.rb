@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_013124) do
+ActiveRecord::Schema.define(version: 2019_03_03_010631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,21 @@ ActiveRecord::Schema.define(version: 2019_02_27_013124) do
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.text "description"
+  end
+
+  create_table "exercisescenarios", id: false, force: :cascade do |t|
+    t.bigint "scenario_id"
+    t.bigint "exercise_id"
+    t.index ["exercise_id"], name: "index_exercisescenarios_on_exercise_id"
+    t.index ["scenario_id"], name: "index_exercisescenarios_on_scenario_id"
+  end
+
+  create_table "offeringexercises", id: false, force: :cascade do |t|
     t.bigint "offering_id"
-    t.index ["offering_id"], name: "index_exercises_on_offering_id"
+    t.bigint "exercise_id"
+    t.text "notes_to_TIP_class"
+    t.index ["exercise_id"], name: "index_offeringexercises_on_exercise_id"
+    t.index ["offering_id"], name: "index_offeringexercises_on_offering_id"
   end
 
   create_table "offerings", force: :cascade do |t|
@@ -66,13 +79,19 @@ ActiveRecord::Schema.define(version: 2019_02_27_013124) do
     t.text "background"
   end
 
+  create_table "progressions", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "scenario_id"
+    t.boolean "complete"
+    t.index ["scenario_id"], name: "index_progressions_on_scenario_id"
+    t.index ["user_id"], name: "index_progressions_on_user_id"
+  end
+
   create_table "scenarios", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.text "link"
-    t.bigint "exercise_id"
     t.string "pdf_file"
-    t.index ["exercise_id"], name: "index_scenarios_on_exercise_id"
   end
 
   create_table "users", force: :cascade do |t|
