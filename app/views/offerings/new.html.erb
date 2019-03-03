@@ -58,12 +58,12 @@
 
 			<tbody>
 				<% name = "" %>
-				
+
 			 <% @users.each do |user| %>
 			 	<% if user.acc_type == 'student'%>
-					<% name = user.fname + " " + user.lname %>
+					<%# name is user first name plus last name %>
 					 <tr>
-						 <td><%= link_to name, user_path(user), target: "_blank" %></td>
+						 <td><%= link_to user.fname, user_path(user), target: "_blank" %></td>
 						 <td><%= user.email %> </td>
 						 <td>
 							 <label class="checkbox_container">
