@@ -57,7 +57,8 @@
 			</thead>
 
 			<tbody>
-
+				<% name = "" %>
+				
 			 <% @users.each do |user| %>
 			 	<% if user.acc_type == 'student'%>
 					<% name = user.fname + " " + user.lname %>
