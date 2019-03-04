@@ -3,16 +3,20 @@
 
 	<% if current_user %>
 
+
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
 			<h1>Manage Learning Activities</h1>
 		</div>
 
-		<%= form_tag exercises_path, :method => 'get' do %>
-			<%= text_field_tag :search, @search_term, placeholder: "Search"%>
-			<%= submit_tag "Search" %>
-		<% end %>
+
+			<%= form_tag(manage_exercises_url, method: :get) do %>
+				<%= text_field_tag(:search, params[:search])%>
+				<%= submit_tag "Search" %>
+			<% end %>
+
+
 		<br>
 
 		Below are all exercises.

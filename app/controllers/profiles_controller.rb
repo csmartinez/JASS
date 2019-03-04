@@ -59,9 +59,4 @@ private
 	def profile_params
     params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background)
   end
-
-	def index
-		@profiles = Profile.where(["name like ?", "%#{params[:search]}"])
-	end
-
 end
