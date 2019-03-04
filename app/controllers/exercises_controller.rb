@@ -1,8 +1,5 @@
 class ExercisesController < ApplicationController
 
-  def index
-    @exercises = Exercise.search(params[:search])
-  end
 
 
 	#@exercises = Exercise.where(["name like ?", "%#{params[:search]}"])
@@ -10,6 +7,7 @@ class ExercisesController < ApplicationController
 
   def manage
     @exercises = Exercise.all
+
 
   #  if params[:search]
   #    @search_term = params[:search]
@@ -62,7 +60,6 @@ class ExercisesController < ApplicationController
   end
 
 	private
-
-	  def exercise_params
-	    params.require(:exercise).permit(:id, :name, :description, :main_image, :search, {  scenario_ids: [] })
-	  end
+  def exercise_params
+    params.require(:exercise).permit(:id, :name, :description, :main_image, :search, {  scenario_ids: [] })
+  end
