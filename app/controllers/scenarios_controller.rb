@@ -1,4 +1,12 @@
 class ScenariosController < ApplicationController
+
+	def manage
+    if params[:search]
+      @search_term = params[:search]
+      @scenario =  @scenario.search_by(@search_term)
+    end
+  end
+
 	def new
     @scenario = Scenario.new
     render :new
@@ -17,6 +25,6 @@ class ScenariosController < ApplicationController
 	private
 
 	  def scenario_params
-	    params.require(:scenario).permit(:id, :name, :description, :pdf_file)
+	    params.require(:scenario).permit(:id, :name, :description, :pdf_file, :search)
 	  end
 	end

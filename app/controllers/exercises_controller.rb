@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   def index
     if params[:search]
       @search_term = params[:search]
-      @exercises =  Exercise.search_by(@search_term)
+      @exercises =  @exercises.search_by(@search_term)
     end
   end
 
