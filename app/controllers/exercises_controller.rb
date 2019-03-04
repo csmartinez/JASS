@@ -1,8 +1,6 @@
 class ExercisesController < ApplicationController
 
-  def index
-		@exercises = Exercise.where(["name like ?", "%#{params[:search]}"])
-	end
+
 
 
 
@@ -11,6 +9,11 @@ class ExercisesController < ApplicationController
 
   def manage
     @exercises = Exercise.all
+
+    if params[:search]
+      @search_term = params[:search]
+      @exercises =  Exercise.search_by(@search_term)
+    end
   end
 
   def destroy
