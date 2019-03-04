@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def index
-		@profiles = Profile.where(["fname LIKE ?", "%#{params[:search]}% "])
+		@profiles = Profile.where(["name like ?", "%#{params[:search]}"])
 	end
 
 	def all
@@ -60,6 +60,8 @@ private
     params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background)
   end
 
-
+	def index
+		@profiles = Profile.where(["name like ?", "%#{params[:search]}"])
+	end
 
 end

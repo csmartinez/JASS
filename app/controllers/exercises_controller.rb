@@ -1,8 +1,10 @@
 class ExercisesController < ApplicationController
 
   def index
+		@exercises = Exercise.where(["name like ?", "%#{params[:search]}"])
+	end
 
-  end
+
 
 	#include Placeholder
 	#validate_presence_of :title, :body, :main_image, :thumb_image
