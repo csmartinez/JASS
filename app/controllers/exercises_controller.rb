@@ -1,19 +1,19 @@
 class ExercisesController < ApplicationController
 
-  def index
-		@exercises = Exercise.where(["name like ?", "%#{params[:search]}"])
-	end
 
 
 
-	#include Placeholder
-	#validate_presence_of :title, :body, :main_image, :thumb_image
 
-	#	mount_uploader :thumb_image, ExcerciesUploader
-	#	mount_uploader :main_image, ExcerciesUploader
+	#@exercises = Exercise.where(["name like ?", "%#{params[:search]}"])
+
 
   def manage
     @exercises = Exercise.all
+
+    if params[:search]
+      @search_term = params[:search]
+      @exercises =  Exercise.search_by(@search_term)
+    end
   end
 
   def destroy
