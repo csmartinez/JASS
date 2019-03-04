@@ -6,11 +6,8 @@ class ExercisesController < ApplicationController
 
 
 
-	#include Placeholder
-	#validate_presence_of :title, :body, :main_image, :thumb_image
+	#@exercises = Exercise.where(["name like ?", "%#{params[:search]}"])
 
-	#	mount_uploader :thumb_image, ExcerciesUploader
-	#	mount_uploader :main_image, ExcerciesUploader
 
   def manage
     @exercises = Exercise.all
