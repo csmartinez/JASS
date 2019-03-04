@@ -19,8 +19,6 @@
 		  </ul>
 		<% end %>
 
-
-
 		<%= form_for @exercise do |f| %>
 		  <%= f.label :name %>
 		  <%= f.text_field :name %> <br>
@@ -32,8 +30,8 @@
 
       <thead class="thead">
         <tr style="colSort">
-          <th scope="col">Scenario Name</th>
-          <th scope="col">Add to Exercise</th>
+          <th scope="col">Activity Name</th>
+          <th scope="col">Add to Learning Activity</th>
         </tr>
       </thead>
 
@@ -42,7 +40,12 @@
        <% @scenarios.each do |scenario| %>
            <tr>
              <td><%= scenario.name %> </td>
-             <td><%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %></td>
+             <td>
+							 <label class="checkbox_container">
+							 		<%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %>
+									<span class="checkmark"></span>
+							</label>
+						 </td>
            </tr>
        <% end %>
      </tbody>
@@ -50,15 +53,15 @@
     </table>
 
 			<br>
-		  <%= f.submit "Update Exercise", :class => 'btn btn-light' %>
+		  <%= f.submit "Update Learning Activity", :class => 'btn btn-light' %>
 		<% end %>
 
 		<br><br>
-		<p><%= link_to "Delete Exercise", exercise_path(@exercise),
-                         :data => {:confirm => "Are you sure you want to delete this exercise?",
+		<p><%= link_to "Delete Learning Activity", exercise_path(@exercise),
+                         :data => {:confirm => "Are you sure you want to delete this Learning Activity?",
                                    :method => "delete"} %></p>
 		<br>
-		<p><%= link_to "Return to exercises", exercises_path %></p>
+		<p><%= link_to "Return to Learning Activities", exercises_path %></p>
 
 		<% else %>
 

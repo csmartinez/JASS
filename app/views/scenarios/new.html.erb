@@ -6,7 +6,7 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Create a New Scenario</h1>
+			<h1>Create a New Activity</h1>
 		</div>
 
 		<br>
@@ -19,11 +19,11 @@
 			<label class="btn btn-primary">
 				Upload a PDF<%= f.file_field :pdf_file, style: 'display:none;' %>
 			</label><br><br>
-		  <%= f.submit "Create Scenario", :class => 'btn btn-light'  %>
+		  <%= f.submit "Create Activity", :class => 'btn btn-light'  %>
 		<% end %>
 
 		<br>
-		<p><%= link_to "Return to exercises", exercises_path %></p>
+		<p><%= link_to "Return to Learning Activities", exercises_path %></p>
 
 		<% else %>
 

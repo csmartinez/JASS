@@ -28,8 +28,8 @@
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Exercise Name</th>
-					<th scope="col">Exercise Description</th>
+					<th scope="col">Learning Activity Name</th>
+					<th scope="col">Learning Activity Description</th>
 				</tr>
 			</thead>
 
@@ -53,6 +53,7 @@
 				<tr style="colSort">
 					<th scope="col">User E-mail</th>
 					<th scope="col">Role</th>
+					<th scope="col">Activity Progress</th>
 				</tr>
 			</thead>
 
@@ -66,6 +67,7 @@
 						 <% else %>
 						 	<td>Instructor</td>
 						 <% end %>
+						 <td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id) %></td>
 					 </tr>
 			 <% end %>
 		 </tbody>

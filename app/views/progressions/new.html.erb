@@ -1,0 +1,38 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Edit TIP Progress</h1>
+		</div>
+		<br>
+
+		<%= form_for @progression do |f| %>
+			<b>Users</b>
+			<%= f.collection_select :user_id, User.order(:email),:id,:email, include_blank: true %>
+			<br>
+			<b>Scenarios</b>
+			<%= f.collection_select :scenario_id, Scenario.order(:name),:id,:name, include_blank: true %>
+			<br><br>
+			<b>Activity Completed?</b><br>
+			<label class="checkbox_container">
+			 <%= f.check_box :complete %>
+			 <span class="checkmark"></span>
+			</label>
+			<br><br>
+
+		<%= f.submit "Add Progress", :class => 'btn btn-light' %>
+
+		<% end %>
+
+
+		<br>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

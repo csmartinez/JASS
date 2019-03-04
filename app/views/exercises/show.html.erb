@@ -25,7 +25,7 @@
 		<br><br>
 
 		<div class="sketch">
-			<h3>Scenarios</h3>
+			<h3>Activities</h3>
 		</div>
 		<table class="table">
 		  <thead class="thead">
@@ -52,9 +52,9 @@
 		</table>
 		<br>
 			<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
-				<p><%= link_to "Return to managing exercises", manage_exercises_url %></p>
+				<p><%= link_to "Return to managing Learning Activities", manage_exercises_url %></p>
 			<% else %>
-				<p><%= link_to "Return to exercises", exercises_path %></p>
+				<p><%= link_to "Return to Learning Activities", exercises_path %></p>
 			<% end %>
 
 		<% else %>

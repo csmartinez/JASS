@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :exercises do
     collection do
       get 'manage' => 'exercises#manage', as: :manage
-
+    end
+  end
+  resources :progressions do
+    collection do
+      get 'user_progress/:id' => 'progressions#user_progress', as: :user_progress
     end
   end
   resources :classrooms do
