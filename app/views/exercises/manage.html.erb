@@ -3,6 +3,11 @@
 
 	<% if current_user %>
 
+	<%= form_tag(manage_exercises_url, method: :get) do %>
+		<%= text_field_tag(:search, params[:search])%>
+		<%= submit_tag "Search" %>
+	<% end %>
+
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
@@ -11,10 +16,7 @@
 		</div>
 
 
-			<%= form_tag(manage_exercises_url, method: :get) do %>
-				<%= text_field_tag(:search, params[:search])%>
-				<%= submit_tag "Search" %>
-			<% end %>
+
 
 
 		<br>
