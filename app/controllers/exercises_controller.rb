@@ -1,15 +1,9 @@
 class ExercisesController < ApplicationController
 
-  def index
-    if params[:search]
-      @search_term = params[:search]
-      @exercises =  @exercises.search_by(@search_term)
-    end
+  def show
+    @exercises = Exercise.where(["id LIKE ?", "%#{params[:search]}"])
   end
 
-
-
-	#@exercises = Exercise.where(["name like ?", "%#{params[:search]}"])
 
 
   def manage
@@ -36,6 +30,7 @@ class ExercisesController < ApplicationController
 	def show
     @exercise = Exercise.find(params[:id])
     @scenarios = @exercise.scenarios.all
+    @exercises = Exercise.where(["exercisescenario LIKE ?", "%#{params[:search]}"])
     render :show
   end
 

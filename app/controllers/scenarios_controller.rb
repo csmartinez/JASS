@@ -1,10 +1,7 @@
 class ScenariosController < ApplicationController
 
-	def manage
-    if params[:search]
-      @search_term = params[:search]
-      @scenario =  @scenario.search_by(@search_term)
-    end
+	def index
+    @scenario = Scenario.where(["id LIKE ?", "%#{params[:search]}"])
   end
 
 	def new

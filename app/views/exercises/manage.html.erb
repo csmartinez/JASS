@@ -12,12 +12,11 @@
 			<h1>Manage Learning Activities</h1>
 		</div>
 
-		<%= form_for "", url: manage_exercises_url, role: "search", method: :get do %>
-			<%= text_field_tag :search, @search_term, placeholder: "Search....."%>
-			<%= submit_tag "Search" %>
-		<% end %>
-
-		<!-- https://github.com/csmartinez/JASS/commit/979c0b71d32d5e230bdb453cd6b9d5a01a86dd97 -->
+			<%= form_tag(manage_exercises_url, method: :get) do %>
+				<%= text_field_tag(:search, params[:search])%>
+				<%= submit_tag "Search" %>
+				<% end %>
+		<br>
 
 		Below are all exercises.
 

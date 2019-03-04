@@ -6,7 +6,7 @@ class Exercise < ApplicationRecord
 	has_many :scenarios, through: :exercisescenarios
 
 	def self.search_by(search_term)
-		where("LOWER(name) LIKE :search_term", search_term: "%#{search_term.downcase}%")
+		where("LOWER(exercisescenarios) LIKE :search_term", search_term: "%#{search_term.downcase}%")
 	end
 	#if search
 	#	exercise = Exercise.find_by(name: search)
