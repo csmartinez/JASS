@@ -5,7 +5,10 @@ class Profile < ApplicationRecord
 
 	#validates_uniqueness_of :name
 
-	def self.search_by(search_term)
-	where("LOWER(fname) LIKE :search_term", search_term: "%#{search_term.downcase}%")
+	def self.search(search)
+		if search
+			where(["fname LIKE ?", "%#{search}%"])
+	end
 end
+
 end
