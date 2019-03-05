@@ -7,12 +7,10 @@ class ProfilesController < ApplicationController
 		render :new
 	end
 
-	def index
-		@profiles = Profile.where(["name like ?", "%#{params[:search]}"])
-	end
 
 	def all
 		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
+
   end
 
 	def edit
