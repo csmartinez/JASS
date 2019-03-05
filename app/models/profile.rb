@@ -7,7 +7,7 @@ class Profile < ApplicationRecord
 
 	def self.search(search)
 		if search
-			where(["fname LIKE ?", "%#{search}%"])
+			where(["lower(fname) LIKE ?", "%#{search}%"])
 	end
 end
 
