@@ -1,7 +1,8 @@
 class ScenariosController < ApplicationController
 
 	def index
-    @scenario = Scenario.where(["id LIKE ?", "%#{params[:search]}"])
+		@scenarios = Scenario.search(params[:search])
+    # @scenario = Scenario.where(["id LIKE ?", "%#{params[:search]}"])
   end
 
 	def new
