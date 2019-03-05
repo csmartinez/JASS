@@ -10,7 +10,7 @@ class Exercise < ApplicationRecord
 		if search
 			exercise = Exercise.find_by(name: search)
 			if exercise
-				self.where(scenario_ids: exercise)
+				self.where(exercise_id: exercise)
 			else
 				Exercise.all
 			end
