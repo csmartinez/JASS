@@ -13,10 +13,13 @@ class ProfilesController < ApplicationController
 	#		@search_term = params[:search]
 	#		@profiles_2 = @profiles_2.search_by(@search_term)
 	#	else
-		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
-		@profiles = Profile.where(["fname Like ?", "%#{params[:search]}%"])
 
-  end
+  	if @profiles = Profile.search(params[:search])
+
+		else
+			@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
+		end
+	end
 
 	def edit
     @profile = Profile.find(params[:id])
