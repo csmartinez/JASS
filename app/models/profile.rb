@@ -7,7 +7,11 @@ class Profile < ApplicationRecord
 
 	def self.search(search)
 		if search
-			where(["lower(fname) LIKE ?", "%#{search}%"])
+			where(["lower(fname) LIKE ? OR lower(lname) LIKE ? OR lower(ethnicity) LIKE ? OR lower(iep) LIKE ?
+				OR lower(math) LIKE ? OR lower(ela) LIKE ?",
+				"%#{search}%", 	"%#{search}%", 	"%#{search}%", 	"%#{search}%", "%#{search}%", "%#{search}%"])
+
+
 	end
 end
 
