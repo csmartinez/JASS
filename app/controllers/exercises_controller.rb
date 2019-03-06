@@ -3,8 +3,10 @@ class ExercisesController < ApplicationController
 #  def manage
   #  @scenarios = Scenario.search(params[:search])
     # @scenario = Scenario.where(["id LIKE ?", "%#{params[:search]}"])
+    # @exercises = Exercise.search(params[:search])
 #  end
 
+<<<<<<< HEAD
   def index
     @exercises = Exercise.search(params[:search])
   end
@@ -12,6 +14,11 @@ class ExercisesController < ApplicationController
   def manage
     @exercises = Exercise.all
     @exercises_2 = Exercise.search(params[:search])
+=======
+
+  def manage
+    @exercises = Exercise.all
+>>>>>>> af0f6060b037612ab6cfe8738c61ad619dbfdda6
   end
 
 
@@ -65,6 +72,6 @@ class ExercisesController < ApplicationController
 
 	private
   def exercise_params
-    params.require(:exercise).permit(:id, :name, :description, :main_image, :search, {  scenario_ids: [] })
+    params.require(:exercise).permit(:id, :name, :description, :main_image, {  scenario_ids: [] })
   end
 end

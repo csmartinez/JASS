@@ -1,10 +1,5 @@
 class ScenariosController < ApplicationController
 
-	def index
-		@scenarios = Scenario.search(params[:search])
-    # @scenario = Scenario.where(["id LIKE ?", "%#{params[:search]}"])
-  end
-
 	def new
     @scenario = Scenario.new
     render :new
@@ -23,6 +18,6 @@ class ScenariosController < ApplicationController
 	private
 
 	  def scenario_params
-	    params.require(:scenario).permit(:id, :name, :description, :pdf_file, :search)
+	    params.require(:scenario).permit(:id, :name, :description, :pdf_file)
 	  end
 	end

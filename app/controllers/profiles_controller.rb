@@ -7,13 +7,19 @@ class ProfilesController < ApplicationController
 		render :new
 	end
 
-	def index
-		@profiles = Profile.where(["name like ?", "%#{params[:search]}"])
-	end
 
 	def all
-		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
-  end
+	#	if params[:search]
+	#		@search_term = params[:search]
+	#		@profiles_2 = @profiles_2.search_by(@search_term)
+	#	else
+
+  	if @profiles = Profile.search(params[:search])
+
+		else
+			@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
+		end
+	end
 
 	def edit
     @profile = Profile.find(params[:id])
@@ -22,6 +28,7 @@ class ProfilesController < ApplicationController
 	def show
 		@profile = Profile.find(params[:id])
 		render :show
+		@profiles_2 = Profile.where(["fname Like ?", "%#{params[:search]}%"])
 	end
 
 	def update

@@ -14,10 +14,10 @@
 		Below are all student profiles. Coming soon is a link to a page to edit profiles if you have the privilege.
 		<br><br>
 
-		<%= form_tag profiles_path, :method => 'get' do %>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "Search" %>
-		<% end %>
+		<%= form_tag(all_profiles_url , method: :get) do %>
+			<%= text_field_tag(:search, params[:search])%>
+			<%= submit_tag "search" %>
+			<% end %>
 
 		<br>
 		<table class="table">
