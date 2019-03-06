@@ -16,10 +16,12 @@
 		  <%= f.text_field :name %> <br>
 			<%= f.label :description %> <br>
 			<%= f.text_area :description, cols: "60", rows: "4" %> <br>
+
 			<label class="btn btn-primary">
 				Upload a PDF<%= f.file_field :pdf_file, style: 'display:none;' %>
 			</label><br><br>
-		  <%= f.submit "Create Activity", :class => 'btn btn-light'  %>
+
+			<%= f.submit "Create Activity", :class => 'btn btn-light'  %>
 		<% end %>
 
 		<br>

@@ -1,4 +1,4 @@
-class ScenariosController < ApplicationController
+ class ScenariosController < ApplicationController
 
 	def new
     @scenario = Scenario.new
@@ -9,7 +9,7 @@ class ScenariosController < ApplicationController
     @scenario = Scenario.new(scenario_params)
 
 		if @scenario.save
-			render 'exercises/index'
+			render 'exercises/index' #, notice: "The Scenario #{@scenario.name} has been uploaded."
 		else
 			render :new
 		end
