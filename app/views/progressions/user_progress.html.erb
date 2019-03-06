@@ -34,8 +34,12 @@
 											<td>
 												<% @user.progressions.each do |progress| %>
 													<% if scenario.id == progress.scenario_id %>
+														<%# TO DO: Get only most recent insertion %>
 														<% if progress.complete == true %>
 															<b>Complete</b>
+														<% end %>
+														<% if progress.complete == false %>
+															<b>Incomplete</b>
 														<% end %>
 													<% end %>
 												<% end %>
