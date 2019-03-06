@@ -9,13 +9,9 @@ class ExercisesController < ApplicationController
     @exercises = Exercise.search(params[:search])
   end
 
-
-
-
-
   def manage
     @exercises = Exercise.all
-    @exercises = Exercise.search(params[:search])
+    @exercises_2 = Exercise.search(params[:search])
   end
 
 
