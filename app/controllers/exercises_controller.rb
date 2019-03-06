@@ -6,7 +6,6 @@ class ExercisesController < ApplicationController
     # @exercises = Exercise.search(params[:search])
 #  end
 
-<<<<<<< HEAD
   def index
     @exercises = Exercise.search(params[:search])
   end
@@ -14,11 +13,6 @@ class ExercisesController < ApplicationController
   def manage
     @exercises = Exercise.all
     @exercises_2 = Exercise.search(params[:search])
-=======
-
-  def manage
-    @exercises = Exercise.all
->>>>>>> af0f6060b037612ab6cfe8738c61ad619dbfdda6
   end
 
 
