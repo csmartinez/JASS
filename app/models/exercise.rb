@@ -5,5 +5,4 @@ class Exercise < ApplicationRecord
 	has_many :exercisescenarios
 	has_many :scenarios, through: :exercisescenarios
 
-
 end
