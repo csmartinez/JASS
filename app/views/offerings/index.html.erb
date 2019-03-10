@@ -20,8 +20,11 @@
 					<li class="nav-item">
 				    <%= link_to "Manage TIP Classes", :manage_offerings, :class => "nav-link", :method => "get" %>
 					</li>
+					<li class="nav-item">
+				    <%= link_to "Update TIP Progress", :new_progression, :class => "nav-link", :method => "get" %>
+				  </li>
 				<% else %>
-					<h4><b>TIP Classes</b></h4>
+					<h4><b>TIP Classes <i class="fas fa-user-friends"></i></b></h4>
 					<br>
 
 					<% current_user.offerings.each do |offering| %>
@@ -38,7 +41,7 @@
 		<div class="contentRight">
 
 			<div class="sketch">
-				<h1>TIP Classes</h1>
+				<h1>TIP Classes <i class="fas fa-user-friends"></i></h1>
 			</div>
 
 			Welcome to the TIP Classes landing page. This page will provide links for administrators

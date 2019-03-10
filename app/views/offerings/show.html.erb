@@ -15,20 +15,20 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || display == true %>
 
 		<div class="sketch">
-			<h1><%= @offering.name %></h1>
+			<h1><%= @offering.name %> <i class="fas fa-user-friends"></i></h1>
 		</div>
 		<br>
 		<b>Description: </b><%= @offering.description %><br>
 		<br><br>
 
 		<div class="sketch">
-			<h2>Exercises</h2>
+			<h2>Learning Activities <i class="fas fa-folder-open"></i></h2>
 		</div>
 
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Learning Activity Name</th>
+					<th scope="col">Learning Activity Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">Learning Activity Description</th>
 				</tr>
 			</thead>
@@ -36,7 +36,7 @@
 			<tbody>
 			 <% @offering.exercises.each do |exercise| %>
 					 <tr>
-						 <td><%= exercise.name %> </td>
+						 <td><%= link_to exercise.name, exercise_path(exercise), target: 'blank' %> </td>
 						 <td><%= exercise.description %> </td>
 					 </tr>
 			 <% end %>
@@ -45,12 +45,13 @@
 
 		<br>
 		<div class="sketch">
-			<h2>Enrollment</h2>
+			<h2>Enrollment <i class="fas fa-users"></i></h2>
 		</div>
 
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
+					<th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">User E-mail</th>
 					<th scope="col">Role</th>
 					<th scope="col">Activity Progress</th>
@@ -61,13 +62,15 @@
 
 			 <% @offering.enrollments.each do |enrollment| %>
 					 <tr>
+						 <td><%= link_to enrollment.user.fname, user_path(enrollment.user), target: "_blank" %></td>
 						 <td><%= enrollment.user.email %> </td>
 						 <% if enrollment.role != 'instructor' %>
 						 	<td>TIP</td>
+							<td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id) %></td>
 						 <% else %>
 						 	<td>Instructor</td>
+							<td> </td>
 						 <% end %>
-						 <td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id) %></td>
 					 </tr>
 			 <% end %>
 		 </tbody>
@@ -75,13 +78,13 @@
 
 		<br>
 		<div class="sketch">
-			<h2>Virtual Classrooms</h2>
+			<h2>Virtual Classrooms <i class="fas fa-chalkboard-teacher"></i></h2>
 		</div>
 
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Classroom Name</th>
+					<th scope="col">Classroom Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">Classroom Description</th>
 				</tr>
 			</thead>
@@ -90,7 +93,7 @@
 
 			 <% @offering.classrooms.each do |classroom| %>
 					 <tr>
-						 <td><%= classroom.name %> </td>
+						 <td><%= link_to classroom.name, classroom_path(classroom), target: "_blank" %></td>
 						 <td><%= classroom.description %> </td>
 					 </tr>
 			 <% end %>

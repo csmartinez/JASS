@@ -6,30 +6,30 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Manage Learning Activities</h1>
+			<h1>Manage Learning Activities <i class="fas fa-folder-open"></i></h1>
 		</div>
-
-		<%= form_tag(manage_exercises_url, method: :get) do %>
-			<%= text_field_tag(:search, params[:search])%>
-			<%= submit_tag "search" %>
-			<% end %>
-		<br>
 
 		Below are all Learning Activities.
 		<br><br>
 
+		<%= form_tag(manage_exercises_url, method: :get) do %>
+			<%= text_field_tag(:search, params[:search])%>
+			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+			<% end %>
+		<br>
+
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">View Learning Activiy</th>
-					<th scope="col">Edit Learning Activity</th>
+					<th scope="col">View Learning Activiy <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th scope="col">Edit Learning Activity <i class="fas fa-external-link-alt" style="color: white;"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @exercises.each do |exercise| %>
 						<tr>
-							<td><%= link_to exercise.name, exercise_path(exercise) %></td>
-							<td><%= link_to 'Edit Learning Activity', edit_exercise_url(exercise) %></td>
+							<td><%= link_to exercise.name, exercise_path(exercise), target: "_blank" %></td>
+							<td><%= link_to 'Edit Learning Activity', edit_exercise_url(exercise), target: "_blank" %></td>
 						</tr>
 				<% end %>
 			</tbody>

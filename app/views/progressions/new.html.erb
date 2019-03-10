@@ -4,7 +4,7 @@
 	<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Edit TIP Progress</h1>
+			<h1>Edit TIP Progress <i class="fas fa-user-check"></i></h1>
 		</div>
 		<br>
 
@@ -12,7 +12,7 @@
 			<b>Users</b>
 			<%= f.collection_select :user_id, User.order(:email),:id,:email, include_blank: true %>
 			<br>
-			<b>Scenarios</b>
+			<b>Activities</b>
 			<%= f.collection_select :scenario_id, Scenario.order(:name),:id,:name, include_blank: true %>
 			<br><br>
 			<b>Activity Completed?</b><br>
@@ -22,12 +22,12 @@
 			</label>
 			<br><br>
 
-		<%= f.submit "Add Progress", :class => 'btn btn-light' %>
+		<%= f.submit "Add Progress", :class => 'btn btn-primary' %>
 
 		<% end %>
 
-
 		<br>
+		<p><%= link_to "Return to Learning Activities", exercises_path %></p>
 
 	<% else %>
 

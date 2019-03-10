@@ -46,7 +46,7 @@ class ClassroomsController < ApplicationController
 
   def edit
     @classroom = Classroom.find(params[:id])
-    @profiles = Profile.all
+    @profiles = Profile.order("#{sort_column} #{sort_direction}")
     @classroomofferings = Classroomoffering.all
     render :edit
   end

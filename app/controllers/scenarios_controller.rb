@@ -9,10 +9,15 @@
     @scenario = Scenario.new(scenario_params)
 
 		if @scenario.save
-			render 'exercises/index' #, notice: "The Scenario #{@scenario.name} has been uploaded."
+			render :show
 		else
 			render :new
 		end
+  end
+
+  def show
+    @scenario = Scenario.find(params[:id])
+    render :show
   end
 
 	private

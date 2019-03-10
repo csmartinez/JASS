@@ -9,8 +9,8 @@
 			<h3><b>Menu</b></h3>
 			<br>
 			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-			    <a class="nav-link" href="/">Home</a>
+				<li class="nav-item">
+			    <%= link_to "View My Profile", "/users/#{current_user.id}", class: "nav-link" %>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link" href="/users/edit">Update Profile</a>
@@ -29,8 +29,10 @@
 		</div>
 
 		<div class="contentRight">
-			<h1>Dashboard</h1>
-			<br>
+			<div class="sketch">
+				<h1>Dashboard</h1>
+			</div>
+
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
 			<br>
 			<h4>Account Type: <b>Super administrator</b> </h4>
@@ -46,8 +48,8 @@
 			<h3><b>Menu</b></h3>
 			<br>
 			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-			    <a class="nav-link" href="/">Home</a>
+				<li class="nav-item">
+			    <%= link_to "View My Profile", "/users/#{current_user.id}", class: "nav-link" %>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link" href="/users/edit">Update Profile</a>
@@ -65,13 +67,14 @@
 		</div>
 
 		<div class="contentRight">
-			<h1>Dashboard</h1>
-			<br>
+			<div class="sketch">
+				<h1>Dashboard</h1>
+			</div>
+
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
 			<br>
 			<h4>Account Type: <b>Local administrator</b> </h4>
-			<p>Privileges: Manage faculty and students. Below is a list
-			of faculty accounts managed by you: </p>
+			<p>Privileges: Manage faculty and students...</p>
 			<p>
 					<% @users.each do |user| %>
 						<% if user.superior == current_user.id %>
@@ -85,8 +88,8 @@
 			<h3><b>Menu</b></h3>
 			<br>
 			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-			    <a class="nav-link" href="/">Home</a>
+				<li class="nav-item">
+			    <%= link_to "View My Profile", "/users/#{current_user.id}", class: "nav-link" %>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link" href="/users/edit">Update Profile</a>
@@ -104,7 +107,9 @@
 		</div>
 
 		<div class="contentRight">
-			<h1>Dashboard</h1>
+			<div class="sketch">
+				<h1>Dashboard</h1>
+			</div>
 			<br>
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
 
@@ -116,8 +121,8 @@
 			<h3><b>Menu</b></h3>
 			<br>
 			<ul class="nav flex-column menu">
-			  <li class="nav-item">
-			    <a class="nav-link" href="/">Home</a>
+				<li class="nav-item">
+					<%= link_to "View My Profile", "/users/#{current_user.id}", class: "nav-link" %>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link" href="/users/edit">Update Profile</a>
@@ -161,9 +166,9 @@
 					<li class="nav-item">
 				    <a class="nav-link" href="/exercises">Learning Activities</a>
 				  </li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 							<a class="nav-link" href="/classrooms/virtual">Scenarios</a>
-					</li>
+					</li> -->
 				<% end %>
 
 
@@ -189,7 +194,9 @@
 		</div>
 
 		<div class="contentRight">
-			<h1>Dashboard</h1>
+			<div class="sketch">
+				<h1>Dashboard</h1>
+			</div>
 			<br>
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
 

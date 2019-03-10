@@ -1,0 +1,28 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<div class="sketch">
+			<h1><%= @scenario.name %></h1>
+		</div>
+		<br>
+		<b>Description: </b><%= @scenario.description %><br>
+		<b>File: </b>
+		<% if @scenario.pdf_file.length > 0 %>
+			<%= link_to "View File", @scenario.pdf_file_url.to_s, target:"_blank" %>
+		<% else %>
+			No file attached
+		<% end %>
+		<br>
+		<br>
+
+		<br>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

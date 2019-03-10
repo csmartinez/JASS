@@ -1,7 +1,5 @@
 <div class="container">
 	<br><br>
-
-
 	<% if current_user %>
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || current_user.acc_type == 'student'%>
@@ -59,11 +57,11 @@
 		<div class="contentRight">
 
 			<div class="sketch">
-				<h1>Virtual Classrooms</h1>
+				<h1>Virtual Classrooms <i class="fas fa-chalkboard-teacher"></i></h1>
 			</div>
 
 			Welcome to the Virtual Classrooms landing page. This page will provide links for administrators to manage
-			virtual classrooms, links for faculty to manage TIP classes, and links for TIPs to view the
+			virtual classrooms and profiles, and links for TIPs to view the
 			classrooms they are assigned to by faculty.
 			<br><br>
 			In addition, this page will include a welcome message, contact information for help, and

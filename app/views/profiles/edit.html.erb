@@ -1,48 +1,40 @@
 <div class="container">
 	<br><br>
-  <h2>Edit <%= @profile.fname %> <%= @profile.lname %></h2>
+	<div class="sketch">
+  	<h1>Edit <%= @profile.fname %> <%= @profile.lname %> <i class="fas fa-pencil-alt"></i></h1>
+	</div>
+	<br>
 
 	<%= form_for(@profile) do |f| %>
     <%= devise_error_messages! %>
 
-		<div class="field">
-			<%= f.label :"First Name" %><br />
-      <%= f.text_field :fname %>
+		<div class="row">
+			<div class="col">
+			<%= f.label :first_name %>
+			<%= f.text_field :fname, class: "form-control" %>
+			<%= f.label :last_name %>
+			<%= f.text_field :lname, class: "form-control" %>
+			<%= f.label :math %>
+			<%= f.text_field :math, class: "form-control" %>
+			<%= f.label :ela %>
+			<%= f.text_field :ela, class: "form-control" %>
+			</div>
+
+			<div class="col">
+			<%= f.label :iep %>
+			<%= f.text_field :iep, class: "form-control" %>
+			<%= f.label :ethnicity %>
+			<%= f.text_field :ethnicity, class: "form-control" %>
+			<%= f.label :"Background" %>
+			<%= f.text_area :background, cols: "60", rows: "3", autocomplete: "background", class: "form-control" %>
+			</div>
 		</div>
 
-		<div class="field">
-			<%= f.label :"Last Name" %><br />
-      <%= f.text_field :lname %>
-		</div>
-
-		<div class="field">
-			<%= f.label :"Ethnicity" %><br />
-      <%= f.text_field :ethnicity %>
-		</div>
-
-		<div class="field">
-			<%= f.label :"IEP" %><br />
-      <%= f.text_field :iep %>
-		</div>
-
-		<div class="field">
-			<%= f.label :"Math" %><br />
-      <%= f.text_field :math %>
-		</div>
-
-		<div class="field">
-			<%= f.label :"ELA" %><br />
-      <%= f.text_field :ela %>
-		</div>
-
-		<div class="field">
-			<%= f.label :"Background" %><br />
-			<%= f.text_area :background, cols: "60", rows: "4", autocomplete: "background" %>
-		</div>
-
+		<br>
     <div class="actions">
-      <%= f.submit "Update", :class => "btn btn-light btn-sm" %>
+      <%= f.submit "Update", :class => "btn btn-primary" %>
     </div>
+		<br>
   <% end %>
 
   <%= link_to "Back", :back %>

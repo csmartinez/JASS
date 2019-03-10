@@ -9,15 +9,13 @@
 			<h1>All Student Profiles</h1>
 		</div>
 
-
-
-		Below are all student profiles. Coming soon is a link to a page to edit profiles if you have the privilege.
+		Below are all student profiles. Sort or search through them by clicking the column names using the search button below.
 		<br><br>
 
 		<%= form_tag(all_profiles_url , method: :get) do %>
-			<%= text_field_tag(:search, params[:search])%>
-			<%= submit_tag "search" %>
-			<% end %>
+			<%= text_field_tag(:search, params[:search]) %>
+			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+		<% end %>
 
 		<br>
 		<table class="table">
@@ -54,14 +52,7 @@
 		  </tbody>
 		</table>
 
-
-
-
-		<br>
 		<p><%= link_to "Return to classrooms", classrooms_path %></p>
-
-
-
 
 		<% else %>
 

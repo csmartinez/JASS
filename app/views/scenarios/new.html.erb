@@ -6,23 +6,19 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Create a New Activity</h1>
+			<h1>Create a New Activity <i class="fas fa-file-alt"></i></h1>
 		</div>
-
-		<br>
-
-
 
 		<%= form_for @scenario, html: { multipart: true } do |f| %>
 		  <%= f.label :name %>
-		  <%= f.text_field :name %> <br>
+		  <%= f.text_field :name, class: "form-control" %>
 			<%= f.label :description %> <br>
-			<%= f.text_area :description, cols: "60", rows: "4" %> <br>
+			<%= f.text_area :description, cols: "60", rows: "3", class: "form-control" %>
 			<br>
 				<%= f.file_field :pdf_file %>
 			<br><br>
 
-			<%= f.submit "Create Activity", :class => 'btn btn-light'  %>
+			<%= f.submit "Create Activity", :class => 'btn btn-primary'  %>
 		<% end %>
 
 		<br>

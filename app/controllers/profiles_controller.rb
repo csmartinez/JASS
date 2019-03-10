@@ -1,12 +1,10 @@
 class ProfilesController < ApplicationController
 	helper_method :sort_column, :sort_direction
 
-
 	def new
 		@profile = Profile.new
 		render :new
 	end
-
 
 	def all
 	#	if params[:search]

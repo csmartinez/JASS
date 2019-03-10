@@ -22,7 +22,7 @@
     <% end %>
 
 		<div class="sketch">
-			<h1>Edit Classroom <%= @classroom.name %></h1>
+			<h1>Edit Classroom <%= @classroom.name %> <i class="fas fa-chalkboard" style="color: #323232;"></i></h1>
 		</div>
 		<br>
 		<div class="alert alert-warning" role="alert">
@@ -30,8 +30,6 @@
 			administrators, faculty and teachers in training using it. This classroom is in
       use by: <%=counter%> TIP class(es).
 		</div>
-
-		<br>
 
 		<% if @classroom.errors.any? %>
 		  <h3>Please fix these errors:</h3>
@@ -42,22 +40,25 @@
 		  </ul>
 		<% end %>
 
-
-
 		<%= form_for @classroom do |f| %>
 		  <%= f.label :name %>
-		  <%= f.text_field :name, :value => @classroom.name %> <br>
+		  <%= f.text_field :name, :value => @classroom.name, class: "form-control"%> <br>
 			<%= f.label :description %> <br>
-		  <%= f.text_area :description, cols: "60", rows: "4",:value => @classroom.description %> <br>
+		  <%= f.text_area :description, cols: "60", rows: "4", class: "form-control", :value => @classroom.description %> <br>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
-			<br><br>
 
       <table class="table">
 
       <thead class="thead">
         <tr style="colSort">
-          <th scope="col"><%= sort_link "fname", "Student Name" %></th>
-          <th scope="col"><%= sort_link "status", "Add to Classroom" %></th>
+					<th scope="col"><%= sort_link "fname", "First Name" %></th>
+					<th scope="col"><%= sort_link "lname", "Last Name" %></th>
+		      <th scope="col"><%= sort_link "ethnicity", "Ethnicity" %></th>
+					<th scope="col"><%= sort_link "iep", "IEP" %></th>
+					<th scope="col"><%= sort_link "math", "Math" %></th>
+					<th scope="col"><%= sort_link "ela", "ELA" %></th>
+					<th scope="col">Background</th>
+          <th scope="col">Add to Classroom</th>
         </tr>
       </thead>
 
@@ -65,7 +66,13 @@
 
        <% @profiles.each do |profile| %>
            <tr>
-             <td><%= profile.fname %> <%= profile.lname %></td>
+						 <td><%= link_to profile.fname, profile_path(profile), target: "_blank" %></td>
+						 <td><%= profile.lname %></td>
+						 <td><%= profile.ethnicity %></td>
+						 <td><%= profile.iep %></td>
+						 <td><%= profile.math %></td>
+						 <td><%= profile.ela %></td>
+						 <td><%= truncate(profile.background, :length => 20) %></td>
              <td>
 							 <label class="checkbox_container">
 							 		<%= check_box_tag "classroom[profile_ids][]", profile.id,  f.object.profiles.include?(profile) %>
@@ -81,7 +88,7 @@
     </table>
 
 			<br>
-		  <%= f.submit "Update Classroom", :class => 'btn btn-light' %>
+		  <%= f.submit "Update Classroom", :class => 'btn btn-primary' %>
 		<% end %>
 
 		<br><br>

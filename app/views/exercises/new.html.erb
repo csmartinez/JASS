@@ -6,33 +6,43 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Add an Learning Activity</h1>
+			<h1>Create Learning Activity <i class="fas fa-folder-open"></i></h1>
 		</div>
+
+		<%= form_for @exercise do |f| %>
+		  * <%= f.label :name %>
+		  <%= f.text_field :name, class: "form-control", placeholder: "Learning Activity Name..." %> <br>
+			<%= f.label :description %> <br>
+			<%= f.text_area :description, cols: "60", rows: "3", class: "form-control", placeholder: "Learning Activity Description..." %>
+			<%= f.hidden_field :offering_id, :value => 0 %>
 
 		<br>
 
-		<%= form_for @exercise do |f| %>
-		  <%= f.label :name %>
-		  <%= f.text_field :name %> <br>
-			<%= f.label :description %> <br>
-			<%= f.text_area :description, cols: "60", rows: "4" %> <br>
-			<%= f.hidden_field :offering_id, :value => 0 %>
-
-		<br><br>
+		<div class="sketch">
+			<h2>Add Activities <i class="fas fa-file-alt"></i></h2>
+		</div>
+		<br>
 
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Activity Name</th>
+					<th scope="col">Activity Name <i class="fas fa-external-link-alt" style="color: white;"></i> </th>
+					<th scope="col">Activity File <i class="fas fa-external-link-alt" style="color: white;"></i> </th>
 					<th scope="col">Add to Learning Activity</th>
 				</tr>
 			</thead>
 
 			<tbody>
-
 			 <% @scenarios.each do |scenario| %>
 					 <tr>
-						 <td><%= scenario.name %> </td>
+						 <td><%= link_to scenario.name, scenario_path(scenario), target: "_blank" %></td>
+						 <td>
+							 <% if scenario.pdf_file.length > 0 %>
+								 <%= link_to "View File", scenario.pdf_file_url.to_s, target: "_blank" %>
+							 <% else %>
+								 <i>No file attached</i>
+							 <% end %>
+						 </td>
 						 <td>
 						 	<label class="checkbox_container">
 						 		 <%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %>
@@ -42,10 +52,9 @@
 					 </tr>
 			 <% end %>
 		 </tbody>
-
 		</table>
 
-			<%= f.submit "Create Learning Activity", :class => 'btn btn-light'  %>
+			<%= f.submit "Create Learning Activity", :class => 'btn btn-primary'  %>
 		<% end %>
 
 		<br>

@@ -18,32 +18,35 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || display == true %>
 
 		<div class="sketch">
-			<h1><%= @exercise.name %></h1>
+			<h1><%= @exercise.name %> <i class="fas fa-folder-open"></i></h1>
 		</div>
 		<br>
 		<b>Description: </b><%= @exercise.description %><br>
 		<br><br>
 
 		<div class="sketch">
-			<h3>Activities</h3>
+			<h3>Activities <i class="fas fa-file-alt"></i></h3>
 		</div>
+		<br>
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
-		      <th scope="col">Name</th>
+		      <th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">Description</th>
-					<th scope="col">File (Opens in a new tab)</th>
+					<th scope="col">File <i class="fas fa-external-link-alt" style="color: white;"></th>
 		    </tr>
 		  </thead>
 		  <tbody>
 
 				<% @scenarios.each do |scenario| %>
 						<tr>
-							<td><%= scenario.name %> </td>
+							<td><%= link_to scenario.name, scenario_path(scenario), target: "_blank" %></td>
 							<td><%= scenario.description %></td>
 							<td>
 								<% if scenario.pdf_file.length > 0 %>
 							  	<%= link_to "View File", scenario.pdf_file_url.to_s, target:"_blank" %>
+								<% else %>
+									No file attached
 								<% end %>
 							</td>
 						</tr>
@@ -51,11 +54,6 @@
 		  </tbody>
 		</table>
 		<br>
-			<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
-				<p><%= link_to "Return to managing Learning Activities", manage_exercises_url %></p>
-			<% else %>
-				<p><%= link_to "Return to Learning Activities", exercises_path %></p>
-			<% end %>
 
 		<% else %>
 
