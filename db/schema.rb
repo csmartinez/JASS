@@ -77,10 +77,6 @@ ActiveRecord::Schema.define(version: 2019_03_03_010631) do
     t.string "math"
     t.string "ela"
     t.text "background"
-    t.string "AZMerit test scores"
-    t.string "birthdate"
-    t.string "notes"
-
   end
 
   create_table "progressions", id: false, force: :cascade do |t|
