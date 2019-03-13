@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_020312) do
     t.string "math"
     t.string "ela"
     t.text "background"
+<<<<<<< HEAD
     t.integer "gradelevel"
   end
 
@@ -94,6 +95,12 @@ ActiveRecord::Schema.define(version: 2019_03_13_020312) do
     t.index ["classroomoffering_id"], name: "index_profilevisibles_on_classroomoffering_id"
     t.index ["profile_id"], name: "index_profilevisibles_on_profile_id"
     t.index ["user_id"], name: "index_profilevisibles_on_user_id"
+=======
+    t.string "AZMerit test scores"
+    t.string "birthdate"
+    t.string "notes"
+    
+>>>>>>> 3dd3f817354dc245c4c66b194e5dc405b3b8a078
   end
 
   create_table "progressions", id: false, force: :cascade do |t|

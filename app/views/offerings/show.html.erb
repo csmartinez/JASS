@@ -44,6 +44,9 @@
 		</table>
 
 		<br>
+
+    <% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
 		<div class="sketch">
 			<h2>Enrollment <i class="fas fa-users"></i></h2>
 		</div>
@@ -75,6 +78,8 @@
 			 <% end %>
 		 </tbody>
 		</table>
+
+	<% end %>
 
 		<br>
 		<div class="sketch">
