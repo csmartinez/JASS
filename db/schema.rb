@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_03_010631) do
+ActiveRecord::Schema.define(version: 2019_03_13_020312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,10 +77,23 @@ ActiveRecord::Schema.define(version: 2019_03_03_010631) do
     t.string "math"
     t.string "ela"
     t.text "background"
-    t.string "AZMerit test scores"
-    t.string "birthdate"
-    t.string "notes"
+    t.integer "gradelevel"
+  end
 
+  create_table "profilevisibles", id: false, force: :cascade do |t|
+    t.bigint "classroomoffering_id"
+    t.boolean "lname"
+    t.boolean "gradelevel"
+    t.boolean "ethnicity"
+    t.boolean "iep"
+    t.boolean "background"
+    t.boolean "math"
+    t.boolean "ela"
+    t.bigint "user_id"
+    t.bigint "profile_id"
+    t.index ["classroomoffering_id"], name: "index_profilevisibles_on_classroomoffering_id"
+    t.index ["profile_id"], name: "index_profilevisibles_on_profile_id"
+    t.index ["user_id"], name: "index_profilevisibles_on_user_id"
   end
 
   create_table "progressions", id: false, force: :cascade do |t|
@@ -120,4 +133,6 @@ ActiveRecord::Schema.define(version: 2019_03_03_010631) do
   end
 
   add_foreign_key "classrooms", "users"
+  add_foreign_key "profilevisibles", "profiles"
+  add_foreign_key "profilevisibles", "users"
 end

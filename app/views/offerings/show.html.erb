@@ -99,6 +99,30 @@
 			 <% end %>
 		 </tbody>
 		</table>
+
+		<br>
+		<div class="sketch">
+			<h2>Classroom_Offerings <i class="fas fa-chalkboard-teacher"></i></h2>
+		</div>
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">Classroom FK <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th scope="col">Offering FK <i class="fas fa-external-link-alt" style="color: white;"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+			 <% @offering.classroomofferings.each do |join| %>
+					 <tr>
+						 <td><%= join.classroom_id %> </td>
+						 <td><%= join.offering_id %> </td>
+					 </tr>
+			 <% end %>
+		 </tbody>
+		</table>
 		<br>
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 			<p><%= link_to "Return to managing  TIP classes", manage_offerings_url %></p>
