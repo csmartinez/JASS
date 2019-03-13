@@ -72,3 +72,4 @@ gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'dotenv-rails', '~> 2.6'
 
 gem 'filterrific'
+gem 'client_side_validations'
