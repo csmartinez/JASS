@@ -56,6 +56,10 @@ class OfferingsController < ApplicationController
     redirect_to offerings_path
   end
 
+	def visibility
+		@offering = Offering.find(params[:id])
+	end
+
 	private
 
 	  def offering_params

@@ -1,0 +1,111 @@
+<div class="container">
+	<br><br>
+
+<script>
+	$(".dropdown-menu li a").click(function(){
+  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+});
+</script>
+
+	<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+		<div class="sketch">
+			<h1>TIP Visibility of Profiles <i class="fas fa-eye-slash"></i></h1>
+		</div>
+		<br>
+		<h4><b><%= @offering.name %></b></h4>
+		<br>
+		<% classoffering_id = -1 %>
+
+		<% @offering.classrooms.each do |classroom| %>
+			<% @offering.classroomofferings.each do |co| %>
+				<% if co.classroom_id == classroom.id && co.offering_id == @offering.id %>
+					<b><%= classroom.name %> (<%= classroom.id %>)</b> <br><br>
+
+					<%= form_for @profilevisible do |f| %>
+
+						<%= f.hidden_field :classroomoffering_id, :value => co.id %>
+
+						<div class="dropdown">
+						  TIPS:
+							<select name="profilevisible[user_id]" id="profilevisible_user_id">
+								<% @offering.enrollments.each do |enrollment| %>
+									<option class="dropdown-item" value="<%= enrollment.user.id %>"> <%= enrollment.user.email %> </option>
+				 			 <% end %>
+							</select>
+						</div>
+
+						<div class="dropdown">
+						  Profiles:
+							<select name="profilevisible[profile_id]" id="profilevisible_profile_id">
+								<% classroom.profiles.each do |profile| %>
+									<option class="dropdown-item" value="<%= profile.id %>"> <%= profile.fname %> <%= profile.lname %> </option>
+				 			 <% end %>
+							</select>
+						</div>
+
+						<br>
+						<b>Profile Attribute Visibility</b>
+						<br>
+
+						<label class="checkbox_container" style="font-size: 12pt;">
+								<%= f.label "Last Name" %>
+								<%= f.check_box :lname %>
+							 <span class="checkmark"></span>
+						</label>
+
+						<label class="checkbox_container" style="font-size: 12pt;">
+								<%= f.label "Grade Level" %>
+								<%= f.check_box :gradelevel %>
+							 <span class="checkmark"></span>
+						</label>
+
+						<label class="checkbox_container" style="font-size: 12pt;">
+								<%= f.label "Ethnicity" %>
+								<%= f.check_box :ethnicity %>
+							 <span class="checkmark"></span>
+						</label>
+
+						<label class="checkbox_container" style="font-size: 12pt;">
+								<%= f.label "IEP" %>
+								<%= f.check_box :iep %>
+							 <span class="checkmark"></span>
+						</label>
+
+						<label class="checkbox_container" style="font-size: 12pt;">
+								<%= f.label "Background" %>
+								<%= f.check_box :background %>
+							 <span class="checkmark"></span>
+						</label>
+
+						<label class="checkbox_container" style="font-size: 12pt;">
+								<%= f.label "Math" %>
+								<%= f.check_box :math %>
+							 <span class="checkmark"></span>
+						</label>
+
+						<label class="checkbox_container" style="font-size: 12pt;">
+								<%= f.label "ELA" %>
+								<%= f.check_box :ela %>
+							 <span class="checkmark"></span>
+						</label>
+
+						<%= f.submit "Submit", class: "btn btn-primary" %>
+
+					<% end %>
+
+				 <br><br>
+
+				<% end %>
+			<% end %>
+		<% end %>
+		<br>
+		<p><%= link_to "Return to TIP Classes", offerings_path %></p>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

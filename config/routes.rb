@@ -2,10 +2,16 @@ Rails.application.routes.draw do
   get 'home/edit'
   get 'home/index'
 
+  resources :profilevisibles do
+    collection do
+      get 'new/:id' => 'profilevisibles#new', as: :new
+    end
+  end
   resources :scenarios
   resources :offerings do
     collection do
       get 'manage' => 'offerings#manage', as: :manage
+      get 'visibility/:id' => 'offerings#visibility', as: :visibility
     end
   end
   resources :exercises do

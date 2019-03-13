@@ -18,6 +18,7 @@
 					<th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">Description</th>
 					<th scope="col">Edit TIP Class <i class="fas fa-external-link-alt" style="color: white;"></th>
+						<th scope="col">Edit Profile Visibility <i class="fas fa-external-link-alt" style="color: white;"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,6 +29,7 @@
 								<td><%= link_to offering.name, offering_path(offering), target: "_blank" %></td>
 								<td><%= offering.description %></td>
 								<td><%= link_to 'Edit TIP Class', edit_offering_url(offering), target: "_blank" %></td>
+								<td><%= link_to 'Edit TIP Profile Visibility', new_profilevisible_path(offering), target: "_blank" %></td>
 							</tr>
 						<% end %>
 					<% end %>

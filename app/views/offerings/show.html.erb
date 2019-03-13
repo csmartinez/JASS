@@ -107,7 +107,7 @@
 
 		<br>
 		<div class="sketch">
-			<h2>Profile TIP Visibility</h2>
+			<h2>Profile TIP Visibility <i class="fas fa-eye-slash"></i></h2>
 		</div>
 
 		<table class="table">
@@ -127,24 +127,24 @@
 			<tbody>
 
 			 <% @offering.classroomofferings.each do |join| %>
+			 		<% join.profilevisibles.each do |profilevisible| %>
 					 <tr>
-							 <% join.profilevisibles.each do |profilevisible| %>
-									<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}", target: "_blank" %> </td>
-									<td><%= link_to join.classroom.name , classroom_path(join.classroom), target: "_blank" %> </td>
-									<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile), target: "_blank"  %></td>
-									<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>
-									<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
-									<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
-									<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
-									<td><%= profilevisible.profile.background %> (<%= profilevisible.background %>)</td>
-								<% end %>
+								<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}", target: "_blank" %> </td>
+								<td><%= link_to join.classroom.name , classroom_path(join.classroom), target: "_blank" %> </td>
+								<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile), target: "_blank"  %></td>
+								<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>
+								<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
+								<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
+								<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
+								<td><%= profilevisible.profile.background %> (<%= profilevisible.background %>)</td>
 					 </tr>
+				<% end %>
 			 <% end %>
 		 </tbody>
 		</table>
 		<br>
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
-			<p><%= link_to "Return to managing  TIP classes", manage_offerings_url %></p>
+			<p><%= link_to "Return to Manage  TIP classes", manage_offerings_url %></p>
 		<% else %>
 			<p><%= link_to "Return to TIP classes", offerings_path %></p>
 		<% end %>
