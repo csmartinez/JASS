@@ -39,13 +39,13 @@
 
 				<% @profiles.each do |profile| %>
 						<tr>
-							<td><%= profile.fname %> </td>
+							<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
 							<td><%= profile.lname %></td>
 				      <td><%= profile.ethnicity %></td>
 							<td><%= profile.iep %></td>
 							<td><%= profile.math %></td>
 							<td><%= profile.ela %></td>
-								<td><%= link_to truncate(profile.background, :length => 20), profile_path(profile), target: "_blank" %></td>
+								<td><%= profile.background %></td>
 						</tr>
 				<% end %>
 		  </tbody>

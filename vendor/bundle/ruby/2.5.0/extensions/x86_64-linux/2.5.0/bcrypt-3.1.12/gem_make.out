@@ -1,0 +1,19 @@
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+/home/jdm568/.rvm/rubies/ruby-2.5.3/bin/ruby -r ./siteconf20190313-10290-h8ftxa.rb extconf.rb
+creating Makefile
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" clean
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR="
+compiling bcrypt_ext.c
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+linking shared-object bcrypt_ext.so
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20190313-10290-1bnqhc

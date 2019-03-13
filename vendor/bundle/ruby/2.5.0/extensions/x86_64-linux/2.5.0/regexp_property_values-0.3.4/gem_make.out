@@ -1,0 +1,15 @@
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/regexp_property_values-0.3.4/ext/regexp_property_values
+/home/jdm568/.rvm/rubies/ruby-2.5.3/bin/ruby -r ./siteconf20190313-10290-o4u151.rb extconf.rb
+creating Makefile
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/regexp_property_values-0.3.4/ext/regexp_property_values
+make "DESTDIR=" clean
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/regexp_property_values-0.3.4/ext/regexp_property_values
+make "DESTDIR="
+compiling regexp_property_values.c
+linking shared-object regexp_property_values/regexp_property_values.so
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/regexp_property_values-0.3.4/ext/regexp_property_values
+make "DESTDIR=" install
+/usr/bin/install -m 0755 regexp_property_values.so ./.gem.20190313-10290-1e6g8se/regexp_property_values

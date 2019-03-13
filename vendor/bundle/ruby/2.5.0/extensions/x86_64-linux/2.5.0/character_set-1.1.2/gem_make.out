@@ -1,0 +1,101 @@
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/character_set-1.1.2/ext/character_set
+/home/jdm568/.rvm/rubies/ruby-2.5.3/bin/ruby -r ./siteconf20190313-10290-1yyrnim.rb extconf.rb
+creating Makefile
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/character_set-1.1.2/ext/character_set
+make "DESTDIR=" clean
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/character_set-1.1.2/ext/character_set
+make "DESTDIR="
+compiling character_set.c
+character_set.c: In function ‘enumerator_length’:
+character_set.c:53:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:68:3: note: in expansion of macro ‘FOR_EACH_ACTIVE_CODEPOINT’
+   FOR_EACH_ACTIVE_CODEPOINT(count++);
+   ^
+character_set.c: In function ‘method_each’:
+character_set.c:53:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:80:3: note: in expansion of macro ‘FOR_EACH_ACTIVE_CODEPOINT’
+   FOR_EACH_ACTIVE_CODEPOINT(rb_yield(LONG2FIX(cp)));
+   ^
+character_set.c: In function ‘method_to_a’:
+character_set.c:53:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:98:5: note: in expansion of macro ‘FOR_EACH_ACTIVE_CODEPOINT’
+     FOR_EACH_ACTIVE_CODEPOINT(rb_ary_push(arr, rb_enc_uint_chr((int)cp, enc)));
+     ^
+character_set.c: In function ‘delete_if_block_result’:
+character_set.c:53:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:133:3: note: in expansion of macro ‘FOR_EACH_ACTIVE_CODEPOINT’
+   FOR_EACH_ACTIVE_CODEPOINT(
+   ^
+character_set.c: In function ‘method_eql_p’:
+character_set.c:240:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:267:3: note: in expansion of macro ‘COMPARE_SETS’
+   COMPARE_SETS(if (TSTBIT(cps, cp) != TSTBIT(other_cps, cp)) return Qfalse);
+   ^
+character_set.c: In function ‘method_subtract’:
+character_set.c:240:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:344:3: note: in expansion of macro ‘COMPARE_SETS’
+   COMPARE_SETS(if (TSTBIT(other_cps, cp)) CLRBIT(cps, cp));
+   ^
+character_set.c: In function ‘method_ranges’:
+character_set.c:53:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:427:3: note: in expansion of macro ‘FOR_EACH_ACTIVE_CODEPOINT’
+   FOR_EACH_ACTIVE_CODEPOINT(
+   ^
+character_set.c: In function ‘method_ext_inversion’:
+character_set.c:165:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:528:5: note: in expansion of macro ‘RETURN_NEW_SET_BASED_ON’
+     RETURN_NEW_SET_BASED_ON(
+     ^
+character_set.c:166:16: warning: variable ‘b’ set but not used [-Wunused-but-set-variable]
+   cp_byte *a, *b, *new_cps;\
+                ^
+character_set.c:528:5: note: in expansion of macro ‘RETURN_NEW_SET_BASED_ON’
+     RETURN_NEW_SET_BASED_ON(
+     ^
+character_set.c:165:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:532:3: note: in expansion of macro ‘RETURN_NEW_SET_BASED_ON’
+   RETURN_NEW_SET_BASED_ON(
+   ^
+character_set.c:166:16: warning: variable ‘b’ set but not used [-Wunused-but-set-variable]
+   cp_byte *a, *b, *new_cps;\
+                ^
+character_set.c:532:3: note: in expansion of macro ‘RETURN_NEW_SET_BASED_ON’
+   RETURN_NEW_SET_BASED_ON(
+   ^
+character_set.c: In function ‘method_case_insensitive’:
+character_set.c:53:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   cp_index cp;\
+   ^
+character_set.c:552:3: note: in expansion of macro ‘FOR_EACH_ACTIVE_CODEPOINT’
+   FOR_EACH_ACTIVE_CODEPOINT(SETBIT(new_cps, cp));
+   ^
+character_set.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1: warning: unrecognized command line option ‘-Wno-tautological-compare’
+linking shared-object character_set/character_set.so
+
+current directory: /mnt/c/users/jasmine/documents/github/jass/vendor/bundle/ruby/2.5.0/gems/character_set-1.1.2/ext/character_set
+make "DESTDIR=" install
+/usr/bin/install -m 0755 character_set.so ./.gem.20190313-10290-1953i12/character_set
