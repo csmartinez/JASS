@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_020312) do
+ActiveRecord::Schema.define(version: 2019_03_13_022007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_020312) do
     t.index ["profile_id"], name: "index_classprofiles_on_profile_id"
   end
 
-  create_table "classroomofferings", id: false, force: :cascade do |t|
+  create_table "classroomofferings", force: :cascade do |t|
     t.bigint "classroom_id"
     t.bigint "offering_id"
     t.index ["classroom_id"], name: "index_classroomofferings_on_classroom_id"
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_020312) do
     t.string "math"
     t.string "ela"
     t.text "background"
-<<<<<<< HEAD
     t.integer "gradelevel"
   end
 
@@ -95,12 +94,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_020312) do
     t.index ["classroomoffering_id"], name: "index_profilevisibles_on_classroomoffering_id"
     t.index ["profile_id"], name: "index_profilevisibles_on_profile_id"
     t.index ["user_id"], name: "index_profilevisibles_on_user_id"
-=======
-    t.string "AZMerit test scores"
-    t.string "birthdate"
-    t.string "notes"
-    
->>>>>>> 3dd3f817354dc245c4c66b194e5dc405b3b8a078
   end
 
   create_table "progressions", id: false, force: :cascade do |t|

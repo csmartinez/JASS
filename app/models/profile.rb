@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
 	has_many :classprofiles
 	has_many :classrooms, through: :classprofiles
+	has_many :profilevisibles
 	#resources :profiles
 
 	#validates_uniqueness_of :name
@@ -12,8 +13,6 @@ class Profile < ApplicationRecord
 				OR (ethnicity) LIKE ? OR (iep) LIKE ? OR (math) LIKE ? OR (ela) LIKE ?" ,
 				"%#{search}%", 	"%#{search}%", 	"%#{search}%", 	"%#{search}%", "%#{search}%", "%#{search}%",
 				"%#{search}%",  "%#{search}%", 	"%#{search}%", 	"%#{search}%", "%#{search}%", "%#{search}%"])
-
-
 	end
 end
 

@@ -57,7 +57,7 @@
 					<th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">User E-mail</th>
 					<th scope="col">Role</th>
-					<th scope="col">Activity Progress</th>
+					<th scope="col">Activity Progress <i class="fas fa-external-link-alt" style="color: white;"></</th>
 				</tr>
 			</thead>
 
@@ -69,7 +69,7 @@
 						 <td><%= enrollment.user.email %> </td>
 						 <% if enrollment.role != 'instructor' %>
 						 	<td>TIP</td>
-							<td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id) %></td>
+							<td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id), target: "_blank" %></td>
 						 <% else %>
 						 	<td>Instructor</td>
 							<td> </td>
@@ -107,14 +107,20 @@
 
 		<br>
 		<div class="sketch">
-			<h2>Classroom_Offerings <i class="fas fa-chalkboard-teacher"></i></h2>
+			<h2>Profile TIP Visibility</h2>
 		</div>
 
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Classroom FK <i class="fas fa-external-link-alt" style="color: white;"></th>
-					<th scope="col">Offering FK <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th>TIP Name <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th>Virtual Classroom <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th>Profile Name <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th>Last Name</th>
+					<th>Grade Level</th>
+					<th>Ethnicity</th>
+					<th>IEP</th>
+					<th>Background</th>
 				</tr>
 			</thead>
 
@@ -122,8 +128,16 @@
 
 			 <% @offering.classroomofferings.each do |join| %>
 					 <tr>
-						 <td><%= join.classroom_id %> </td>
-						 <td><%= join.offering_id %> </td>
+							 <% join.profilevisibles.each do |profilevisible| %>
+									<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}", target: "_blank" %> </td>
+									<td><%= link_to join.classroom.name , classroom_path(join.classroom), target: "_blank" %> </td>
+									<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile), target: "_blank"  %></td>
+									<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>
+									<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
+									<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
+									<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
+									<td><%= profilevisible.profile.background %> (<%= profilevisible.background %>)</td>
+								<% end %>
 					 </tr>
 			 <% end %>
 		 </tbody>
