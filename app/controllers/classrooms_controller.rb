@@ -14,7 +14,9 @@ class ClassroomsController < ApplicationController
 
   def show
     @classroom = Classroom.find(params[:id])
+    @classroomofferings = Classroomoffering.all
     @profiles = @classroom.profiles.order("#{sort_column} #{sort_direction}")
+    @profilevisibles = Profilevisible.all
     render :show
   end
 

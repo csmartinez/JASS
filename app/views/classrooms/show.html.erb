@@ -6,15 +6,111 @@
 	<%# Code to check if this classroom is related to a TIP through an offering %>
 	<% display = false %>
 
-		<% current_user.offerings.each do |offering| %>
-			<% offering.classrooms.each do |classroom| %>
-				<% if classroom.id == @classroom.id %>
-					<% display = true %>
+		<% if current_user.acc_type == 'student' %>
+			<% current_user.offerings.each do |offering| %>
+				<% offering.classrooms.each do |classroom| %>
+					<% if classroom.id == @classroom.id %>
+
+						<% coid = -1 %>
+						<% count = 0 %>
+
+							<% offering.classroomofferings.each do |co| %>
+								<% if classroom.id == co.classroom_id && offering.id == co.offering_id %>
+									<% coid = co.id %>
+								<% end %>
+							<% end %>
+
+
+						<div class="sketch">
+							<h1><%= @classroom.name %> <%= coid %></h1>
+						</div>
+						<br>
+						<b>Description: </b><%= @classroom.description %><br>
+						Assigned to you from <b><%= link_to offering.name, offering_path(offering) %></b> <br>
+						<br>
+
+						<table class="table">
+							<thead class="thead">
+								<tr style="colSort">
+									<th scope="col"><%= sort_link "fname", "First Name" %></th>
+									<th scope="col"><%= sort_link "lname", "Last Name" %></th>
+									<th scope="col"><%= sort_link "ethnicity", "Ethnicity" %></th>
+									<th scope="col"><%= sort_link "iep", "IEP" %></th>
+									<th scope="col"><%= sort_link "math", "Math" %></th>
+									<th scope="col"><%= sort_link "ela", "ELA" %></th>
+									<th scope="col">Background</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<% @profiles.each do |profile| %>
+									<% @profilevisibles.each do |profilevisible| %>
+										<% if profilevisible.profile_id == profile.id && profilevisible.user_id == current_user.id && profilevisible.classroomoffering_id == coid %>
+											<% count = count + 1 %>
+											<tr>
+												<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
+
+												<% if profilevisible.lname == true %>
+													<td><%= profile.lname %></td>
+												<% else %>
+													<td><i class="fas fa-eye-slash"></i></td>
+												<% end %>
+
+												<% if profilevisible.ethnicity == true %>
+													<td><%= profile.ethnicity %></td>
+												<% else %>
+													<td><i class="fas fa-eye-slash"></i></td>
+												<% end %>
+
+												<% if profilevisible.iep == true %>
+													<td><%= profile.iep %></td>
+												<% else %>
+													<td><i class="fas fa-eye-slash"></i></td>
+												<% end %>
+
+												<% if profilevisible.math == true %>
+													<td><%= profile.math %></td>
+												<% else %>
+													<td><i class="fas fa-eye-slash"></i></td>
+												<% end %>
+
+												<% if profilevisible.ela == true %>
+													<td><%= profile.ela %></td>
+												<% else %>
+													<td><i class="fas fa-eye-slash"></i></td>
+												<% end %>
+
+												<% if profilevisible.background == true %>
+													<td><%= profile.background %></td>
+												<% else %>
+													<td><i class="fas fa-eye-slash"></i></td>
+												<% end %>
+											</tr>
+										<% end %>
+									<% end %>
+
+									<% if count == 0 %>
+										<tr>
+											<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
+											<td><%= profile.lname %></td>
+											<td><%= profile.ethnicity %></td>
+											<td><%= profile.iep %></td>
+											<td><%= profile.math %></td>
+											<td><%= profile.ela %></td>
+											<td><%= profile.background %></td>
+										</tr>
+									<% end %>
+								<% end %>
+							</tbody>
+						</table>
+						<br>
+
+					<% end %>
 				<% end %>
 			<% end %>
-		<% end %>
 
-		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || display == true %>
+
+		<% elsif current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
 			<h1><%= @classroom.name %></h1>
@@ -45,7 +141,7 @@
 							<td><%= profile.iep %></td>
 							<td><%= profile.math %></td>
 							<td><%= profile.ela %></td>
-								<td><%= profile.background %></td>
+							<td><%= profile.background %></td>
 						</tr>
 				<% end %>
 		  </tbody>

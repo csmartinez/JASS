@@ -105,43 +105,45 @@
 		 </tbody>
 		</table>
 
-		<br>
-		<div class="sketch">
-			<h2>Profile TIP Visibility <i class="fas fa-eye-slash"></i></h2>
-		</div>
+		<% if current_user.acc_type != 'student' %>
+			<br>
+			<div class="sketch">
+				<h2>Profile TIP Visibility <i class="fas fa-eye-slash"></i></h2>
+			</div>
 
-		<table class="table">
-			<thead class="thead">
-				<tr style="colSort">
-					<th>TIP Name <i class="fas fa-external-link-alt" style="color: white;"></th>
-					<th>Virtual Classroom <i class="fas fa-external-link-alt" style="color: white;"></th>
-					<th>Profile Name <i class="fas fa-external-link-alt" style="color: white;"></th>
-					<th>Last Name</th>
-					<th>Grade Level</th>
-					<th>Ethnicity</th>
-					<th>IEP</th>
-					<th>Background</th>
-				</tr>
-			</thead>
+			<table class="table">
+				<thead class="thead">
+					<tr style="colSort">
+						<th>TIP Name <i class="fas fa-external-link-alt" style="color: white;"></th>
+						<th>Virtual Classroom <i class="fas fa-external-link-alt" style="color: white;"></th>
+						<th>Profile Name <i class="fas fa-external-link-alt" style="color: white;"></th>
+						<th>Last Name</th>
+						<th>Grade Level</th>
+						<th>Ethnicity</th>
+						<th>IEP</th>
+						<th>Background</th>
+					</tr>
+				</thead>
 
-			<tbody>
+				<tbody>
 
-			 <% @offering.classroomofferings.each do |join| %>
-			 		<% join.profilevisibles.each do |profilevisible| %>
-					 <tr>
-								<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}", target: "_blank" %> </td>
-								<td><%= link_to join.classroom.name , classroom_path(join.classroom), target: "_blank" %> </td>
-								<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile), target: "_blank"  %></td>
-								<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>
-								<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
-								<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
-								<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
-								<td><%= profilevisible.profile.background %> (<%= profilevisible.background %>)</td>
-					 </tr>
-				<% end %>
-			 <% end %>
-		 </tbody>
-		</table>
+				 <% @offering.classroomofferings.each do |join| %>
+				 		<% join.profilevisibles.each do |profilevisible| %>
+						 <tr>
+									<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}", target: "_blank" %> <%= join.id %> </td>
+									<td><%= link_to join.classroom.name , classroom_path(join.classroom), target: "_blank" %> </td>
+									<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile), target: "_blank"  %></td>
+									<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>
+									<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
+									<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
+									<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
+									<td><%= profilevisible.profile.background %> (<%= profilevisible.background %>)</td>
+						 </tr>
+					<% end %>
+				 <% end %>
+			 </tbody>
+			</table>
+		<% end %>
 		<br>
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 			<p><%= link_to "Return to Manage  TIP classes", manage_offerings_url %></p>
