@@ -137,7 +137,7 @@
 									<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
 									<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
 									<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
-									<td><%= profilevisible.profile.background %> (<%= profilevisible.background %>)</td>
+									<td><%= truncate(profilevisible.profile.background, :length => 20) %> (<%= profilevisible.background %>)</td>
 						 </tr>
 					<% end %>
 				 <% end %>
