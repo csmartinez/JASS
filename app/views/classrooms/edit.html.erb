@@ -9,7 +9,14 @@
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
-    <% counter = 0 %>
+		<%= form_tag(edit_classroom_url, method: :get) do %>
+			<%= text_field_tag(:search, params[:search]) %>
+			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+		<% end %>
+
+		<br>
+
+		<% counter = 0 %>
 
     <% @classroomofferings.all.each do |classroomoffering| %>
 
@@ -20,6 +27,8 @@
       <% end %>
 
     <% end %>
+
+
 
 		<div class="sketch">
 			<h1>Edit Classroom <%= @classroom.name %> <i class="fas fa-chalkboard" style="color: #323232;"></i></h1>
@@ -40,12 +49,19 @@
 		  </ul>
 		<% end %>
 
+
+
 		<%= form_for @classroom do |f| %>
+
+
 		  <%= f.label :name %>
 		  <%= f.text_field :name, :value => @classroom.name, class: "form-control"%> <br>
 			<%= f.label :description %> <br>
 		  <%= f.text_area :description, cols: "60", rows: "4", class: "form-control", :value => @classroom.description %> <br>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
+
+
+
 
       <table class="table">
 
@@ -65,6 +81,8 @@
       <tbody>
 
        <% @profiles.each do |profile| %>
+
+
            <tr>
 						 <td><%= link_to profile.fname, profile_path(profile), target: "_blank" %></td>
 						 <td><%= profile.lname %></td>
