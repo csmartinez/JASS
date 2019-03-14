@@ -15,7 +15,7 @@
 				</li>
 				<% if current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || current_user.acc_type == 'superadmin' %>
 					<li class="nav-item">
-				    <%= link_to "Add an Learning Activity", :new_exercise, :class => "nav-link", :method => "get" %>
+				    <%= link_to "Add a Learning Activity", :new_exercise, :class => "nav-link", :method => "get" %>
 				  </li>
 					<li class="nav-item">
 				    <%= link_to "Add an Activity", :new_scenario, :class => "nav-link", :method => "get" %>

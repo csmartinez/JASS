@@ -72,3 +72,9 @@ gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'dotenv-rails', '~> 2.6'
 
 gem 'filterrific'
+
+
+# Pagination of pages
+
+gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate-bootstrap'

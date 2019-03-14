@@ -6,6 +6,10 @@ class ProfilesController < ApplicationController
 		render :new
 	end
 
+  def index
+    Profile.paginate(:page => params[:page], :per_page => 4)
+  end
+
 	def all
   	if @profiles = Profile.search(params[:search])
 
