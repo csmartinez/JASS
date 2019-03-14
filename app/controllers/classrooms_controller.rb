@@ -12,6 +12,8 @@ class ClassroomsController < ApplicationController
   def virtual
   end
 
+
+
   def show
     @classroom = Classroom.find(params[:id])
     @classroomofferings = Classroomoffering.all
@@ -48,7 +50,12 @@ class ClassroomsController < ApplicationController
 
   def edit
     @classroom = Classroom.find(params[:id])
-    @profiles = Profile.order("#{sort_column} #{sort_direction}")
+
+    if @profiles = Profile.search(params[:search])
+    else
+      @profiles = Profile.order("#{sort_column} #{sort_direction}")
+    end
+
     @classroomofferings = Classroomoffering.all
     render :edit
   end
