@@ -43,10 +43,13 @@
 							</thead>
 							<tbody>
 
+								<% customVisibility = Array.new %>
+
 								<% @profiles.each do |profile| %>
 									<% @profilevisibles.each do |profilevisible| %>
 										<% if profilevisible.profile_id == profile.id && profilevisible.user_id == current_user.id && profilevisible.classroomoffering_id == coid %>
 											<% count = count + 1 %>
+											<% customVisibility.push(profile.id) %>
 											<tr>
 												<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
 
@@ -89,7 +92,7 @@
 										<% end %>
 									<% end %>
 
-									<% if count == 0 %>
+									<% if customVisibility.include?(profile.id) == false %>
 										<tr>
 											<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
 											<td><%= profile.lname %></td>
