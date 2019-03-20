@@ -19,6 +19,7 @@
 		</div>
 		<br>
 		<b>Description: </b><%= @offering.description %><br>
+		<b>Message to TIPs: </b><%= @offering.message %><br>
 		<br><br>
 
 		<div class="sketch">
@@ -130,7 +131,7 @@
 				 <% @offering.classroomofferings.each do |join| %>
 				 		<% join.profilevisibles.each do |profilevisible| %>
 						 <tr>
-									<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}", target: "_blank" %> <%= join.id %> </td>
+									<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}", target: "_blank" %> </td>
 									<td><%= link_to join.classroom.name , classroom_path(join.classroom), target: "_blank" %> </td>
 									<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile), target: "_blank"  %></td>
 									<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>

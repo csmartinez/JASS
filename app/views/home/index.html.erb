@@ -191,10 +191,21 @@
 		<div class="contentRight">
 			<h1>Dashboard</h1>
 			<br>
-			<p>Messages from TIP Class X: </p>
-			<br>
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
-
+			<br>
+			<% current_user.offerings.each do |offering| %>
+				<% if offering.message.to_s.length > 0 %>
+					<div class="card" style="border: none">
+						<div class="card-header">
+							<b>From <%= link_to offering.name, offering_path(offering) %>:</b>
+					  </div>
+						<div class="card-body">
+							<%= offering.message %>
+						</div>
+					</div>
+					<br>
+				<% end %>
+			<% end %>
 		</div>
 
 		<% end %>
