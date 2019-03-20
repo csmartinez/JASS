@@ -9,9 +9,9 @@
 		<br>
 		<b>Biography: </b><%= @user.bio %><br>
 		<b>E-mail Address: </b><%= @user.email %><br>
-
+		<br>
     <div class="btn-group" role="group" aria-label="Basic example">
-      <%= button_to "Okay", '/home/index', :method =>  "get" , :class => 'btn btn-primary' %>
+      <%= link_to "Back to Dashboard", '/home/index', :method =>  "get" %>
     </div>
 
 
