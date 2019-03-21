@@ -197,13 +197,13 @@
 				<% if offering.message.to_s.length > 0 %>
 					<div class="card" style="border: none">
 						<div class="card-header">
-							<b>From <%= link_to offering.name, offering_path(offering) %>:</b>
+							<b><i class="fas fa-envelope" style="margin-right: 10px;"></i> From <%= link_to offering.name, offering_path(offering), style: "color: #003466;" %>:</b>
 					  </div>
 						<div class="card-body">
 							<%= offering.message %>
 						</div>
 					</div>
-					<br>
+
 				<% end %>
 			<% end %>
 		</div>
