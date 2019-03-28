@@ -7,15 +7,21 @@ class ProfilesController < ApplicationController
 	end
 
   def index
-    Profile.paginate(:page => params[:page], :per_page => 4)
+    @profiles = Profile.paginate(:page => params[:page], :per_page => 10)
   end
 
 	def all
-  	if @profiles = Profile.search(params[:search])
+
+  	if
+			@profiles = Profile.search(params[:search])
+
+		elsif
+			@profiles = Profile.paginate(:page => params[:page])
 
 		else
-			@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
+				@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
 		end
+
 	end
 
 	def edit

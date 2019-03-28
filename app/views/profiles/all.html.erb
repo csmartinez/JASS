@@ -13,10 +13,14 @@
 		Below are all student profiles. Sort or search through them by clicking the column names using the search button below.
 		<br><br>
 
+
+
 		<%= form_tag(all_profiles_url , method: :get) do %>
 			<%= text_field_tag(:search, params[:search]) %>
 			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
 		<% end %>
+
+
 
 		<br>
 		<table class="table">
@@ -53,6 +57,8 @@
 				<% end %>
 		  </tbody>
 		</table>
+
+		<%= will_paginate @profiles %>
 
 		<p><%= link_to "Return to classrooms", classrooms_path %></p>
 
