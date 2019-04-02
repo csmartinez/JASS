@@ -1,7 +1,12 @@
 require 'will_paginate/per_page'
 require 'will_paginate/page_number'
+require 'will_paginate/array'
 
 module WillPaginate
+
+  def total_pages
+    total_entries.zero? ? 1 : (total_entries / per_page.to_f).ceil
+  end
   # Any will_paginate-compatible collection should have these methods:
   #
   #   current_page, per_page, offset, total_entries, total_pages
@@ -12,9 +17,7 @@ module WillPaginate
   #
   # This module provides few of these methods.
   module CollectionMethods
-    def total_pages
-      total_entries.zero? ? 1 : (total_entries / per_page.to_f).ceil
-    end
+
 
     # current_page - 1 or nil if there is no previous page
     def previous_page
@@ -42,7 +45,7 @@ module WillPaginate
   #
   # WillPaginate::Collection also assists in rolling out your own pagination
   # solutions: see +create+.
-  # 
+  #
   # If you are writing a library that provides a collection which you would like
   # to conform to this API, you don't have to copy these methods over; simply
   # make your plugin/gem dependant on this library and do:
@@ -123,7 +126,7 @@ module WillPaginate
     # in +create+.
     def replace(array)
       result = super
-      
+
       # The collection is shorter then page limit? Rejoice, because
       # then we know that we are on the last page!
       if total_entries.nil? and length < per_page and (current_page == 1 or length > 0)

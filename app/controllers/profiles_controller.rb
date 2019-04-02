@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+
 	helper_method :sort_column, :sort_direction
 
 	def new
@@ -6,21 +7,19 @@ class ProfilesController < ApplicationController
 		render :new
 	end
 
-  def index
-    @profiles = Profile.paginate(:page => params[:page], :per_page => 10)
-  end
+
+
+
 
 	def all
 
   	if
 			@profiles = Profile.search(params[:search])
-
-		elsif
-			@profiles = Profile.paginate(:page => params[:page])
-
 		else
-				@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
+			@profiles = Profile.all.order("#{sort_column} #{sort_direction}").paginate(:page => params[:page], :per_page => 15)
 		end
+
+
 
 	end
 
@@ -47,11 +46,15 @@ class ProfilesController < ApplicationController
 	def create
 		@profile = Profile.new(profile_params)
 		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
+
+
 		if @profile.save
 			render :all
 		else
 			render :new
 		end
+
+
 	end
 private
 	def sortable_columns

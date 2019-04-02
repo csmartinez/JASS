@@ -6,7 +6,7 @@ class Profile < ApplicationRecord
 
 	#validates_uniqueness_of :name
 
-	self.per_page = 5 
+
 
 	def self.search(search)
 		if search
