@@ -20,6 +20,8 @@
 			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
 		<% end %>
 
+		<%= will_paginate @profiles %>
+
 
 
 		<br>
@@ -54,11 +56,14 @@
 								<td><%= link_to 'Edit', edit_profile_url(profile) %></td>
 							<% end %>
 						</tr>
+
 				<% end %>
 		  </tbody>
 		</table>
 
-		<%= will_paginate @profiles, :style => 'color:blue' %>
+
+
+
 
 		<p><%= link_to "Return to classrooms", classrooms_path %></p>
 
