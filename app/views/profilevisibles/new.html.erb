@@ -27,7 +27,7 @@
 						<%= f.hidden_field :classroomoffering_id, :value => co.id %>
 
 						<div class="dropdown">
-						  TIPS:
+						  TIP:
 							<select name="profilevisible[user_id]" id="profilevisible_user_id">
 								<% @offering.enrollments.each do |enrollment| %>
 									<option class="dropdown-item" value="<%= enrollment.user.id %>"> <%= enrollment.user.email %> </option>
@@ -36,7 +36,7 @@
 						</div>
 
 						<div class="dropdown">
-						  Profiles:
+						  Student Profile:
 							<select name="profilevisible[profile_id]" id="profilevisible_profile_id">
 								<% classroom.profiles.each do |profile| %>
 									<option class="dropdown-item" value="<%= profile.id %>"> <%= profile.fname %> <%= profile.lname %> </option>
