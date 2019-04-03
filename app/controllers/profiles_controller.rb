@@ -8,16 +8,16 @@ class ProfilesController < ApplicationController
 	end
 
 
-
-
-
 	def all
 
   	if
 			@profiles = Profile.search(params[:search])
 		else
-			@profiles = Profile.all.order("#{sort_column} #{sort_direction}").paginate(:page => params[:page], :per_page => 15)
+			@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
 		end
+
+
+
 
 
 
