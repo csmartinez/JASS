@@ -12,8 +12,6 @@ class ClassroomsController < ApplicationController
   def virtual
   end
 
-
-
   def show
     @classroom = Classroom.find(params[:id])
     @classroomofferings = Classroomoffering.all
