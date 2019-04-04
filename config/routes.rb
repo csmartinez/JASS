@@ -7,7 +7,11 @@ Rails.application.routes.draw do
       get 'new/:id' => 'profilevisibles#new', as: :new
     end
   end
-  resources :scenarios
+  resources :scenarios do
+    collection do
+      get 'manage' => 'scenarios#manage', as: :manage
+    end
+  end
   resources :offerings do
     collection do
       get 'manage' => 'offerings#manage', as: :manage

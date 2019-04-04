@@ -1,0 +1,50 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Manage Activities <i class="fas fa-file-alt"></i></h1>
+		</div>
+
+		Below are all Activities.
+		<br><br>
+
+
+
+
+		<table class="table">
+			<thead class="thead">
+				<tr style="colSort">
+					<th scope="col">View Activity <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th scope="col">Edit Activity <i class="fas fa-external-link-alt" style="color: white;"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @scenario.each do |scenario| %>
+						<tr>
+							<td><%= link_to scenario.name, scenario_path(scenario), target: "_blank" %></td>
+							<td><%= link_to 'Edit Activity', edit_scenario_url(scenario), target: "_blank" %></td>
+						</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<br>
+		<p><%= link_to "Return to Learning Activities", exercises_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>

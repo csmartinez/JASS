@@ -1,0 +1,91 @@
+<div class="container">
+	<br><br>
+
+	<% if current_user %>
+
+		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+
+		<div class="sketch">
+			<h1>Edit <%= @scenario.name %> <i class="fas fa-file-alt"></i></h1>
+		</div>
+
+		<% if @scenario.errors.any? %>
+		  <h3>Please fix these errors:</h3>
+		  <ul>
+		    <% @scenario.errors.full_messages.each do |message| %>
+		      <li><%= message %></li>
+		    <% end %>
+		  </ul>
+		<% end %>
+
+		<%= form_for @scenario do |f| %>
+		  <%= f.label :name %>
+		  <%= f.text_field :name, class: "form-control" %> <br>
+			<%= f.label :description %>
+			<%= f.text_area :description, cols: "60", rows: "4", class: "form-control" %> <br>
+			<%= f.file_field :pdf_file %>
+			<br>
+
+			<!-- <div class="sketch">
+				<h2>Change/Add File <i class="fas fa-file-alt"></i></h2>
+			</div>
+			<br>
+
+      <table class="table">
+
+      <thead class="thead">
+        <tr style="colSort">
+          <th scope="col">Activity Name <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th scope="col">Activity File <i class="fas fa-external-link-alt" style="color: white;"></th>
+          <th scope="col">Add to Activity</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+       <% @scenarios.each do |scenario| %>
+           <tr>
+             <td><%= link_to scenario.name, scenario_path(scenario), target: "_blank" %></td>
+						 <td>
+							 <% if scenario.pdf_file.length > 0 %>
+								 <%= link_to "View File", scenario.pdf_file_url.to_s, target: "_blank" %>
+							 <% else %>
+								 <i>No file attached</i>
+							 <% end %>
+						 </td>
+             <td>
+							 <label class="checkbox_container">
+							 		<!%= check_box_tag "exercise[scenario_ids][]", scenario.id,  f.object.scenarios.include?(scenario) %>
+									<span class="checkmark"></span>
+							</label>
+						 </td>
+           </tr>
+       <% end %>
+     </tbody> -->
+
+    </table>
+
+			<br>
+		  <%= f.submit "Update Activity", :class => 'btn btn-primary' %>
+		<% end %>
+
+		<br><br>
+		<p><%= link_to "Delete Activity", scenario_path(@scenario),
+                         :data => {:confirm => "Are you sure you want to delete this Learning Activity?",
+                                   :method => "delete"} %></p>
+		<br>
+		<p><%= link_to "Return to Manage Activities", manage_scenarios_path %></p>
+
+		<% else %>
+
+		<b>You do not have permission to access this page!</b>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+
+	<% end %>
+
+</div>
