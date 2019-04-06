@@ -18,20 +18,17 @@
 				    <%= link_to "Create Learning Module", :new_exercise, :class => "nav-link", :method => "get" %>
 				  </li>
 					<li class="nav-item">
-				    <%= link_to "Add an Activity", :new_scenario, :class => "nav-link", :method => "get" %>
+				    <%= link_to "Manage Learning Modules", :manage_exercises, :class => "nav-link", :method => "get" %>
 				  </li>
 					<li class="nav-item">
-				    <%= link_to "Manage Learning Activites", :manage_exercises, :class => "nav-link", :method => "get" %>
+				    <%= link_to "Create an Activity", :new_scenario, :class => "nav-link", :method => "get" %>
 				  </li>
 					<li class="nav-item">
 				    <%= link_to "Manage Activites", :manage_scenarios, :class => "nav-link", :method => "get" %>
 				  </li>
-					<li class="nav-item">
-				    <%= link_to "Update TIP Progress", :new_progression, :class => "nav-link", :method => "get" %>
-				  </li>
 				<% else %>
 
-				<h4><b>Assigned Learning Activities </b></h4>
+				<h4><b>Assignments</b></h4>
 				<br>
 
 				<% exercises = Array.new %>
@@ -55,11 +52,11 @@
 		<div class="contentRight">
 
 			<div class="sketch">
-				<h1>Learning Activities <i class="fas fa-folder-open"></i></h1>
+				<h1>Learning Modules <i class="fas fa-folder-open"></i></h1>
 			</div>
 
-			Welcome to the Learning Activities landing page. This page will provide links for administrators
-			and faculty to manage, create, and delete Learning Activities.
+			Welcome to the Learning Modules landing page. This page will provide links for administrators
+			and faculty to manage, create, and delete Learning Modules.
 			<br><br>
 			In addition, this page will include a welcome message, contact information for help, and
 			a link to a user manual.

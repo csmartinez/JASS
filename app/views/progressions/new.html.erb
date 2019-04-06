@@ -6,13 +6,14 @@
 		<div class="sketch">
 			<h1>Edit TIP Progress <i class="fas fa-user-check"></i></h1>
 		</div>
-		<br>
+		<i>This function is under construction</i>.
+		<br><br>
 
 		<%= form_for @progression do |f| %>
 			<b>Users</b>
 			<%= f.collection_select :user_id, User.order(:email),:id,:email, include_blank: true %>
 			<br>
-			<b>Activities</b>
+			<b>Modules</b>
 			<%= f.collection_select :scenario_id, Scenario.order(:name),:id,:name, include_blank: true %>
 			<br><br>
 			<b>Activity Completed?</b><br>
@@ -27,7 +28,7 @@
 		<% end %>
 
 		<br>
-		<p><%= link_to "Return to Learning Activities", exercises_path %></p>
+		<p><%= link_to "Return to Learning Modules", exercises_path %></p>
 
 	<% else %>
 
