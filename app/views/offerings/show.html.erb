@@ -20,7 +20,15 @@
 		<br>
 		<b>Description: </b><%= @offering.description %><br>
 		<b>Message to TIPs: </b><%= @offering.message %><br>
-		<br><br>
+		<b>Instructors:</b><br>
+		<ul>
+			<% @offering.enrollments.each do |enrollment| %>
+				<% if enrollment.user.acc_type == 'admin' || enrollment.user.acc_type == 'superadmin' || enrollment.user.acc_type == 'faculty' %>
+					<li><%= link_to enrollment.user.email, "/users/#{enrollment.user.id}" %> </li>
+				<% end %>
+			<% end %>
+		</ul>
+		<br>
 
 		<div class="sketch">
 			<h2>Learning Modules <i class="fas fa-folder-open"></i></h2>
@@ -147,9 +155,9 @@
 		<% end %>
 		<br>
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
-			<p><%= link_to "Return to Manage  TIP classes", manage_offerings_url %></p>
+			<p><%= link_to "Return to Manage  NAU Classes", manage_offerings_url %></p>
 		<% else %>
-			<p><%= link_to "Return to TIP classes", offerings_path %></p>
+			<p><%= link_to "Return to NAU Classes", offerings_path %></p>
 		<% end %>
 
 		<% else %>

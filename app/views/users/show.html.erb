@@ -7,17 +7,21 @@
 			<h1><%= @user.fname %> <%= @user.lname %></h1>
 		</div>
 		<br>
-		<b>Biography: </b><%= @user.bio %><br>
 		<b>E-mail Address: </b><%= @user.email %><br>
+		<b>Account Type: </b><%= @user.acc_type %><br>
+		<b>Biography: </b><%= @user.bio %><br>
 		<br>
+		<b>NAU Class Enrollments: </b>
+		<ul>
+			<% current_user.offerings.each do |offering| %>
+				<li><%= link_to offering.name, offering_path(offering) %></li>
+			<% end %>
+		</ul>
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= link_to "Back to Dashboard", '/home/index', :method =>  "get" %>
     </div>
 
-
-
 		<br>
-
 		<br>
 
 	<% else %>
