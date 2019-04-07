@@ -21,7 +21,8 @@
 					<th scope="col">Name</th>
 					<th scope="col">Description</th>
 					<th scope="col">Edit NAU Class</th>
-						<th scope="col">Edit Profile Visibility</th>
+					<th scope="col">Edit Profile Visibility</th>
+					<th scope="col">Enrollment Key</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,9 +31,10 @@
 						<% if offering.id == enrollment.offering_id %>
 							<tr>
 								<td><%= link_to offering.name, offering_path(offering) %></td>
-								<td><%= offering.description %></td>
+								<td><%= truncate(offering.description, :length => 20) %></td>
 								<td><%= link_to 'Edit NAU Class', edit_offering_url(offering) %></td>
-								<td><%= link_to 'Edit Student Profile Visibility', new_profilevisible_path(offering) %></td>
+								<td><%= link_to 'Edit Profile Visibility', new_profilevisible_path(offering) %></td>
+								<td><%= offering.passcode %></td>
 							</tr>
 						<% end %>
 					<% end %>

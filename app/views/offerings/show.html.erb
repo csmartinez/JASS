@@ -14,90 +14,95 @@
 
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' || display == true %>
 
-		<div class="sketch">
-			<h1><%= @offering.name %></h1>
-		</div>
-		<br>
-		<b>Description: </b><%= @offering.description %><br>
-		<b>Message to TIPs: </b><%= @offering.message %><br>
-		<b>Instructors:</b><br>
-		<ul>
-			<% @offering.enrollments.each do |enrollment| %>
-				<% if enrollment.user.acc_type == 'admin' || enrollment.user.acc_type == 'superadmin' || enrollment.user.acc_type == 'faculty' %>
-					<li><%= link_to enrollment.user.email, "/users/#{enrollment.user.id}" %> </li>
+			<div class="sketch">
+				<h1>
+					<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
+					<%= @offering.name %>
+				</h1>
+			</div>
+			<br>
+
+			<b>Enrollment Key: </b><%= @offering.passcode %><br>
+			<b>Description: </b><%= @offering.description %><br>
+			<b>Message to TIPs: </b><%= @offering.message %><br>
+			<b>Instructors:</b><br>
+			<ul>
+				<% @offering.enrollments.each do |enrollment| %>
+					<% if enrollment.user.acc_type == 'admin' || enrollment.user.acc_type == 'superadmin' || enrollment.user.acc_type == 'faculty' %>
+						<li><%= link_to enrollment.user.email, "/users/#{enrollment.user.id}" %> </li>
+					<% end %>
 				<% end %>
-			<% end %>
-		</ul>
-		<br>
+			</ul>
+			<br>
 
-		<div class="sketch">
-			<h2>Learning Modules <i class="fas fa-folder-open"></i></h2>
-		</div>
+			<div class="sketch">
+				<h2>Learning Modules <i class="fas fa-folder-open"></i></h2>
+			</div>
 
-		<% @exercises = @offering.exercises.paginate(page: params[:page], per_page: 5) %>
+			<% @exercises = @offering.exercises.paginate(page: params[:page], per_page: 5) %>
 
-		<%= will_paginate @exercises, class: "flickr_pagination" %>
+			<%= will_paginate @exercises, class: "flickr_pagination" %>
 
-		<table class="table">
-			<thead class="thead">
-				<tr style="colSort">
-					<th scope="col">Learning Module Name</th>
-					<th scope="col">Learning Module Description</th>
-				</tr>
-			</thead>
+			<table class="table">
+				<thead class="thead">
+					<tr style="colSort">
+						<th scope="col">Learning Module Name</th>
+						<th scope="col">Learning Module Description</th>
+					</tr>
+				</thead>
 
-			<tbody>
-			 <% @exercises.each do |exercise| %>
-					 <tr>
-						 <td><%= link_to exercise.name, exercise_path(exercise)%> </td>
-						 <td><%= exercise.description %> </td>
-					 </tr>
-			 <% end %>
-		 </tbody>
-		</table>
+				<tbody>
+				 <% @exercises.each do |exercise| %>
+						 <tr>
+							 <td><%= link_to exercise.name, exercise_path(exercise)%> </td>
+							 <td><%= exercise.description %> </td>
+						 </tr>
+				 <% end %>
+			 </tbody>
+			</table>
 
-		<%= will_paginate @exercises, class: "flickr_pagination" %>
+			<%= will_paginate @exercises, class: "flickr_pagination" %>
 
-		<br>
+			<br>
 
-    <% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+	    <% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
-		<div class="sketch">
-			<h2>Enrollment <i class="fas fa-users"></i></h2>
-		</div>
+			<div class="sketch">
+				<h2>Enrollment <i class="fas fa-users"></i></h2>
+			</div>
 
-		<% @enrollments = @offering.enrollments.paginate(page: params[:page], per_page: 5) %>
+			<% @enrollments = @offering.enrollments.paginate(page: params[:page], per_page: 5) %>
 
-		<%= will_paginate @enrollments, class: "flickr_pagination" %>
+			<%= will_paginate @enrollments, class: "flickr_pagination" %>
 
-		<table class="table">
-			<thead class="thead">
-				<tr style="colSort">
-					<th scope="col">Name</th>
-					<th scope="col">User E-mail</th>
-					<th scope="col">Role</th>
-					<th scope="col">Activity Progress</th>
-				</tr>
-			</thead>
+			<table class="table">
+				<thead class="thead">
+					<tr style="colSort">
+						<th scope="col">Name</th>
+						<th scope="col">User E-mail</th>
+						<th scope="col">Role</th>
+						<th scope="col">Activity Progress</th>
+					</tr>
+				</thead>
 
-			<tbody>
+				<tbody>
 
-			 <% @enrollments.each do |enrollment| %>
-					 <tr>
-						 <td><%= link_to enrollment.user.fname, user_path(enrollment.user) %></td>
-						 <td><%= enrollment.user.email %> </td>
-						 <% if enrollment.role != 'instructor' %>
-						 	<td>TIP</td>
-							<td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id)%></td>
-						 <% else %>
-						 	<td>Instructor</td>
-							<td> </td>
-						 <% end %>
-					 </tr>
-			 <% end %>
-		 </tbody>
-		</table>
-		<%= will_paginate @enrollments, class: "flickr_pagination" %>
+				 <% @enrollments.each do |enrollment| %>
+						 <tr>
+							 <td><%= link_to enrollment.user.fname, user_path(enrollment.user) %></td>
+							 <td><%= enrollment.user.email %> </td>
+							 <% if enrollment.role != 'instructor' %>
+							 	<td>TIP</td>
+								<td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id)%></td>
+							 <% else %>
+							 	<td>Instructor</td>
+								<td> </td>
+							 <% end %>
+						 </tr>
+				 <% end %>
+			 </tbody>
+			</table>
+			<%= will_paginate @enrollments, class: "flickr_pagination" %>
 
 	<% end %>
 

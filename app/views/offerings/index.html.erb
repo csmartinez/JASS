@@ -1,6 +1,12 @@
 <div class="container">
 	<br><br>
 
+	<% flash.each do |key, value| %>
+		<div style="margin-top: -10px;">
+			<b>Notice</b>: <i><%= value %></i>
+			<br><br>
+		</div>
+	<% end %>
 
 	<% if current_user %>
 

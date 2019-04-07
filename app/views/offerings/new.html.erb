@@ -6,17 +6,28 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Build a new NAU Class</h1>
+			<h1>
+				<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
+				Build a new NAU Class
+			</h1>
 		</div>
 		<br>
+		<% flash.each do |key, value| %>
+	    <div class="alert alert-warning">
+				<b>Notice</b>: <%= value %>
+				<br>
+			</div>
+	  <% end %>
 
 		<%= form_for @offering do |f| %>
-			<%= f.label :title %>
+			<b><%= f.label :title %></b>
 			<%= f.text_field :name, class: "form-control" %>
 			<%= f.label :description %> <br>
 			<%= f.text_area :description, cols: "60", rows: "3", class: "form-control"  %>
 			<%= f.label :message_to_students %> <br>
 			<%= f.text_area :message, cols: "60", rows: "3", class: "form-control"  %>
+			<b><%= f.label :passcode %></b>
+			<%= f.text_field :passcode, class: "form-control" %>
 
 		<br><br>
 

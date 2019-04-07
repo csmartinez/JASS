@@ -11,12 +11,17 @@ class OfferingsController < ApplicationController
   end
 
   def create
+		@exercises = Exercise.all
+		@users = User.all
+		@classrooms = Classroom.all
     @offering = Offering.new(offering_params)
 		@enrollments = Enrollment.all
     if @offering.save
+			flash[:notice] = "NAU Class Successfully Created"
 			Enrollment.create(user_id: current_user.id, offering_id: @offering.id, role: 'instructor')
       render 'offerings/index'
     else
+			flash[:notice] = "There was an error creating your NAU Class"
       render :new
     end
   end
@@ -63,6 +68,6 @@ class OfferingsController < ApplicationController
 	private
 
 	  def offering_params
-	    params.require(:offering).permit(:id, :name, :description, :message, {  user_ids: [] }, {  exercise_ids: [] }, {  classroom_ids: [] })
+	    params.require(:offering).permit(:id, :name, :passcode, :description, :message, {  user_ids: [] }, {  exercise_ids: [] }, {  classroom_ids: [] })
 	  end
 	end
