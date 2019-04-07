@@ -24,9 +24,11 @@
 				    <%= link_to "Update Student Progress", :new_progression, :class => "nav-link", :method => "get" %>
 				  </li>
 				<% else %>
+					<li class="nav-item">
+						<%= link_to "Enroll in a Class", new_enrollment_path, class: "nav-link", style: "margin-top: -30px; margin-bottom: 30px;" %>
+				  </li>
 					<h4><b>NAU Classes</b></h4>
 					<br>
-
 					<% current_user.offerings.each do |offering| %>
 						<li class="nav-item">
 							<%= link_to offering.name, offering_path(offering), :class => "nav-link" %>

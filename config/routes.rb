@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     end
   end
   resources :classprofiles
+  resources :enrollments
   root 'home#index'
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'users/:id' => 'users#show', as: :user

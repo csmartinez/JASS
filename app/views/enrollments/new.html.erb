@@ -1,0 +1,46 @@
+<div class="container">
+	<br><br>
+	<h2>Enroll in an NAU Class <i class="fas fa-user-friends"></i></h2>
+
+	<br>
+	<% flash.each do |key, value| %>
+    <div class="alert alert-warning">
+			<b>Notice</b>: <%= value %>
+			<br>
+		</div>
+
+  <% end %>
+
+	<script>
+		$(".dropdown-menu li a").click(function(){
+	  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+	  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+	});
+	</script>
+
+	<% if current_user.acc_type == 'student' %>
+
+		<%= form_for @enrollment do |f| %>
+			<br>
+			<b>NAU Classes: </b>
+			<%= f.collection_select :offering_id, Offering.order(:name),:id,:name, include_blank: true %>
+			<br><br>
+			<%= f.hidden_field :role, :value => 'TIP' %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<b><%= f.label :passcode %></b>:
+			<%= f.text_field :passcode, class: "form-control", style: "width: 30%;" %>
+			<br>
+		<%= f.submit "Enroll in Class", :class => 'btn btn-primary' %>
+
+		<% end %>
+
+	<% else %>
+
+	<b>You do not have permission to access this page!</b>
+	<br>
+	<% end %>
+	<br><br>
+
+	<%= link_to 'Back to NAU Classes', offerings_path %>
+
+</div>

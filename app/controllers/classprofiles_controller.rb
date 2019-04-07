@@ -6,8 +6,6 @@ class ClassprofilesController < ApplicationController
 		render :new
 	end
 
-
-
 	def create
 		@classrooms = Classroom.all
     @profiles = Profile.all

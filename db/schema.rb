@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_014527) do
+ActiveRecord::Schema.define(version: 2019_04_07_203241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_014527) do
     t.string "role"
     t.bigint "offering_id"
     t.bigint "user_id"
+    t.text "passcode"
     t.index ["offering_id"], name: "index_enrollments_on_offering_id"
     t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_014527) do
     t.text "description"
     t.string "name"
     t.text "message"
+    t.text "passcode"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -122,10 +124,6 @@ ActiveRecord::Schema.define(version: 2019_03_20_014527) do
     t.datetime "updated_at", null: false
     t.string "acc_type"
     t.integer "superior"
-    t.string "admin_key"
-    t.string "faculty_key"
-    t.string "student_key"
-    t.string "try_key"
     t.text "bio"
     t.string "fname"
     t.string "lname"
