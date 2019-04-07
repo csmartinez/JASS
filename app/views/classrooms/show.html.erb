@@ -51,7 +51,7 @@
 											<% count = count + 1 %>
 											<% customVisibility.push(profile.id) %>
 											<tr>
-												<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
+												<td><%= profile.fname %> </td>
 
 												<% if profilevisible.lname == true %>
 													<td><%= profile.lname %></td>
@@ -125,7 +125,7 @@
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
-		      <th scope="col"><%= sort_link "fname", "First Name" %></th>
+		      <th scope="col"><%= sort_link "fname", "First Name" %><i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col"><%= sort_link "lname", "Last Name" %></th>
 		      <th scope="col"><%= sort_link "ethnicity", "Ethnicity" %></th>
 					<th scope="col"><%= sort_link "iep", "IEP" %></th>

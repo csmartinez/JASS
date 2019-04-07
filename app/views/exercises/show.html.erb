@@ -31,7 +31,7 @@
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
-		      <th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
+		      <th scope="col">Name</th>
 					<th scope="col">Description</th>
 					<th scope="col">File <i class="fas fa-external-link-alt" style="color: white;"></th>
 		    </tr>
@@ -40,7 +40,7 @@
 
 				<% @scenarios.each do |scenario| %>
 						<tr>
-							<td><%= link_to scenario.name, scenario_path(scenario), target: "_blank" %></td>
+							<td><%= link_to scenario.name, scenario_path(scenario) %></td>
 							<td><%= scenario.description %></td>
 							<td>
 								<% if scenario.pdf_file.length > 0 %>
@@ -66,5 +66,7 @@
 	<b>You do not have permission to access this page!</b>
 
 	<% end %>
+
+	<p><%= link_to "Return to Learning Modules", exercises_path %></p>
 
 </div>

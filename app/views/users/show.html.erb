@@ -1,5 +1,12 @@
 <div class="container">
-	<br><br>
+	<br>
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+	  </ol>
+	</nav>
+	<br>
 
 	<% if current_user %>
 
@@ -17,12 +24,14 @@
 				<li><%= link_to offering.name, offering_path(offering) %></li>
 			<% end %>
 		</ul>
+		<br>
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= link_to "Back to Dashboard", '/home/index', :method =>  "get" %>
     </div>
+		<br><br>
+		<a href="javascript:history.back()">Back</a>
 
-		<br>
-		<br>
+		<br><br>
 
 	<% else %>
 
