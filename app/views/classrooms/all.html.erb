@@ -11,23 +11,26 @@
 
 		Below are all classrooms in the system.
 		<br><br>
+		<% @classrooms = @classrooms.paginate(page: params[:page], per_page: 10) %>
+
+		<%= will_paginate @classrooms, class: "flickr_pagination" %>
 
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
 					<th scope="col">View Profiles</th>
-					<!-- <th scope="col">Add to My Classrooms</th> -->
 				</tr>
 			</thead>
 			<tbody>
 				<% @classrooms.each do |classroom| %>
 						<tr>
 							<td><%= link_to classroom.name, classroom_path(classroom) %></td>
-							<!-- <td>Add Classroom Button</td> -->
 						</tr>
 				<% end %>
 			</tbody>
 		</table>
+
+		<%= will_paginate @classrooms, class: "flickr_pagination" %>
 
 		<% else %>
 
@@ -45,5 +48,6 @@
 	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
 	<br><br>
+	<%= link_to 'Back to Dashboard', home_index_path %>
 
 </div>
