@@ -91,21 +91,21 @@
 						</label>
 
 						<%= f.submit "Submit", class: "btn btn-primary" %>
-
+						<br><br>
 					<% end %>
-
-				 <br><br>
-
 				<% end %>
 			<% end %>
 		<% end %>
-		<br>
-		<p><%= link_to "Return to TIP Classes", offerings_path %></p>
 
 	<% else %>
 
 	<b>You do not have permission to access this page!</b>
-
+	<br>
 	<% end %>
+
+
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+
+	<br><br>
 
 </div>

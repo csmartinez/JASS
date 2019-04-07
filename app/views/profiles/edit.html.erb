@@ -1,41 +1,48 @@
 <div class="container">
 	<br><br>
-	<div class="sketch">
-  	<h1>Edit <%= @profile.fname %> <%= @profile.lname %> <i class="fas fa-pencil-alt"></i></h1>
-	</div>
-	<br>
-
-	<%= form_for(@profile) do |f| %>
-    <%= devise_error_messages! %>
-
-		<div class="row">
-			<div class="col">
-			<%= f.label :first_name %>
-			<%= f.text_field :fname, class: "form-control" %>
-			<%= f.label :last_name %>
-			<%= f.text_field :lname, class: "form-control" %>
-			<%= f.label :math %>
-			<%= f.text_field :math, class: "form-control" %>
-			<%= f.label :ela %>
-			<%= f.text_field :ela, class: "form-control" %>
-			</div>
-
-			<div class="col">
-			<%= f.label :iep %>
-			<%= f.text_field :iep, class: "form-control" %>
-			<%= f.label :ethnicity %>
-			<%= f.text_field :ethnicity, class: "form-control" %>
-			<%= f.label :"Background" %>
-			<%= f.text_area :background, cols: "60", rows: "3", autocomplete: "background", class: "form-control" %>
-			</div>
+	<% if current_user.acc_type == 'admin' || current_user.acc_type == 'superadmin' %>
+		<div class="sketch">
+	  	<h1>Edit <%= @profile.fname %> <%= @profile.lname %> <i class="fas fa-pencil-alt"></i></h1>
 		</div>
-
 		<br>
-    <div class="actions">
-      <%= f.submit "Update", :class => "btn btn-primary" %>
-    </div>
-		<br>
-  <% end %>
 
-  <%= link_to "Back", :back %>
+		<%= form_for(@profile) do |f| %>
+	    <%= devise_error_messages! %>
+
+			<div class="row">
+				<div class="col">
+				<%= f.label :first_name %>
+				<%= f.text_field :fname, class: "form-control" %>
+				<%= f.label :last_name %>
+				<%= f.text_field :lname, class: "form-control" %>
+				<%= f.label :math %>
+				<%= f.text_field :math, class: "form-control" %>
+				<%= f.label :ela %>
+				<%= f.text_field :ela, class: "form-control" %>
+				</div>
+
+				<div class="col">
+				<%= f.label :iep %>
+				<%= f.text_field :iep, class: "form-control" %>
+				<%= f.label :ethnicity %>
+				<%= f.text_field :ethnicity, class: "form-control" %>
+				<%= f.label :"Background" %>
+				<%= f.text_area :background, cols: "60", rows: "3", autocomplete: "background", class: "form-control" %>
+				</div>
+			</div>
+
+			<br>
+	    <div class="actions">
+	      <%= f.submit "Update", :class => "btn btn-primary" %>
+	    </div>
+			<br>
+	  <% end %>
+
+	<% else %>
+		<b> You do not have permission to view this page! </b>
+	<% end %>
+
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+
+	<br><br>
 </div>

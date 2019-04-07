@@ -12,14 +12,14 @@
 		<b>Math: </b><%= @profile.math %><br>
 		<b>ELA: </b><%= @profile.ela %><br>
 		<b>Background: </b> <br> <%= @profile.background %><br>
-		<br>
-
-		<br>
 
 	<% else %>
 
 	<b>You do not have permission to access this page!</b>
-
+	<br>
 	<% end %>
+	<br>
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
+	<br><br>
 </div>

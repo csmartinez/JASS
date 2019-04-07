@@ -26,7 +26,7 @@
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Activity Name <i class="fas fa-external-link-alt" style="color: white;"></i> </th>
+					<th scope="col">Activity Name </th>
 					<th scope="col">Activity File <i class="fas fa-external-link-alt" style="color: white;"></i> </th>
 					<th scope="col">Add to Learning Activity</th>
 				</tr>
@@ -35,7 +35,7 @@
 			<tbody>
 			 <% @scenarios.each do |scenario| %>
 					 <tr>
-						 <td><%= link_to scenario.name, scenario_path(scenario), target: "_blank" %></td>
+						 <td><%= link_to scenario.name, scenario_path(scenario) %></td>
 						 <td>
 							 <% if scenario.pdf_file.length > 0 %>
 								 <%= link_to "View File", scenario.pdf_file_url.to_s, target: "_blank" %>
@@ -53,12 +53,9 @@
 			 <% end %>
 		 </tbody>
 		</table>
-
+			<br>
 			<%= f.submit "Create Learning Activity", :class => 'btn btn-primary'  %>
 		<% end %>
-
-		<br>
-		<p><%= link_to "Return to Learning Activities", exercises_path %></p>
 
 		<% else %>
 
@@ -72,4 +69,8 @@
 
 	<% end %>
 
+	<br>
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+
+	<br><br>
 </div>

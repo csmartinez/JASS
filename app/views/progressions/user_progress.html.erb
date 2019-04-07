@@ -10,7 +10,7 @@
 		<!-- LOOP THROUGH ALL USERS OR JUST ALL USERS THE INSTRUCTOR IS CONNECTED TO -->
 		<h4><b><%= @user.fname %> <%= @user.lname %></b></h4>
 		<b>Biography: </b><%= @user.bio %><br>
-		<b>E-mail Address: </b><%= @user.email %><br>
+		<b>E-mail Address: </b><%= link_to @user.email, "/users/#{@user.id}" %><br>
 		<br><br>
 
 		<h4><b>Assigned Learning Activities:</b></h4> <br>
@@ -52,12 +52,15 @@
 						<% end %>
 					<% end %>
 				<% end %>
-		<br>
 
 	<% else %>
 
 	<b>You do not have permission to access this page!</b>
-
+	<br>
 	<% end %>
+
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+
+	<br><br>
 
 </div>

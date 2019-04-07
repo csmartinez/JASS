@@ -27,13 +27,13 @@
 
 		<% end %>
 
-		<br>
-		<p><%= link_to "Return to NAU Classes", offerings_path %></p>
-
 	<% else %>
 
 	<b>You do not have permission to access this page!</b>
 
 	<% end %>
+	<br>
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
+	<br><br>
 </div>

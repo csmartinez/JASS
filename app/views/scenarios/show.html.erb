@@ -15,14 +15,13 @@
 			No file attached
 		<% end %>
 		<br>
-		<br>
-
-		<p><%= link_to "Return to Learning Modules", exercises_path %></p>
-
 	<% else %>
 
 	<b>You do not have permission to access this page!</b>
 
 	<% end %>
+	<br>
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
+	<br><br>
 </div>

@@ -28,8 +28,6 @@
 
     <% end %>
 
-
-
 		<div class="sketch">
 			<h1>Edit Classroom <%= @classroom.name %> <i class="fas fa-chalkboard" style="color: #323232;"></i></h1>
 		</div>
@@ -106,9 +104,6 @@
 		<p><%= link_to "Delete Virtual Classroom", classroom_path(@classroom),
                          :data => {:confirm => "Are you sure you want to delete this classroom?",
                                    :method => "delete"} %></p>
-		<br>
-		<p><%= link_to "Return to Virtual Classrooms", classrooms_path %></p>
-
 		<% else %>
 
 		<b>You do not have permission to access this page!</b>
@@ -120,5 +115,10 @@
 	<b>You do not have permission to access this page!</b>
 
 	<% end %>
+
+	<br>
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+
+	<br><br>
 
 </div>

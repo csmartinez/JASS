@@ -94,7 +94,7 @@
 
 									<% if customVisibility.include?(profile.id) == false %>
 										<tr>
-											<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
+											<td><%= link_to profile.fname, profile_path(profile) %> </td>
 											<td><%= profile.lname %></td>
 											<td><%= profile.ethnicity %></td>
 											<td><%= profile.iep %></td>
@@ -125,7 +125,7 @@
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
-		      <th scope="col"><%= sort_link "fname", "First Name" %><i class="fas fa-external-link-alt" style="color: white;"></th>
+		      <th scope="col"><%= sort_link "fname", "First Name" %></th>
 					<th scope="col"><%= sort_link "lname", "Last Name" %></th>
 		      <th scope="col"><%= sort_link "ethnicity", "Ethnicity" %></th>
 					<th scope="col"><%= sort_link "iep", "IEP" %></th>
@@ -138,7 +138,7 @@
 
 				<% @profiles.each do |profile| %>
 						<tr>
-							<td><%= link_to truncate(profile.fname, :length=> 20), profile_path(profile), target: "_blank" %> </td>
+							<td><%= link_to profile.fname, profile_path(profile) %> </td>
 							<td><%= profile.lname %></td>
 				      <td><%= profile.ethnicity %></td>
 							<td><%= profile.iep %></td>
@@ -149,19 +149,21 @@
 				<% end %>
 		  </tbody>
 		</table>
-		<br>
-		<p><%= link_to "Return to Virtual Classrooms", classrooms_path %></p>
 
 		<% else %>
 
 		<b>You do not have permission to access this page!</b>
-
+		<br>
 		<% end %>
 
 	<% else %>
 
 	<b>You do not have permission to access this page!</b>
-
+	<br>
 	<% end %>
+
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+
+	<br><br>
 
 </div>

@@ -13,16 +13,12 @@
 		Below are all student profiles. Sort or search through them by clicking the column names using the search button below.
 		<br><br>
 
-
-
 		<%= form_tag(all_profiles_url , method: :get) do %>
 			<%= text_field_tag(:search, params[:search]) %>
 			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
 		<% end %>
 
 		<!–– will_paginate @profiles   ––>
-
-
 
 		<br>
 		<table class="table">
@@ -61,18 +57,20 @@
 		  </tbody>
 		</table>
 
-		<p><%= link_to "Return to Virtual Classrooms", classrooms_path %></p>
-
 		<% else %>
 
 		<b>You do not have permission to access this page!</b>
-
+		<br>
 		<% end %>
 
 	<% else %>
 
 	<b>You do not have permission to access this page!</b>
-
+	<br>
 	<% end %>
+
+	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+
+	<br><br>
 
 </div>

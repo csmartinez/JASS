@@ -18,3 +18,6 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+function goBack() {
+	window.history.back();
+}
