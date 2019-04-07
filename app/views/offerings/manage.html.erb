@@ -6,10 +6,10 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Manage My TIP Classes <i class="fas fa-user-friends"></i></h1>
+			<h1>Manage My NAU Classes <i class="fas fa-user-friends"></i></h1>
 		</div>
 
-		Below are all your TIP classes that you instruct.
+		Below are all your NAU Classes that you instruct.
 		<br><br>
 
 		<table class="table">
@@ -17,7 +17,7 @@
 				<tr style="colSort">
 					<th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">Description</th>
-					<th scope="col">Edit TIP Class <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th scope="col">Edit NAU Class <i class="fas fa-external-link-alt" style="color: white;"></th>
 						<th scope="col">Edit Profile Visibility <i class="fas fa-external-link-alt" style="color: white;"></th>
 				</tr>
 			</thead>
@@ -28,8 +28,8 @@
 							<tr>
 								<td><%= link_to offering.name, offering_path(offering), target: "_blank" %></td>
 								<td><%= offering.description %></td>
-								<td><%= link_to 'Edit TIP Class', edit_offering_url(offering), target: "_blank" %></td>
-								<td><%= link_to 'Edit TIP Profile Visibility', new_profilevisible_path(offering), target: "_blank" %></td>
+								<td><%= link_to 'Edit NAU Class', edit_offering_url(offering), target: "_blank" %></td>
+								<td><%= link_to 'Edit Student Profile Visibility', new_profilevisible_path(offering), target: "_blank" %></td>
 							</tr>
 						<% end %>
 					<% end %>
@@ -38,7 +38,7 @@
 		</table>
 
 		<br>
-		<p><%= link_to "Return to TIP Classes", offerings_path %></p>
+		<p><%= link_to "Return to NAU Classes", offerings_path %></p>
 
 		<% else %>
 

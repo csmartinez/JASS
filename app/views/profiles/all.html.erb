@@ -20,7 +20,7 @@
 			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
 		<% end %>
 
-		<!–– will_paginate @profiles   ––> 	
+		<!–– will_paginate @profiles   ––>
 
 
 
@@ -45,13 +45,13 @@
 
 				<% @profiles.each do |profile| %>
 						<tr>
-							<td><%= profile.fname %></td>
+							<td><%= link_to profile.fname, profile_path(profile), target: "_blank" %></td>
 							<td><%= profile.lname %></td>
 				      <td><%= profile.ethnicity %></td>
 							<td><%= profile.iep %></td>
 							<td><%= profile.math %></td>
 							<td><%= profile.ela %></td>
-							<td><%= link_to truncate(profile.background, :length => 20), profile_path(profile), target: "_blank" %></td>
+							<td><%= truncate(profile.background, :length => 20) %></td>
 							<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' %>
 								<td><%= link_to 'Edit', edit_profile_url(profile) %></td>
 							<% end %>
@@ -61,11 +61,7 @@
 		  </tbody>
 		</table>
 
-
-
-
-
-		<p><%= link_to "Return to classrooms", classrooms_path %></p>
+		<p><%= link_to "Return to Virtual Classrooms", classrooms_path %></p>
 
 		<% else %>
 

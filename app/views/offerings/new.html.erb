@@ -6,7 +6,7 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Build a New TIP Class</h1>
+			<h1>Build a new NAU Class</h1>
 		</div>
 		<br>
 
@@ -29,7 +29,7 @@
 				<tr style="colSort">
 					<th scope="col">Learning Module Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">Learning Module Description</th>
-					<th scope="col">Add to TIP Class</th>
+					<th scope="col">Add to NAU Class</th>
 				</tr>
 			</thead>
 
@@ -60,7 +60,7 @@
 				<tr style="colSort">
 					<th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">E-mail</th>
-					<th scope="col">Add to TIP Class</th>
+					<th scope="col">Add to NAU Class</th>
 				</tr>
 			</thead>
 
@@ -94,7 +94,7 @@
 				<tr style="colSort">
 					<th scope="col">Classroom Name <i class="fas fa-external-link-alt" style="color: white;"></th>
 					<th scope="col">Classroom Description</th>
-					<th scope="col">Add to TIP Class</th>
+					<th scope="col">Add to NAU Class</th>
 				</tr>
 			</thead>
 
@@ -115,11 +115,11 @@
 		 </tbody>
 		</table>
 			<br>
-			<%= f.submit "Create TIP Class", :class => 'btn btn-primary'  %>
+			<%= f.submit "Create NAU Class", :class => 'btn btn-primary'  %>
 		<% end %>
 
 		<br>
-		<p><%= link_to "Return to TIP classes", offerings_path %></p>
+		<p><%= link_to "Return to NAU Classes", offerings_path %></p>
 
 		<% else %>
 
