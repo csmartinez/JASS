@@ -18,7 +18,10 @@
 			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
 		<% end %>
 
-		<!–– will_paginate @profiles   ––>
+		<% @profiles = @profiles.paginate(page: params[:page], per_page: 10) %>
+
+		<br>
+		<%= will_paginate @profiles, class: "flickr_pagination" %>
 
 		<br>
 		<table class="table">
@@ -56,6 +59,9 @@
 				<% end %>
 		  </tbody>
 		</table>
+
+		<%= will_paginate @profiles, class: "flickr_pagination" %>
+		<br>
 
 		<% else %>
 

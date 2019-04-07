@@ -7,7 +7,6 @@ class ProfilesController < ApplicationController
 		render :new
 	end
 
-
 	def all
 
   	if
@@ -15,11 +14,6 @@ class ProfilesController < ApplicationController
 		else
 			@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
 		end
-
-
-
-
-
 
 	end
 
