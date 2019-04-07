@@ -11,14 +11,17 @@
 
 		Below are all your NAU Classes that you instruct.
 		<br><br>
+		<% @offerings = @offerings.paginate(page: params[:page], per_page: 8) %>
+
+		<%= will_paginate @offerings, class: "flickr_pagination" %>
 
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
-					<th scope="col">Name <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th scope="col">Name</th>
 					<th scope="col">Description</th>
-					<th scope="col">Edit NAU Class <i class="fas fa-external-link-alt" style="color: white;"></th>
-						<th scope="col">Edit Profile Visibility <i class="fas fa-external-link-alt" style="color: white;"></th>
+					<th scope="col">Edit NAU Class</th>
+						<th scope="col">Edit Profile Visibility</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,16 +29,17 @@
 					<% @offerings.each do |offering| %>
 						<% if offering.id == enrollment.offering_id %>
 							<tr>
-								<td><%= link_to offering.name, offering_path(offering), target: "_blank" %></td>
+								<td><%= link_to offering.name, offering_path(offering) %></td>
 								<td><%= offering.description %></td>
-								<td><%= link_to 'Edit NAU Class', edit_offering_url(offering), target: "_blank" %></td>
-								<td><%= link_to 'Edit Student Profile Visibility', new_profilevisible_path(offering), target: "_blank" %></td>
+								<td><%= link_to 'Edit NAU Class', edit_offering_url(offering) %></td>
+								<td><%= link_to 'Edit Student Profile Visibility', new_profilevisible_path(offering) %></td>
 							</tr>
 						<% end %>
 					<% end %>
 				<% end %>
 			</tbody>
 		</table>
+		<%= will_paginate @offerings, class: "flickr_pagination" %>
 
 		<% else %>
 
@@ -53,5 +57,6 @@
 	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
 	<br><br>
+	<%= link_to 'Back to Dashboard', home_index_path %>
 
 </div>

@@ -11,6 +11,9 @@
 
 		Below are all Activities.
 		<br><br>
+		<% @scenarios = @scenarios.paginate(page: params[:page], per_page: 8) %>
+
+		<%= will_paginate @scenarios, class: "flickr_pagination" %>
 
 		<table class="table">
 			<thead class="thead">
@@ -20,7 +23,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @scenario.each do |scenario| %>
+				<% @scenarios.each do |scenario| %>
 						<tr>
 							<td><%= link_to scenario.name, scenario_path(scenario) %></td>
 							<td><%= link_to 'Edit Activity', edit_scenario_url(scenario) %></td>
@@ -28,6 +31,7 @@
 				<% end %>
 			</tbody>
 		</table>
+		<%= will_paginate @scenarios, class: "flickr_pagination" %>
 
 		<% else %>
 
@@ -45,5 +49,6 @@
 	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
 	<br><br>
+	<%= link_to 'Back to Dashboard', home_index_path %>
 
 </div>

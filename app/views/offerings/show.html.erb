@@ -34,6 +34,10 @@
 			<h2>Learning Modules <i class="fas fa-folder-open"></i></h2>
 		</div>
 
+		<% @exercises = @offering.exercises.paginate(page: params[:page], per_page: 5) %>
+
+		<%= will_paginate @exercises, class: "flickr_pagination" %>
+
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
@@ -43,7 +47,7 @@
 			</thead>
 
 			<tbody>
-			 <% @offering.exercises.each do |exercise| %>
+			 <% @exercises.each do |exercise| %>
 					 <tr>
 						 <td><%= link_to exercise.name, exercise_path(exercise)%> </td>
 						 <td><%= exercise.description %> </td>
@@ -52,6 +56,8 @@
 		 </tbody>
 		</table>
 
+		<%= will_paginate @exercises, class: "flickr_pagination" %>
+
 		<br>
 
     <% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
@@ -59,6 +65,10 @@
 		<div class="sketch">
 			<h2>Enrollment <i class="fas fa-users"></i></h2>
 		</div>
+
+		<% @enrollments = @offering.enrollments.paginate(page: params[:page], per_page: 5) %>
+
+		<%= will_paginate @enrollments, class: "flickr_pagination" %>
 
 		<table class="table">
 			<thead class="thead">
@@ -72,7 +82,7 @@
 
 			<tbody>
 
-			 <% @offering.enrollments.each do |enrollment| %>
+			 <% @enrollments.each do |enrollment| %>
 					 <tr>
 						 <td><%= link_to enrollment.user.fname, user_path(enrollment.user) %></td>
 						 <td><%= enrollment.user.email %> </td>
@@ -87,6 +97,7 @@
 			 <% end %>
 		 </tbody>
 		</table>
+		<%= will_paginate @enrollments, class: "flickr_pagination" %>
 
 	<% end %>
 
@@ -94,6 +105,10 @@
 		<div class="sketch">
 			<h2>Virtual Classrooms <i class="fas fa-chalkboard-teacher"></i></h2>
 		</div>
+
+		<% @classrooms = @offering.classrooms.paginate(page: params[:page], per_page: 5) %>
+
+		<%= will_paginate @classrooms, class: "flickr_pagination" %>
 
 		<table class="table">
 			<thead class="thead">
@@ -105,7 +120,7 @@
 
 			<tbody>
 
-			 <% @offering.classrooms.each do |classroom| %>
+			 <% @classrooms.each do |classroom| %>
 					 <tr>
 						 <td><%= link_to classroom.name, classroom_path(classroom) %></td>
 						 <td><%= classroom.description %> </td>
@@ -113,6 +128,8 @@
 			 <% end %>
 		 </tbody>
 		</table>
+
+		<%= will_paginate @classrooms, class: "flickr_pagination" %>
 
 		<% if current_user.acc_type != 'student' %>
 			<br>
@@ -170,5 +187,6 @@
 	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
 	<br><br>
+	<%= link_to 'Back to Dashboard', home_index_path %>
 
 </div>

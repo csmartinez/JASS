@@ -1,7 +1,7 @@
  class ScenariosController < ApplicationController
 
    def manage
-     @scenario = Scenario.all
+     @scenarios = Scenario.all
    end
 
    def destroy

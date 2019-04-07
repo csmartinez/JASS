@@ -6,6 +6,8 @@
 	<%# Code to check if this classroom is related to a TIP through an offering %>
 	<% display = false %>
 
+	<% @profiles = @profiles.paginate(page: params[:page], per_page: 8) %>
+
 		<% if current_user.acc_type == 'student' %>
 			<% current_user.offerings.each do |offering| %>
 				<% offering.classrooms.each do |classroom| %>
@@ -20,7 +22,6 @@
 								<% end %>
 							<% end %>
 
-
 						<div class="sketch">
 							<h1><%= @classroom.name %> </h1>
 						</div>
@@ -28,6 +29,7 @@
 						<b>Description: </b><%= @classroom.description %><br>
 						Assigned to you from <b><%= link_to offering.name, offering_path(offering) %></b> <br>
 						<br>
+						<%= will_paginate @profiles, class: "flickr_pagination" %>
 
 						<table class="table">
 							<thead class="thead">
@@ -44,6 +46,8 @@
 							<tbody>
 
 								<% customVisibility = Array.new %>
+
+								<br>
 
 								<% @profiles.each do |profile| %>
 									<% @profilevisibles.each do |profilevisible| %>
@@ -107,6 +111,7 @@
 							</tbody>
 						</table>
 						<br>
+						<%= will_paginate @profiles, class: "flickr_pagination" %>
 
 					<% end %>
 				<% end %>
@@ -121,6 +126,7 @@
 		<br>
 		<b>Description: </b><%= @classroom.description %><br>
 		<br>
+		<%= will_paginate @profiles, class: "flickr_pagination" %>
 
 		<table class="table">
 		  <thead class="thead">
@@ -150,6 +156,8 @@
 		  </tbody>
 		</table>
 
+		<%= will_paginate @profiles, class: "flickr_pagination" %>
+
 		<% else %>
 
 		<b>You do not have permission to access this page!</b>
@@ -165,5 +173,7 @@
 	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
 	<br><br>
+	<%= link_to 'Back to Dashboard', home_index_path %>
+
 
 </div>

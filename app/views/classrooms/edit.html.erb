@@ -72,8 +72,6 @@
       <tbody>
 
        <% @profiles.each do |profile| %>
-
-
            <tr>
 						 <td><%= link_to profile.fname, profile_path(profile), target: "_blank" %></td>
 						 <td><%= profile.lname %></td>
@@ -93,7 +91,6 @@
            </tr>
        <% end %>
      </tbody>
-
     </table>
 
 			<br>
@@ -120,5 +117,6 @@
 	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
 
 	<br><br>
+	<%= link_to 'Back to Dashboard', home_index_path %>
 
 </div>

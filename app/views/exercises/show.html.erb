@@ -28,6 +28,11 @@
 			<h3>Activities <i class="fas fa-file-alt"></i></h3>
 		</div>
 		<br>
+
+		<% @scenarios = @scenarios.paginate(page: params[:page], per_page: 8) %>
+
+		<%= will_paginate @scenarios, class: "flickr_pagination" %>
+
 		<table class="table">
 		  <thead class="thead">
 		    <tr style="colSort">
@@ -53,6 +58,8 @@
 				<% end %>
 		  </tbody>
 		</table>
+
+		<%= will_paginate @scenarios, class: "flickr_pagination" %>
 		<br>
 
 		<% else %>
