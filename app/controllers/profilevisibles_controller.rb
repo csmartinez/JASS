@@ -8,11 +8,15 @@ class ProfilevisiblesController < ApplicationController
   def create
 		@profilevisible = Profilevisible.new(profilevisible_params)
     @profilevisible.errors.full_messages
+    @classroomoffering = Classroomoffering.find(@profilevisible.classroomoffering_id)
+    @offering = Offering.find(@classroomoffering.offering_id)
+
 		if @profilevisible.save
-      render 'offerings/index'
+      flash[:notice] = "Visibility Successfully Updated"
+      redirect_to new_profilevisible_path(@offering)
 		else
-      @profilevisible.errors.full_messages
-      render 'offerings/index'
+      flash[:notice] = @profilevisible.errors.full_messages
+      redirect_to new_profilevisible_path(@offering)
 		end
   end
 
