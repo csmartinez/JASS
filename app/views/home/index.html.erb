@@ -78,11 +78,7 @@
 			<h4>Account Type: <b>Local administrator</b> </h4>
 			<p>Privileges: Manage faculty and students...</p>
 			<p>
-					<% @users.each do |user| %>
-						<% if user.superior == current_user.id %>
-							<b><%= user.email %></b> (Faculty)
-					 <% end %>
-				<% end %>
+					
 
 		<% elsif current_user.acc_type == 'faculty' %>
 
