@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   resources :offerings do
     collection do
       get 'manage' => 'offerings#manage', as: :manage
-      get 'visibility/:id' => 'offerings#visibility', as: :visibility
     end
   end
   resources :exercises do

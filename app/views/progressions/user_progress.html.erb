@@ -4,7 +4,10 @@
 	<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>TIP Progress</h1>
+			<h1>
+				<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
+				TIP Progress
+			</h1>
 		</div>
 		<br>
 		<!-- LOOP THROUGH ALL USERS OR JUST ALL USERS THE INSTRUCTOR IS CONNECTED TO -->

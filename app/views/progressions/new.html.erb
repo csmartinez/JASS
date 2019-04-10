@@ -4,7 +4,10 @@
 	<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Edit Student Progress <i class="fas fa-user-check"></i></h1>
+			<h1>
+				<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
+				Edit Student Progress <i class="fas fa-user-check"></i>
+			</h1>
 		</div>
 		<i>This function is under construction</i>.
 		<br><br>

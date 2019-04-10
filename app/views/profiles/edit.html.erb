@@ -2,7 +2,10 @@
 	<br><br>
 	<% if current_user.acc_type == 'admin' || current_user.acc_type == 'superadmin' %>
 		<div class="sketch">
-	  	<h1>Edit <%= @profile.fname %> <%= @profile.lname %> <i class="fas fa-pencil-alt"></i></h1>
+	  	<h1>
+				<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
+				Edit <%= @profile.fname %> <%= @profile.lname %> <i class="fas fa-pencil-alt"></i>
+			</h1>
 		</div>
 		<br>
 

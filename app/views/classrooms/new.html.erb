@@ -6,7 +6,10 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Build a Classroom <i class="fas fa-chalkboard" style="color: #323232;"></i></h1>
+			<h1>
+				<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
+				Build a Classroom <i class="fas fa-chalkboard" style="color: #323232;"></i>
+			</h1>
 		</div>
 
 		<br>

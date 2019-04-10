@@ -6,7 +6,10 @@
 		<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
 		<div class="sketch">
-			<h1>Create a New Student Profile</h1>
+			<h1>
+				<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
+				Create a New Student Profile
+			</h1>
 		</div>
 
 		<br>
@@ -36,7 +39,7 @@
 			<br>
 		  <%= f.submit "Create Profile", :class => 'btn btn-primary'  %>
 		<% end %>
-		
+
 		<% else %>
 
 		<b>You do not have permission to access this page!</b>
