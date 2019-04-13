@@ -23,16 +23,39 @@
 		<% end %>
 
 		<%= form_for @offering do |f| %>
-			<%= f.label :title %>
-			<%= f.text_field :name, class: "form-control" %>
-			<%= f.label :description %> <br>
-			<%= f.text_area :description, cols: "60", rows: "3", class: "form-control"  %>
-			<%= f.label :message_to_students %> <br>
-			<%= f.text_area :message, cols: "60", rows: "3", class: "form-control"  %>
-			<%= f.label :passcode %>
-			<%= f.text_field :passcode, class: "form-control" %>
-			<br><br>
 
+			<br>
+			<div class="sketch">
+				<h2>Virtual Classrooms</h2>
+			</div>
+
+			<table class="table">
+				<thead class="thead">
+					<tr style="colSort">
+						<th scope="col">Name</th>
+						<th scope="col">Description</th>
+						<th scope="col">Add to NAU Class</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+				 <% @classrooms.each do |classroom| %>
+						 <tr>
+							 <td><%= link_to classroom.name, classroom_path(classroom) %></td>
+							 <td><%= classroom.description %> </td>
+							 <td>
+								 <label class="checkbox_container">
+									<%= check_box_tag "offering[classroom_ids][]", classroom.id,  f.object.classrooms.include?(classroom) %>
+									<span class="checkmark"></span>
+								 </label>
+							 </td>
+						 </tr>
+				 <% end %>
+			 </tbody>
+			</table>
+
+			<br>
 		  <%= f.submit "Update NAU Class", :class => 'btn btn-primary' %>
 		<% end %>
 

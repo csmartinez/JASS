@@ -35,8 +35,14 @@
 							<tr>
 								<td><%= link_to offering.name, offering_path(offering) %></td>
 								<td><%= truncate(offering.description, :length => 20) %></td>
-								<td><%= link_to 'Edit NAU Class', edit_offering_url(offering) %></td>
-								<td><%= link_to 'Edit Profile Visibility', new_profilevisible_path(offering) %></td>
+								<td><%= link_to 'Edit Basic Information', edit_offering_path(offering) %> <br>
+										<%= link_to 'Edit Learning Modules', editExercises_offerings_url(offering) %> <br>
+										<%= link_to 'Edit Virtual Classrooms', editClassrooms_offerings_url(offering) %> <br>
+										<%= link_to 'Edit Enrollment', editEnrollment_offerings_url(offering) %>
+								</td>
+								<td><%= link_to 'Add Profile Visibility', new_profilevisible_path(offering) %><br>
+										<%= link_to 'View Profile Visibility', profilevisible_path(offering) %>
+									</td>
 								<td><%= offering.passcode %></td>
 							</tr>
 						<% end %>

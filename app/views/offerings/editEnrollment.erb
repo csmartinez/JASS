@@ -23,23 +23,41 @@
 		<% end %>
 
 		<%= form_for @offering do |f| %>
-			<%= f.label :title %>
-			<%= f.text_field :name, class: "form-control" %>
-			<%= f.label :description %> <br>
-			<%= f.text_area :description, cols: "60", rows: "3", class: "form-control"  %>
-			<%= f.label :message_to_students %> <br>
-			<%= f.text_area :message, cols: "60", rows: "3", class: "form-control"  %>
-			<%= f.label :passcode %>
-			<%= f.text_field :passcode, class: "form-control" %>
-			<br><br>
+			<br>
+			<div class="sketch">
+				<h2>Enrollment</h2>
+			</div>
 
+			<table class="table">
+				<thead class="thead">
+					<tr style="colSort">
+						<th scope="col">Name</th>
+						<th scope="col">E-mail</th>
+						<th scope="col">Add to NAU Class</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+				 <% @users.each do |user| %>
+					 <tr>
+						 <td><%= link_to user.fname, user_path(user) %></td>
+						 <td><%= user.email %> </td>
+						 <td>
+							 <label class="checkbox_container">
+								 <%= check_box_tag "offering[user_ids][]", user.id,  f.object.users.include?(user) %>
+								 <span class="checkmark"></span>
+								</label>
+						 </td>
+						 </tr>
+				 <% end %>
+			 </tbody>
+			</table>
+
+			<br>
 		  <%= f.submit "Update NAU Class", :class => 'btn btn-primary' %>
 		<% end %>
 
-		<br><br>
-		<p><%= link_to "Delete NAU Class", offering_path(@offering),
-                         :data => {:confirm => "Are you sure you want to delete this NAU class?",
-                                   :method => "delete"} %></p>
 		<% else %>
 
 		<b>You do not have permission to access this page!</b>

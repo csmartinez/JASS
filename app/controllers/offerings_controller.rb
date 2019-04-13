@@ -38,12 +38,23 @@ class OfferingsController < ApplicationController
 
 	def edit
     @offering = Offering.find(params[:id])
-		@exercises = Exercise.all
-    @users = User.all
-		@classrooms = Classroom.all
-    @enrollments = Enrollment.all
     render :edit
   end
+
+	def editExercises
+		@offering = Offering.find(params[:id])
+		@exercises = Exercise.all
+	end
+
+	def editEnrollment
+		@offering = Offering.find(params[:id])
+		@users = User.all
+	end
+
+	def editClassrooms
+		@offering = Offering.find(params[:id])
+		@classrooms = Classroom.all
+	end
 
   def update
     @offering = Offering.find(params[:id])

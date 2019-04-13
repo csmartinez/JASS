@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :offerings do
     collection do
       get 'manage' => 'offerings#manage', as: :manage
+      get 'editExercises/:id' => 'offerings#editExercises', as: :editExercises
+      get 'editEnrollment/:id' => 'offerings#editEnrollment', as: :editEnrollment
+      get 'editClassrooms/:id' => 'offerings#editClassrooms', as: :editClassrooms
     end
   end
   resources :exercises do
