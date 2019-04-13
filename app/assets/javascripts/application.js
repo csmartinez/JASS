@@ -13,11 +13,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require popper
-//= require bootstrap
 //= require turbolinks
-//= require_tree .
 //= require jquery
+//= require jquery_ujs
+//= require bootstrap
 //= require bootstrap-sprockets
+//= require_tree .
+
 function goBack() {
 	window.history.back();
 }
