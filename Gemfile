@@ -37,11 +37,11 @@ gem 'popper_js', '~> 1.14.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'bootstrap', ">= 4.3.1"
-gem 'jquery-rails'
+# gem "bootstrap-sass", ">= 3.4.1"
+gem "bootstrap", ">= 4.3.1"
 gem 'mini_racer'
+gem 'jquery-rails'
 gem "devise", ">= 4.6.0"
-gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
