@@ -72,7 +72,8 @@ gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'dotenv-rails', '~> 2.6'
 
 gem 'filterrific'
-
+gem "actionview", ">= 5.2.2.1"
+gem 'railties'
 
 # Pagination of pages
 

@@ -15,8 +15,10 @@
 		Below are all your NAU Classes that you instruct.
 		<br><br>
 		<% @offerings = @offerings.paginate(page: params[:page], per_page: 8) %>
-		
-		<%= will_paginate @offerings, class: "flickr_pagination" %>
+
+		<% if @offerings.length > 8 %>
+			<%= will_paginate @offerings, class: "flickr_pagination" %>
+		<% end %>
 
 		<table class="table">
 			<thead class="thead">
@@ -50,7 +52,9 @@
 				<% end %>
 			</tbody>
 		</table>
-		<%= will_paginate @offerings, class: "flickr_pagination" %>
+		<% if @offerings.length > 8 %>
+			<%= will_paginate @offerings, class: "flickr_pagination" %>
+		<% end %>
 
 		<% else %>
 

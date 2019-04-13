@@ -32,7 +32,9 @@
 						<b>Description: </b><%= @classroom.description %><br>
 						Assigned to you from <b><%= link_to offering.name, offering_path(offering) %></b> <br>
 						<br>
-						<%= will_paginate @profiles, class: "flickr_pagination" %>
+						<% if @profiles != nil %>
+							<%= will_paginate @profiles, class: "flickr_pagination" %>
+						<% end %>
 
 						<table class="table">
 							<thead class="thead">
@@ -114,7 +116,10 @@
 							</tbody>
 						</table>
 						<br>
-						<%= will_paginate @profiles, class: "flickr_pagination" %>
+
+						<% if @profiles != nil %>
+							<%= will_paginate @profiles, class: "flickr_pagination" %>
+						<% end %>
 
 					<% end %>
 				<% end %>
@@ -132,7 +137,9 @@
 		<br>
 		<b>Description: </b><%= @classroom.description %><br>
 		<br>
-		<%= will_paginate @profiles, class: "flickr_pagination" %>
+		<% if @profiles != nil %>
+			<%= will_paginate @profiles, class: "flickr_pagination" %>
+		<% end %>
 
 		<table class="table">
 		  <thead class="thead">
@@ -162,7 +169,9 @@
 		  </tbody>
 		</table>
 
-		<%= will_paginate @profiles, class: "flickr_pagination" %>
+		<% if @profiles != nil %>
+			<%= will_paginate @profiles, class: "flickr_pagination" %>
+		<% end %>
 
 		<% else %>
 
