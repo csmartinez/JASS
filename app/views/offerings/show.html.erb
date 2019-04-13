@@ -16,7 +16,6 @@
 
 			<div class="sketch">
 				<h1>
-					<button onclick="goBack()" class="btn btn-warning" style="margin-right: 10px;"><i class="fas fa-backward" style="color: white;"></i></button>
 					<%= @offering.name %>
 				</h1>
 			</div>
@@ -35,148 +34,174 @@
 			</ul>
 			<br>
 
-			<div class="sketch">
-				<h2>Learning Modules <i class="fas fa-folder-open"></i></h2>
-			</div>
+			<div id="accordion">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0" data-toggle="collapse" data-target="#modules" aria-expanded="false" aria-controls="modules">
+							<button class="btn sketch">
+								<h2>Learning Modules <i class="fas fa-folder-open"></i></h2>
+							</button>
+						</h5>
+					</div>
 
-			<% @exercises = @offering.exercises.paginate(page: params[:page], per_page: 5) %>
+					<div id="modules" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
 
-			<%= will_paginate @exercises, class: "flickr_pagination" %>
+							<table class="table">
+								<thead class="thead">
+									<tr style="colSort">
+										<th scope="col">Learning Module Name</th>
+										<th scope="col">Learning Module Description</th>
+									</tr>
+								</thead>
 
-			<table class="table">
-				<thead class="thead">
-					<tr style="colSort">
-						<th scope="col">Learning Module Name</th>
-						<th scope="col">Learning Module Description</th>
-					</tr>
-				</thead>
+								<tbody>
+								 <% @offering.exercises.each do |exercise| %>
+										 <tr>
+											 <td><%= link_to exercise.name, offering_exercise_path(@offering, exercise) %> </td>
+											 <td><%= exercise.description %> </td>
+										 </tr>
+								 <% end %>
+							 </tbody>
+							</table>
 
-				<tbody>
-				 <% @exercises.each do |exercise| %>
-						 <tr>
-							 <td><%= link_to exercise.name, offering_exercise_path(@offering, exercise) %> </td>
-							 <td><%= exercise.description %> </td>
-						 </tr>
-				 <% end %>
-			 </tbody>
-			</table>
+						</div>
+					</div>
+				</div>
 
-			<%= will_paginate @exercises, class: "flickr_pagination" %>
+				<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
 
-			<br>
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0" data-toggle="collapse" data-target="#enrollment" aria-expanded="false" aria-controls="enrollment">
+							<button class="btn sketch">
+								<h2>Enrollment <i class="fas fa-users"></i></h2>
+							</button>
+						</h5>
+					</div>
 
-	    <% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' || current_user.acc_type == 'faculty' %>
+					<div id="enrollment" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
 
-			<div class="sketch">
-				<h2>Enrollment <i class="fas fa-users"></i></h2>
-			</div>
+							<table class="table">
+								<thead class="thead">
+									<tr style="colSort">
+										<th scope="col">Name</th>
+										<th scope="col">User E-mail</th>
+										<th scope="col">Role</th>
+										<th scope="col">Activity Progress</th>
+									</tr>
+								</thead>
 
-			<% @enrollments = @offering.enrollments.paginate(page: params[:page], per_page: 5) %>
+								<tbody>
 
-			<%= will_paginate @enrollments, class: "flickr_pagination" %>
+								 <% @offering.enrollments.each do |enrollment| %>
+										 <tr>
+											 <td><%= link_to enrollment.user.fname, user_path(enrollment.user) %></td>
+											 <td><%= enrollment.user.email %> </td>
+											 <% if enrollment.user.acc_type == 'student' %>
+												<td>Student</td>
+												<td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id)%></td>
+											 <% else %>
+												<td><%= enrollment.user.acc_type %></td>
+												<td> </td>
+											 <% end %>
+										 </tr>
+								 <% end %>
 
-			<table class="table">
-				<thead class="thead">
-					<tr style="colSort">
-						<th scope="col">Name</th>
-						<th scope="col">User E-mail</th>
-						<th scope="col">Role</th>
-						<th scope="col">Activity Progress</th>
-					</tr>
-				</thead>
+							 </tbody>
+							</table>
 
-				<tbody>
+						</div>
+					</div>
+				</div>
+				<% end %>
 
-				 <% @enrollments.each do |enrollment| %>
-						 <tr>
-							 <td><%= link_to enrollment.user.fname, user_path(enrollment.user) %></td>
-							 <td><%= enrollment.user.email %> </td>
-							 <% if enrollment.role != 'instructor' %>
-							 	<td>TIP</td>
-								<td><%= link_to "View Activity Progress", user_progress_progressions_path(enrollment.user.id)%></td>
-							 <% else %>
-							 	<td>Instructor</td>
-								<td> </td>
-							 <% end %>
-						 </tr>
-				 <% end %>
-			 </tbody>
-			</table>
-			<%= will_paginate @enrollments, class: "flickr_pagination" %>
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0" data-toggle="collapse" data-target="#classrooms" aria-expanded="false" aria-controls="classrooms">
+							<button class="btn sketch">
+								<h2>Virtual Classrooms <i class="fas fa-chalkboard-teacher"></i></h2>
+							</button>
+						</h5>
+					</div>
 
-	<% end %>
+					<div id="classrooms" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
 
-		<br>
-		<div class="sketch">
-			<h2>Virtual Classrooms <i class="fas fa-chalkboard-teacher"></i></h2>
-		</div>
+							<table class="table">
+								<thead class="thead">
+									<tr style="colSort">
+										<th scope="col">Name</th>
+										<th scope="col">Description</th>
+									</tr>
+								</thead>
 
-		<% @classrooms = @offering.classrooms.paginate(page: params[:page], per_page: 5) %>
+								<tbody>
 
-		<%= will_paginate @classrooms, class: "flickr_pagination" %>
+								 <% @offering.classrooms.each do |classroom| %>
+										 <tr>
+											 <td><%= link_to classroom.name, offering_classroom_path(@offering, classroom) %></td>
+											 <td><%= classroom.description %> </td>
+										 </tr>
+								 <% end %>
+							 </tbody>
+							</table>
 
-		<table class="table">
-			<thead class="thead">
-				<tr style="colSort">
-					<th scope="col">Classroom Name</th>
-					<th scope="col">Classroom Description</th>
-				</tr>
-			</thead>
+						</div>
+					</div>
+				</div>
 
-			<tbody>
+				<% if current_user.acc_type != 'student' %>
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0" data-toggle="collapse" data-target="#visibilities" aria-expanded="false" aria-controls="visibilities">
+							<button class="btn sketch">
+								<h2>Profile Student Visibility <i class="fas fa-eye-slash"></i></h2>
+							</button>
+						</h5>
+					</div>
 
-			 <% @classrooms.each do |classroom| %>
-					 <tr>
-						 <td><%= link_to classroom.name, offering_classroom_path(@offering, classroom) %></td>
-						 <td><%= classroom.description %> </td>
-					 </tr>
-			 <% end %>
-		 </tbody>
-		</table>
+					<div id="visibilities" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
+							<table class="table">
+								<thead class="thead">
+									<tr style="colSort">
+										<th>Student Name</th>
+										<th>Virtual Classroom</th>
+										<th>Profile Name</th>
+										<th>Last Name</th>
+										<th>Grade Level</th>
+										<th>Ethnicity</th>
+										<th>IEP</th>
+										<th>Background</th>
+									</tr>
+								</thead>
 
-		<%= will_paginate @classrooms, class: "flickr_pagination" %>
+								<tbody>
 
-		<% if current_user.acc_type != 'student' %>
-			<br>
-			<div class="sketch">
-				<h2>Profile Student Visibility</h2>
-			</div>
-
-			<table class="table">
-				<thead class="thead">
-					<tr style="colSort">
-						<th>Student Name</th>
-						<th>Virtual Classroom</th>
-						<th>Profile Name</th>
-						<th>Last Name</th>
-						<th>Grade Level</th>
-						<th>Ethnicity</th>
-						<th>IEP</th>
-						<th>Background</th>
-					</tr>
-				</thead>
-
-				<tbody>
-
-				 <% @offering.classroomofferings.each do |join| %>
-				 		<% join.profilevisibles.each do |profilevisible| %>
-						 <tr>
-									<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}"%> </td>
-									<td><%= link_to join.classroom.name , classroom_path(join.classroom)%> </td>
-									<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile) %></td>
-									<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>
-									<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
-									<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
-									<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
-									<td><%= truncate(profilevisible.profile.background, :length => 20) %> (<%= profilevisible.background %>)</td>
-						 </tr>
-					<% end %>
-				 <% end %>
-			 </tbody>
-			</table>
-		<% end %>
-		<br>
-
+								 <% @offering.classroomofferings.each do |join| %>
+								 		<% join.profilevisibles.each do |profilevisible| %>
+										 <tr>
+													<td><%= link_to profilevisible.user.fname, "/users/#{profilevisible.user_id}"%> </td>
+													<td><%= link_to join.classroom.name , classroom_path(join.classroom)%> </td>
+													<td><%= link_to profilevisible.profile.fname, profile_path(profilevisible.profile) %></td>
+													<td><%= profilevisible.profile.lname %> (<%= profilevisible.lname %>)</td>
+													<td><%= profilevisible.profile.gradelevel %> (<%= profilevisible.gradelevel %>)</td>
+													<td><%= profilevisible.profile.ethnicity %> (<%= profilevisible.ethnicity %>)</td>
+													<td><%= profilevisible.profile.iep %> (<%= profilevisible.iep %>)</td>
+													<td><%= truncate(profilevisible.profile.background, :length => 20) %> (<%= profilevisible.background %>)</td>
+										 </tr>
+									<% end %>
+								 <% end %>
+							 </tbody>
+							</table>
+						</div> <!-- card body -->
+					</div>
+				</div> <!-- card -->
+				<% end %>
+				<br>
+			</div> <!-- accordion -->
 		<% else %>
 
 		<b>You do not have permission to access this page!</b>
@@ -189,7 +214,12 @@
 
 	<% end %>
 
-	<button onclick="goBack()" class="btn btn-warning"><i class="fas fa-backward" style="color: white;"></i></button>
+	<br>
+	<% if current_user.acc_type != 'student' %>
+		<%= link_to 'Back to Manage NAU Classes', manage_offerings_path %> <br><br>
+	<% end  %>
+
+	<%= link_to 'Back to NAU Classes Dashboard', offerings_path %>
 
 	<br><br>
 	<%= link_to 'Back to Dashboard', home_index_path %>
