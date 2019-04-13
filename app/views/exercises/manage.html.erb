@@ -16,7 +16,9 @@
 		<br><br>
 		<% @exercises = @exercises.paginate(page: params[:page], per_page: 8) %>
 
-		<%= will_paginate @exercises, class: "flickr_pagination" %>
+		<% if @exercises.length > 8 %>
+			<%= will_paginate @exercises, class: "flickr_pagination" %>
+		<% end %>
 
 		<table class="table">
 			<thead class="thead">
@@ -34,7 +36,10 @@
 				<% end %>
 			</tbody>
 		</table>
+
+		<% if @exercises.length > 8 %>
 			<%= will_paginate @exercises, class: "flickr_pagination" %>
+		<% end %>
 
 		<% else %>
 
