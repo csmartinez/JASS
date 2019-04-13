@@ -1,11 +1,9 @@
 class User < ApplicationRecord
 	has_many :enrollments
-	has_many :offerings, through: :enrollments
+	has_many :offerings, through: :enrollments, dependent: :destroy
 
 	has_many :progressions
-	has_many :scenarios, -> { distinct }, through: :progressions
-
-
+	has_many :scenarios, -> { distinct }, through: :progressions, dependent: :destroy
 
 	#mount_uploader :main_image, ExerciseUploader
 
