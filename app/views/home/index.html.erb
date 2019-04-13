@@ -92,7 +92,9 @@
 			<h4>Account Type: <b>Local administrator</b> </h4>
 
 			<p>
-				This account is managed by: <%= @superior.fname + ' ' + @superior.lname + ' (' + @superior.email + ') ' %><br><br>
+				<% if @superior != '' %>
+					This account is managed by: <%= @superior.fname + ' ' + @superior.lname + ' (' + @superior.email + ') ' %><br><br>
+				<% end %>
 				New Faculty Sign-Up Key: <b><%= current_user.faculty_key %></b>
 				<%= button_to generate_faculty_key_users_path, class: "btn btn-light btn-sm", :data => {:confirm => 'Are you sure you want to generate a new faculty sign up key?'} do %>
 				   <i class="fas fa-sync"></i> Generate New Key
@@ -130,7 +132,9 @@
 			<br>
 			<h4>Account Type: <b>Faculty</b> </h4>
 			<p>
-				This account is managed by: <%= @superior.fname + ' ' + @superior.lname + ' (' + @superior.email + ') ' %><br><br>
+				<% if @superior != '' %>
+					This account is managed by: <%= @superior.fname + ' ' + @superior.lname + ' (' + @superior.email + ') ' %><br><br>
+				<% end %>
 			</p>
 
 			<br><br><br>
