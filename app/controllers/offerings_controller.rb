@@ -58,12 +58,11 @@ class OfferingsController < ApplicationController
 
   def update
     @offering = Offering.find(params[:id])
-    if @offering.update_attributes(offering_params)
-      #successful
+    if @offering.update_attributes(params.require(:offering).permit(:id, :name, :passcode, :description, :message, {  user_ids: [] }, {  exercise_ids: [] }, {  classroom_ids: [] }))
+      redirect_to @offering
     else
-      #unsuccessful
+      redirect_to home_index_path
     end
-    redirect_to @offering
   end
 
 	def destroy

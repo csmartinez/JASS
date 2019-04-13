@@ -48,7 +48,7 @@
 
 				<% @scenarios.each do |scenario| %>
 						<tr>
-							<td><%= link_to scenario.name, scenario_path(scenario) %></td>
+							<td><%= link_to scenario.name, exercise_scenario_path(@exercise, scenario) %></td>
 							<td><%= scenario.description %></td>
 							<td>
 								<% if scenario.pdf_file.length > 0 %>
