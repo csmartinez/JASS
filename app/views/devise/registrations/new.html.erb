@@ -23,8 +23,14 @@
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-			<%= f.hidden_field :acc_type, :value => 'student' %>
     </div>
+
+		<%= f.hidden_field :acc_type, :value => 'student' %>
+
+		<div class="field">
+			<%= f.label :"Sign Up Key" %><br />
+      <%= f.text_field :signup_key %>
+		</div>
 
     <div class="field">
       <%= f.label :password %>

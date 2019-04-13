@@ -50,7 +50,14 @@ Rails.application.routes.draw do
   resources :enrollments
   root 'home#index'
   devise_for :users, :controllers => { registrations: 'registrations' }
-  get 'users/:id' => 'users#show', as: :user
+
+  resources :users do
+    collection do
+      post :generate_faculty_key
+      post :generate_admin_key
+      get 'users/:id' => 'users#show', as: :user
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -33,6 +33,7 @@
 			  </li>
 
 			</ul>
+			<br>
 		</div>
 
 		<div class="contentRight">
@@ -41,7 +42,19 @@
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
 			<br>
 			<h4>Account Type: <b>Super administrator</b> </h4>
-			<p>Privileges: Manage all administrators, faculty, and students. </p>
+			<br>
+			<p>New <u>Local Administrator</u> Sign-Up Key: <b><%= current_user.admin_key %></b>
+				<%= button_to generate_admin_key_users_path, class: "btn btn-light btn-sm", :data => {:confirm => 'Are you sure you want to generate a new administrator sign up key?'} do %>
+				   <i class="fas fa-sync"></i> Generate New Key
+				<% end %>
+			</p>
+			<br>
+
+			<p>New <u>Faculty</u> Sign-Up Key: <b><%= current_user.faculty_key %></b>
+				<%= button_to generate_faculty_key_users_path, class: "btn btn-light btn-sm", :data => {:confirm => 'Are you sure you want to generate a new faculty sign up key?'} do %>
+				   <i class="fas fa-sync"></i> Generate New Key
+				<% end %>
+			<p>
 
 			<br><br><br>
 		</div>
@@ -68,6 +81,7 @@
 			    <a class="nav-link" href="/offerings">NAU Classes</a>
 			  </li>
 			</ul>
+			<br>
 		</div>
 
 		<div class="contentRight">
@@ -76,9 +90,15 @@
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
 			<br>
 			<h4>Account Type: <b>Local administrator</b> </h4>
-			<p>Privileges: Manage faculty and students...</p>
+
 			<p>
-					
+				This account is managed by: <%= @superior.fname + ' ' + @superior.lname + ' (' + @superior.email + ') ' %><br><br>
+				New Faculty Sign-Up Key: <b><%= current_user.faculty_key %></b>
+				<%= button_to generate_faculty_key_users_path, class: "btn btn-light btn-sm", :data => {:confirm => 'Are you sure you want to generate a new faculty sign up key?'} do %>
+				   <i class="fas fa-sync"></i> Generate New Key
+				<% end %>
+				<br>
+			</p>
 
 		<% elsif current_user.acc_type == 'faculty' %>
 
@@ -109,7 +129,9 @@
 			<p>How goes it, <%= current_user.fname %>? This is your personal dashboard.</p>
 			<br>
 			<h4>Account Type: <b>Faculty</b> </h4>
-			<p>Privileges: Manage students. </p>
+			<p>
+				This account is managed by: <%= @superior.fname + ' ' + @superior.lname + ' (' + @superior.email + ') ' %><br><br>
+			</p>
 
 			<br><br><br>
 		</div>
