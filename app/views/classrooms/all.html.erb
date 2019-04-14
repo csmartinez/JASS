@@ -14,9 +14,9 @@
 
 		Below are all classrooms in the system.
 		<br><br>
-		<% @classrooms = @classrooms.paginate(page: params[:page], per_page: 10) %>
+		<%# @classrooms = @classrooms.paginate(page: params[:page], per_page: 10) %>
 
-		<%= will_paginate @classrooms, class: "flickr_pagination" %>
+		<%#= will_paginate @classrooms, class: "flickr_pagination" %>
 
 		<table class="table">
 			<thead class="thead">
@@ -33,7 +33,7 @@
 			</tbody>
 		</table>
 
-		<%= will_paginate @classrooms, class: "flickr_pagination" %>
+		<%#= will_paginate @classrooms, class: "flickr_pagination" %>
 
 		<% else %>
 
