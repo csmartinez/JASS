@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home/edit'
   get 'home/index'
+  get 'home/credits'
 
   resources :profilevisibles do
     collection do
