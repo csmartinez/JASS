@@ -39,6 +39,7 @@
 					<th scope="col"><%= sort_link "iep", "IEP" %></th>
 					<th scope="col"><%= sort_link "math", "Math" %></th>
 					<th scope="col"><%= sort_link "ela", "ELA" %></th>
+					<th scope="col"><%= sort_link "grade", "Grade" %></th>
 					<th scope="col">Background</th>
 					<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' %>
 						<th>Edit</th>
@@ -55,6 +56,7 @@
 							<td><%= profile.iep %></td>
 							<td><%= profile.math %></td>
 							<td><%= profile.ela %></td>
+							<td><%= profile.grade %></td>
 							<td><%= truncate(profile.background, :length => 20) %></td>
 							<% if current_user.acc_type == 'superadmin' || current_user.acc_type == 'admin' %>
 								<td><%= link_to 'Edit', edit_profile_url(profile) %></td>

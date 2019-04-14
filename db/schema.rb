@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_184918) do
+ActiveRecord::Schema.define(version: 2019_04_14_223219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_184918) do
     t.string "ela"
     t.text "background"
     t.integer "gradelevel"
+    t.integer "grade"
   end
 
   create_table "profilevisibles", force: :cascade do |t|

@@ -52,7 +52,7 @@ class ProfilesController < ApplicationController
 	end
 private
 	def sortable_columns
-		["fname", "lname", "ethnicity", "iep", "math", "ela"]
+		["fname", "lname", "ethnicity", "iep", "math", "ela", "grade"]
 	end
 
 	def sort_column
@@ -64,6 +64,6 @@ private
 	end
 
 	def profile_params
-    params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background)
+    params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background, :grade)
   end
 end

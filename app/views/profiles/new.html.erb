@@ -17,23 +17,25 @@
 		<%= form_for @profile do |f| %>
 			<div class="row">
 				<div class="col">
-			  <%= f.label :first_name %>
-			  <%= f.text_field :fname, class: "form-control" %>
-				<%= f.label :last_name %>
-			  <%= f.text_field :lname, class: "form-control" %>
-				<%= f.label :math %>
-			  <%= f.text_field :math, class: "form-control" %>
-				<%= f.label :ela %>
-			  <%= f.text_field :ela, class: "form-control" %>
+				  <%= f.label :first_name %>
+				  <%= f.text_field :fname, class: "form-control" %>
+					<%= f.label :last_name %>
+				  <%= f.text_field :lname, class: "form-control" %>
+					<%= f.label :math %>
+				  <%= f.text_field :math, class: "form-control" %>
+					<%= f.label :ela %>
+				  <%= f.text_field :ela, class: "form-control" %>
 				</div>
 
 				<div class="col">
-				<%= f.label :iep %>
-			  <%= f.text_field :iep, class: "form-control" %>
-				<%= f.label :ethnicity %>
-			  <%= f.text_field :ethnicity, class: "form-control" %>
-				<%= f.label :"Background" %>
-				<%= f.text_area :background, cols: "60", rows: "3", autocomplete: "background", class: "form-control" %>
+					<%= f.label :grade_level %>
+					<%= f.text_field :grade, class: "form-control" %>
+					<%= f.label :iep %>
+				  <%= f.text_field :iep, class: "form-control" %>
+					<%= f.label :ethnicity %>
+				  <%= f.text_field :ethnicity, class: "form-control" %>
+					<%= f.label :"Background" %>
+					<%= f.text_area :background, cols: "60", rows: "3", autocomplete: "background", class: "form-control" %>
 				</div>
 			</div>
 			<br>
