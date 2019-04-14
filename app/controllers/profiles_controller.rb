@@ -28,13 +28,13 @@ class ProfilesController < ApplicationController
 	def update
     @profile = Profile.find(params[:id])
 		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
-		
+
     if @profile.update_attributes(profile_params)
       #successful
     else
       #unsuccessful
     end
-    render :all
+    render :show
   end
 
 	def create
