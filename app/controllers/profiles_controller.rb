@@ -8,13 +8,11 @@ class ProfilesController < ApplicationController
 	end
 
 	def all
-
   	if
 			@profiles = Profile.search(params[:search])
 		else
 			@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
 		end
-
 	end
 
 	def edit
@@ -29,12 +27,14 @@ class ProfilesController < ApplicationController
 
 	def update
     @profile = Profile.find(params[:id])
+		@profiles = Profile.all.order("#{sort_column} #{sort_direction}")
+		
     if @profile.update_attributes(profile_params)
       #successful
     else
       #unsuccessful
     end
-    render 'classrooms/index'
+    render :all
   end
 
 	def create
