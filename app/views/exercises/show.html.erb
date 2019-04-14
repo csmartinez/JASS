@@ -34,7 +34,9 @@
 
 		<% @scenarios = @scenarios.paginate(page: params[:page], per_page: 8) %>
 
-		<%= will_paginate @scenarios, class: "flickr_pagination" %>
+		<% if @scenarios != nil %>
+			<%= will_paginate @scenarios, class: "flickr_pagination" %>
+		<% end %>
 
 		<table class="table">
 		  <thead class="thead">
@@ -62,7 +64,9 @@
 		  </tbody>
 		</table>
 
-		<%= will_paginate @scenarios, class: "flickr_pagination" %>
+		<% if @scenarios != nil %>
+			<%= will_paginate @scenarios, class: "flickr_pagination" %>
+		<% end %>
 		<br>
 
 		<% else %>
