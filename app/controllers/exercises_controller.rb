@@ -14,6 +14,7 @@ class ExercisesController < ApplicationController
     else
     @exercises = Exercise.all
     end
+
   end
 
 
