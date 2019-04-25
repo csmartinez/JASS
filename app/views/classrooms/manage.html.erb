@@ -15,6 +15,12 @@
 		Below are classrooms you have created. Coming soon is a link to assign these classrooms to TIPs.
 		<br><br>
 
+		<%= form_tag(manage_classrooms_url , method: :get) do %>
+			<%= text_field_tag(:search, params[:search]) %>
+			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+		<% end %>
+		<br>
+
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
