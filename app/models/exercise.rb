@@ -7,8 +7,8 @@ class Exercise < ApplicationRecord
 
 	def self.search(search)
 		if search
-			where(["lower(name) LIKE ? " ,
-				"%#{search}%"])
+			where(["lower(name) LIKE ? OR upper(name) LIKE ? OR name LIKE ?" ,
+				"%#{search}%","%#{search}%","%#{search}%"])
 	end
 end
 
