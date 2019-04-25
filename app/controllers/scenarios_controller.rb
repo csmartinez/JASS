@@ -1,8 +1,13 @@
  class ScenariosController < ApplicationController
 
    def manage
+
+     if @scenarios = Scenario.search(params[:search])
+
+    else
      @scenarios = Scenario.all
    end
+ end
 
    def destroy
      @scenario = Scenario.find(params[:id])
