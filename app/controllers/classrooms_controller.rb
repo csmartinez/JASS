@@ -21,8 +21,12 @@ class ClassroomsController < ApplicationController
   end
 
   def manage
+    if @classrooms = Classroom.search(params[:search])
+
+   else
     @classrooms = Classroom.all
   end
+end
 
   def all
     @classrooms = Classroom.all
@@ -71,7 +75,7 @@ class ClassroomsController < ApplicationController
   def destroy
     @classroom = Classroom.find(params[:id])
     @classroom.destroy
-    
+
     redirect_to classrooms_path
   end
 
