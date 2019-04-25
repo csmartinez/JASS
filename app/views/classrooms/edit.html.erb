@@ -51,10 +51,10 @@
 		  <%= f.text_area :description, cols: "60", rows: "4", class: "form-control", :value => @classroom.description %> <br>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
 
-			<%#= form_tag(edit_classroom_url, method: :get) do %>
-				<%#= text_field_tag(:search, params[:search]) %>
-				<%#= submit_tag "Search", class: "btn btn-primary btn-sm" %>
-			<%# end %>
+			<%= form_tag(edit_classroom_url, method: :get) do %>
+				<%= text_field_tag(:search, params[:search]) %>
+				<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+			<% end %>
 
 			<br>
 
