@@ -15,6 +15,13 @@
 		Below are all Activities.
 		<br><br>
 
+		<%= form_tag(manage_scenarios_url , method: :get) do %>
+			<%= text_field_tag(:search, params[:search]) %>
+			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+		<% end %>
+		<br>
+
+
 		<table class="table">
 			<thead class="thead">
 				<tr style="colSort">
