@@ -7,7 +7,13 @@ class ExercisesController < ApplicationController
 #  end
 
   def manage
+
+
+    if @exercises = Exercise.search(params[:search])
+
+    else
     @exercises = Exercise.all
+    end
   end
 
 
