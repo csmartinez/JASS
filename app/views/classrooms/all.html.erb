@@ -18,7 +18,7 @@
 
 		<%#= will_paginate @classrooms, class: "flickr_pagination" %>
 
-		<%= form_tag(manage_classrooms_url , method: :get) do %>
+		<%= form_tag(all_classrooms_url , method: :get) do %>
 			<%= text_field_tag(:search, params[:search]) %>
 			<%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
 		<% end %>
