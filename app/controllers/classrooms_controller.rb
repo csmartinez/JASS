@@ -22,14 +22,16 @@ class ClassroomsController < ApplicationController
 
   def manage
     if @classrooms = Classroom.search(params[:search])
-
    else
     @classrooms = Classroom.all
   end
 end
 
   def all
+    if @classrooms = Classroom.search(params[:search])
+   else
     @classrooms = Classroom.all
+  end
   end
 
   def new
