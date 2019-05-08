@@ -64,6 +64,6 @@ private
 	end
 
 	def profile_params
-    params.require(:profile).permit(:id, :fname, :lname, :ethnicity, :ela, :math, :iep, :background, :grade)
+    params.require(:profile).permit(:id, :academic_data, :family_survey, :funds_of_knowledge, :family_background_PBL, :math_sample, :writing_sample, :story_3, :story_2, :story_1, :beginning_of_school, :fname, :lname, :ethnicity, :ela, :math, :iep, :background, :grade)
   end
 end

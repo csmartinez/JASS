@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_223219) do
+ActiveRecord::Schema.define(version: 2019_05_08_221631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,17 @@ ActiveRecord::Schema.define(version: 2019_04_14_223219) do
     t.text "background"
     t.integer "gradelevel"
     t.integer "grade"
+    t.text "beginning_of_school"
+    t.text "story_1"
+    t.text "story_2"
+    t.text "story_3"
+    t.text "writing_sample"
+    t.text "reading_data"
+    t.text "math_sample"
+    t.text "family_background_PBL"
+    t.text "funds_of_knowledge"
+    t.text "family_survey"
+    t.text "academic_data"
   end
 
   create_table "profilevisibles", force: :cascade do |t|
