@@ -6,12 +6,12 @@ class UsersController < ApplicationController
 	end
 
 	def generate_faculty_key
-		current_user.update(:faculty_key => SecureRandom.alphanumeric)
+		current_user.update(:faculty_key => SecureRandom.hex)
 		redirect_to home_index_path
 	end
 
 	def generate_admin_key
-		current_user.update(:admin_key => SecureRandom.alphanumeric)
+		current_user.update(:admin_key => SecureRandom.hex)
 		redirect_to home_index_path
 	end
 
